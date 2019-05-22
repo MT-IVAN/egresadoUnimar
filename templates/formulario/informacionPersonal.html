@@ -1,0 +1,213 @@
+{% extends  'base/navbar.html' %}
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+{% block content %}
+        
+        <h1><strong><center>Información personal</center></strong></strong></h1>
+        <br>
+        <br>
+        <div class="row ">
+           
+            <div class="col-xs-3 form-group">
+                <label>Identificación</label>
+                {{form.identificacion}}
+            </div>
+            <div class="col-xs-3 form-group">
+                <label>Fecha de nacimiento</label>
+                {{form.fechaNacimiento}}
+            </div>
+
+            <div class="col-xs-3 form-group">
+                    <label>genero</label>
+                    {{form.genero}}
+            </div>
+            <div class="col-xs-3 form-group">
+                <label>Nombres</label>
+                {{form.nombres}}
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>Apellidos</label>
+                {{form.apellidos}}
+            </div>
+              
+            <div class="col-xs-4 form-group">
+                <label>Programa</label>
+                {{form.programa}}
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>Fecha de grado</label>
+                {{form.fechaGrado}}
+            </div>
+            <br><br>
+            <div class="col-xs-12" style="color:#ccc">
+                      
+                La anterior información es suministrada por la Universidad Mariana, si algún dato no es correcto, por favor, comuníquese con la universidad.
+                <br>  <br>  <br>  
+            </div>  
+            <div class="col-xs-4 form-group">
+                <label>Estado civil</label>
+                {{form.estado_civil}}
+            </div>
+
+
+            <div class="col-xs-4 form-group">
+                <label>Dirección de residencia</label>
+                {{form.direccionResidencia}}
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>Ciudad</label>
+                {{form.ciudad}}
+            </div>
+
+            <div class="col-xs-4 form-group">
+                <label>Departamento</label>
+                {{form.departamento}}
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>Pais</label>
+                {{form.pais}}
+            </div>
+
+            <div class="col-xs-4 form-group">
+                <label>Teléfono fijo</label>
+                {{form.telefonoFijo}}
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>Celular</label>
+                {{form.celular}}
+            </div>
+
+            <div class="col-xs-4 form-group">
+              <label>Email 1</label>
+                {{form.email1}}
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>Email 2</label>
+                {{form.email2}}
+            </div>
+            <br>
+            
+            
+        </div>
+            <br>
+           
+
+        <hr>
+        <h1><strong><center>Información académica</center></strong></strong></h1>
+        <hr>
+        <div class="col-xs-12">
+           <center><a class="btn btn-primary" id="agregarEstudio"> Agregar un nuevo Estudio</a></center>
+        </div>
+
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
+              {{degreeForm}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+        <br>
+        <br>
+        <hr>
+        <br>
+        <hr>
+        <h1><strong><center>Información laboral</center></strong></strong></h1>
+        <hr>
+        <br>
+        <div class="col-xs-4 form-group">
+            <label>{{form.situacion_laboral_actual.label}}</label>
+            {{form.situacion_laboral_actual}}
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>{{form.experiencia_laboral.label}}</label>
+            {{form.experiencia_laboral}}
+        </div>
+
+        <div class="col-xs-4 form-group">
+          <label>{{form.nombreEmpresaTrabajoActual.label}}</label>
+            {{form.nombreEmpresaTrabajoActual}}
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>{{form.sectorDeLaEmpresa.label}}</label>
+            {{form.sectorDeLaEmpresa}}
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>{{form.areaDeTrabajo.label}}</label>
+            {{form.areaDeTrabajo}}
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>{{form.cargoQueOcupa.label}}</label>
+            <p>{{form.cargoQueOcupa}}</p>
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>{{form.nombreJefeInmediato.label}}</label>
+            {{form.nombreJefeInmediato}}
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>{{form.areaTrabajoAfinConSuProfesion.label}}</label>
+            {{form.areaTrabajoAfinConSuProfesion}}
+        </div>
+
+        <div class="col-xs-4 form-group">
+            <label>{{form.tipoDeContrato.label}}</label>
+            {{form.tipoDeContrato}}
+        </div>
+
+
+        <div class="col-xs-4 form-group">
+            
+        </div>
+        <div class="col-xs-4 form-group">
+            <label>{{form.rangoSalarial.label}}</label>
+            {{form.rangoSalarial}}
+        </div>
+        <div class="col-xs-4 form-group">
+           
+        </div>
+
+        <br>
+        <br>
+        <hr>
+        <br>
+        <hr>
+        <div class="col-xs-12 form-group">
+           
+        
+        <h1><strong><center>Participación en comunidades y asociaciones</center></strong></strong></h1>
+    </div>
+        <hr>
+        <br>
+     
+        {% block javascript%}
+<script>
+        $('#exampleModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+          })
+
+</script>
+        {% endblock %}
+
+{% endblock %}
+

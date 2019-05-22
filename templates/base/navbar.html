@@ -1,0 +1,87 @@
+{% load staticfiles %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css backup/navbar.css' %}">
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	
+
+
+    <title>Egresados UNIMAR</title>
+  </head>
+  <body>
+
+
+   	
+   	<div class="content" style="width:100%">
+   		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   		
+   		
+   			<p class="pull-left"></i> <span>Egresados UNIMAR</p>
+   		
+   		
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <p class="pull-right">Ivan Andres Eraso O;ate</p> 
+  
+</nav>
+	
+  	
+  	<div class="informacionPersona">
+		{% block content%}
+  	<h2>Collapsible Sidebar Using Bootstrap 4</h2>
+  	
+  	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	
+  	<div class="line"></div>
+  	
+  	<h2>Collapsible Sidebar Using Bootstrap 4</h2>
+  	
+  	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	
+  	<div class="line"></div>
+  	<h2>Collapsible Sidebar Using Bootstrap 4</h2>
+  	
+  	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	
+  	<div class="line"></div>
+  	
+   	</div>
+		{%endblock%}
+	</div>
+   	
+   	
+   	
+   	
+   </div>
+    
+	 {% block javascript%}
+ 
+    <script>
+	    $(document).ready(function(){
+			$('#sidebarCollapse').on('click',function(){
+				$('#sidebar').toggleClass('active');
+			});
+		});  
+	</script>
+	{%endblock%}
+    
+    
+    
+    <style>
+		</style>
+    
+  </body>
+</html>	
