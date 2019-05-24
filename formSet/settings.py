@@ -26,7 +26,22 @@ SECRET_KEY = '@oe18#dlx$=5*aw2g6*x^w-w8vg*gvm)-#z=kcfh#y*1w6gayb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_ALLOW_ALL= True
+# CORS_ORIGIN_WHITELIST =(
+#     'localhost:8000'   
+# ) 
+
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
 
 
 # Application definition
@@ -38,10 +53,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    # 'userprofile',
     'form',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,6 +133,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+
+# AUTH_USER_MODEL = 'userprofile.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

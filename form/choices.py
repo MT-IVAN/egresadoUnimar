@@ -194,3 +194,18 @@ RANGO_SALARIAL = (
     ('Más de $8.000.000','Más de $8.000.000'),
 )
 
+
+TIPO_COMUNIDAD_O_ASOCIACION = (
+    ('academica','Académica'),
+    ('profesional','Profesional'),
+    ('cientifica','Científica'),
+    ('artistica_cultural','Artística / cultural'),
+    ('deportiva','Deportiva'),
+    ('otra','Otra'),
+)
+AMBITO = (
+    ('regional','Regional'),
+    ('nacional','Nacional'),
+    ('internacional','Internacional'),
+)
+

@@ -2,8 +2,24 @@ from django import forms
 from .models import Persona, Degrees
 from .choices import *
 
+# from django.contrib.auth.forms import (
+#     UserChangeForm,
+#     UserCreationForm
+#     )
+
+# class CustomUserChangeForm(UserChangeForm):
+#     class Meta(UserChangeForm.Meta):
+#         model = Persona
+
+
+# class CustomUserCreationForm(UserCreationForm):
+#     class Meta(UserCreationForm.Meta):
+#         model = Persona
+    
+
 class PersonaFormInformacionPersona(forms.ModelForm):
     # estado_civil = forms.ChoiceField(choices=ESTADO_CIVIL, widget=forms.RadioSelect())
+
     class Meta:
         model = Persona
 
@@ -118,6 +134,7 @@ class DegreesForm(forms.ModelForm):
             'institucion',
             'anioGraduacion',
             'nivel_educacion_formal',
+            'persona_identificacion'
            
         ]
         labels= {
@@ -127,10 +144,15 @@ class DegreesForm(forms.ModelForm):
             'nivel_educacion_formal':'Nivel alcanzado en educación formal',
         }
         widgets= {
-            'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control'}), 
+            'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control', 'required':True}), 
             'institucion': forms.TextInput(attrs={'class': 'form-control'}), 
-            'anioGraduacion': forms.TextInput(attrs={'class': 'form-control'}), 
+            #'anioGraduacion': forms.DateField(attrs={'class': 'form-control'}), 
             'nivel_educacion_formal': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
         }
 
 # myform.fields['status'].widget.attrs['disabled'] = True
+
+
+
+
+      

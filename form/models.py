@@ -3,13 +3,6 @@ from .choices import *
 # Create your models here.
 
 
-class Degrees(models.Model):
-    nivel_educacion_formal = models.CharField(max_length=16, choices=NIVEL_EDUCACION_FORMAL, blank=True, null=True)
-    titulo_obtenido = models.CharField(max_length=100)
-    institucion = models.CharField(max_length=200)
-    anioGraduacion = models.DateField()
-    def __str__(self):
-        return self.nombre
 
 
 class Persona(models.Model):
@@ -60,9 +53,11 @@ class Persona(models.Model):
     rangoSalarial = models.CharField(max_length=26, choices =RANGO_SALARIAL, blank=True, null=True )
     #### /3 INFORMACION LABORAL
 
-
-
-
+    #### /4 paticipacion en comunidades y asociaciones
+    # paticipacionEnComunidades = models.CharField(max_length=2, choices=SI_NO, blank=True, null=True)
+    # tipoDeComunidad = models.CharField(max_length = 20, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
+    # nombreDeLaComunidad = models.CharField(max_length = 100, blank=True, null=True)
+    # ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
 
 
 
@@ -71,3 +66,21 @@ class Persona(models.Model):
     def __str__(self):
         return self.nombres
 
+class Degrees(models.Model):
+    nivel_educacion_formal = models.CharField(max_length=16, choices=NIVEL_EDUCACION_FORMAL, blank=True, null=True)
+    titulo_obtenido = models.CharField(max_length=100)
+    institucion = models.CharField(max_length=200)
+    anioGraduacion = models.DateField()
+    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo_obtenido
+
+# class Reconocimiento(models.Model):
+#     titulo_obtenido = models.CharField(max_length=100)
+#     institucion = models.CharField(max_length=200)
+#     anioGraduacion = models.DateField()
+#     persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         return self.titulo_obtenido

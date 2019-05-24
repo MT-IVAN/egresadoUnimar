@@ -44,7 +44,7 @@
                 <br>  <br>  <br>  
             </div>  
             <div class="col-xs-4 form-group">
-                <label>Estado civil</label>
+               <label>Estado civil</label>
                 {{form.estado_civil}}
             </div>
 
@@ -94,15 +94,79 @@
         <hr>
         <h1><strong><center>Información académica</center></strong></strong></h1>
         <hr>
-        <div class="col-xs-12">
-           <center><a class="btn btn-primary" id="agregarEstudio"> Agregar un nuevo Estudio</a></center>
+        <br>
+        <br>
+        <br>
+        <div class="col-xs-3 form-group">
+            <strong>Título obtenido</strong>
+        </div>
+        <div class="col-xs-3 form-group">
+            <strong>Institución</strong>
         </div>
 
+        <div class="col-xs-2 form-group">
+            <strong>Año de graduación</strong>
+        </div>
+        <div class="col-xs-3 form-group">
+            <strong>Nivel de educación formal</strong>
+        </div>
+        <div class="col-xs-1 form-group">
+           
+        </div>
+        {% if titulosPersona %} 
+
+
+
+        {% for curso in titulosPersona %}
+        <div id="ocultar{{curso.id}}">
+            <div class="col-xs-3 form-group">
+                {{curso.titulo_obtenido}}
+            </div>
+            <div class="col-xs-3 form-group">
+                {{curso.institucion}}
+            </div>
+
+            <div class="col-xs-2 form-group">
+            {{curso.anioGraduacion}}
+            </div>
+            <div class="col-xs-3 form-group">
+                {{curso.nivel_educacion_formal}}
+            </div>
+            <div class="col-xs-1">
+            <a class="btn btn-danger btn-xs" id="titulo{{curso.id}}" onclick="eliminarTitulo({{curso.id}})">
+                Borrar
+            </a>
+            </div>
+
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+
+        {% endfor %}
+        
+        {% else %}
+        <div class="col-xs-12">
+            <p>No se han agregado estudios.</p>   
+        </div>
+        
+
+
+        {% endif %}
+
+        <!-- aqui se agregan los estudio por ajax -->
+        <div class="aux">
+            
+        </div> 
+
+
+
           <!-- Button trigger modal -->
+          <div class="col-xs-12">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
+        Agregar estudio
       </button>
-      
+    </div>
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -115,11 +179,16 @@
             </div>
             <div class="modal-body">
               <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-              {{degreeForm}}
+            <form method="POST">
+                {% csrf_token %}
+                {{degreeForm}}
+                <!-- falta el submit -->
+                <!-- <input id='enviarAjax' type="submit"> -->
+            </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" id='enviarAjax'>Save changes</button>
             </div>
           </div>
         </div>
@@ -133,7 +202,9 @@
         <hr>
         <br>
         <hr>
+        <div class="col-xs-12">
         <h1><strong><center>Información laboral</center></strong></strong></h1>
+        </div>
         <hr>
         <br>
         <div class="col-xs-4 form-group">
@@ -200,14 +271,165 @@
         <hr>
         <br>
      
-        {% block javascript%}
-<script>
-        $('#exampleModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
-          })
-
-</script>
-        {% endblock %}
-
+        
+        
 {% endblock %}
 
+{% block javascript%}
+	 <script>
+		 
+		$(function(){
+    //Obtenemos la información de csfrtoken que se almacena por cookies en el cliente
+    var csrftoken = getCookie('csrftoken');
+
+    //Agregamos en la configuración de la funcion $.ajax de Jquery lo siguiente:
+    $.ajaxSetup({
+                    beforeSend: function(xhr, settings) {
+                        if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                            // Send the token to same-origin, relative URLs only.
+                            // Send the token only if the method warrants CSRF protection
+                            // Using the CSRFToken value acquired earlier
+                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        }
+                    }
+    });
+
+function sameOrigin(url) {
+    // test that a given url is a same-origin URL
+    // url could be relative or scheme relative or absolute
+    var host = document.location.host; // host + port
+    var protocol = document.location.protocol;
+    var sr_origin = '//' + host;
+    var origin = protocol + sr_origin;
+    // Allow absolute or scheme relative URLs to same origin
+    return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+        (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+        // or any other URL that isn't scheme relative or absolute i.e relative.
+        !(/^(\/\/|http:|https:).*/.test(url));
+}
+
+// usando jQuery
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+    function csrfSafeMethod(method) {
+        // estos métodos no requieren CSRF
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+});
+
+    
+    function eliminarTitulo(cursoId){
+        console.log(cursoId);
+
+        var ed = {
+            cursoId:cursoId
+        };
+        $.ajax({
+              //url: "/guardarGradoAjax",
+              url: "{% url 'borrar_titulo' %}",
+              type: "POST",
+              data: ed,
+              cache:false,
+              dataType: "json",
+              success: function(resp){
+                $('#ocultar'+cursoId).hide();   
+                console.log('id eliminado '+ resp.id);
+                }
+        });
+
+
+
+
+       
+    }
+    
+
+
+	$('#enviarAjax').on('click', function(){
+        var id_titulo_obtenido =  $('#id_titulo_obtenido').val();
+		var id_institucion =  $('#id_institucion').val();
+		var id_anioGraduacion =  $('#id_anioGraduacion').val();
+		var id_nivel_educacion_formal =  $('#id_nivel_educacion_formal').val(); 
+
+      var ed = {
+        id_titulo_obtenido : id_titulo_obtenido,
+        id_institucion: id_institucion,
+        id_anioGraduacion: id_anioGraduacion,
+        id_nivel_educacion_formal: id_nivel_educacion_formal
+      };
+
+        $.ajax({
+              url: "{% url 'guardar_titulo' %}",
+              type: "POST",
+              data: ed,
+              cache:false,
+              dataType: "json",
+              success: function(resp){
+                var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                var fechaSplit = id_anioGraduacion.split("-");
+                var html = `
+                        <div id="ocultar${resp.id}">
+                            <div class="col-xs-3 form-group">
+                            ${resp.id_titulo_obtenido}
+                            </div>
+                            <div class="col-xs-3 form-group">
+                            ${resp.id_institucion}
+                            </div>
+                            <div class="col-xs-2 form-group">
+                            ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
+                            </div>
+                            <div class="col-xs-3 form-group">
+                            ${resp.id_nivel_educacion_formal}
+                            </div>
+                            <div class="col-xs-1">
+                            <a class="btn btn-danger btn-xs" onclick="eliminarTitulo(${resp.id})" >
+                            Borrar
+                            </a>
+                            </div>
+                            <div class="col-xs-12">
+                            <hr>
+                            </div>
+                        </div>
+                    `;
+    
+            document.querySelector('.aux').innerHTML += html;   
+            //var a = json_loads(resp)
+            
+            //console.log(a);
+                  }
+              });
+
+
+
+
+		});
+
+    //     var a = /titulo(\d)+/g;
+       
+    //     $('#'+a).on('click', function(){
+        
+
+    //    console.log('something happened!');
+
+
+
+	// 	});
+
+		
+		</script>
+	 {%endblock%}
