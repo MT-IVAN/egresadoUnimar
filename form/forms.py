@@ -1,21 +1,10 @@
 from django import forms
-from .models import Persona, Degrees
+from .models import *
 from .choices import *
 
-# from django.contrib.auth.forms import (
-#     UserChangeForm,
-#     UserCreationForm
-#     )
 
-# class CustomUserChangeForm(UserChangeForm):
-#     class Meta(UserChangeForm.Meta):
-#         model = Persona
-
-
-# class CustomUserCreationForm(UserCreationForm):
-#     class Meta(UserCreationForm.Meta):
-#         model = Persona
-    
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class PersonaFormInformacionPersona(forms.ModelForm):
     # estado_civil = forms.ChoiceField(choices=ESTADO_CIVIL, widget=forms.RadioSelect())
@@ -52,7 +41,13 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'areaTrabajoAfinConSuProfesion',
             'tipoDeContrato',
             'rangoSalarial',
-       
+            # Participacion en cominudades y asociaciones#
+            
+            ## PArte 7
+            'participacionActividadesUnimar',
+            'serviciosDeInteres',
+            ## Parte 8
+            'procesoDeInformacionUnimar',
             
         ]
         labels= {
@@ -83,9 +78,13 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'areaTrabajoAfinConSuProfesion':'¿El área de trabajo es afín a su profesión?',
             'tipoDeContrato':'Tipo de contrato',
             'rangoSalarial': 'Rango de salario',
-
-            
-            
+            # Participacion en cominudades y asociaciones#
+  
+            ## PArte 7
+            'participacionActividadesUnimar':'¿Participa en actividades de la facultad y/o Institución como egresado?',
+            'serviciosDeInteres':'Servicios de mayor interés',
+            ## Parte 8
+            'procesoDeInformacionUnimar':'Considera que su proceso de formación en la Universidad fue:',
         }
         widgets= {
             'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'disabled':'disabled'}),
@@ -115,7 +114,14 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
             'tipoDeContrato':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
             'rangoSalarial': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
-
+           
+            # Participacion en cominudades y asociaciones#
+            
+            ## PArte 7
+            'serviciosDeInteres':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'participacionActividadesUnimar':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            ## Parte 8
+            'procesoDeInformacionUnimar':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
 
 
 
@@ -124,18 +130,18 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             
         }
 
-class DegreesForm(forms.ModelForm):
 
+class DegreesForm(forms.ModelForm):
+     
+    
     class Meta:
         model = Degrees
-
+        
         fields = [
             'titulo_obtenido', 
             'institucion',
             'anioGraduacion',
             'nivel_educacion_formal',
-            'persona_identificacion'
-           
         ]
         labels= {
             'titulo_obtenido': 'Título obtenido',
@@ -144,15 +150,79 @@ class DegreesForm(forms.ModelForm):
             'nivel_educacion_formal':'Nivel alcanzado en educación formal',
         }
         widgets= {
-            'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control', 'required':True}), 
-            'institucion': forms.TextInput(attrs={'class': 'form-control'}), 
-            #'anioGraduacion': forms.DateField(attrs={'class': 'form-control'}), 
-            'nivel_educacion_formal': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
+             'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control'}), 
+             'institucion': forms.TextInput(attrs={'class': 'form-control'}), 
+             'anioGraduacion': DateInput(attrs={'class': 'form-control'}),
+             'nivel_educacion_formal': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
         }
+        
 
 # myform.fields['status'].widget.attrs['disabled'] = True
+class ParticipacionesForm(forms.ModelForm):
+    class Meta:
+        model = Participaciones
+        
+        fields = [
+            'tipoDeComunidad', 
+            'nombreDeLaComunidad',
+            'ambito',
+        ]
+        labels= {
+            'tipoDeComunidad': 'Tipo de comunidad',
+            'nombreDeLaComunidad':'Nombre de la comunidad',
+            'ambito':'ambito',
+            
+        }
+        widgets= {
+             'tipoDeComunidad': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+             'nombreDeLaComunidad': forms.TextInput(attrs={'class': 'form-control'}), 
+             'ambito':  forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+             
+        }
 
 
+class ReconocimientosForm(forms.ModelForm):
+    class Meta:
+        model = Reconocimientos
 
+        fields = [
+            'titulo_obtenido', 
+            'institucion',
+            'anio',
+            'ambito',     
+        ]
+        labels= {
+            'titulo_obtenido': 'Nombre del reconocimiento',
+            'institucion':'Institución otorgante',
+            'anio':'Fecha',
+            'ambito':'Ámbito',
+        }
+        widgets= {
+            'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control'}), 
+            'institucion': forms.TextInput(attrs={'class': 'form-control'}), 
+            'ambito': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
+             'anio': DateInput(attrs={'class': 'form-control'}),
+        }
 
       
+
+class PublicacionesForm(forms.ModelForm):
+    class Meta:
+        model = Publicaciones
+
+        fields = [
+            'titulo_publicacion', 
+            'anio',
+            'tipo_publicacion',  
+        ]
+        labels= {
+            'titulo_publicacion': 'Título de la publicación',
+            'anio': 'Fecha de publicación',
+            'tipo_publicacion': 'Tipo de publicación', 
+        }
+        widgets= {
+            'titulo_publicacion': forms.TextInput(attrs={'class': 'form-control'}), 
+            'anio': DateInput(attrs={'class': 'form-control'}),
+            'tipo_publicacion': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
+        }
+

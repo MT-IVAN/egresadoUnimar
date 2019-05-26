@@ -2,6 +2,7 @@ GENERO = (
         ('masculino', 'Masculino'),
         ('femenino', 'Femenino'),
     )
+    
 
 SI_NO = (
         ('si', 'Sí'),
@@ -204,8 +205,46 @@ TIPO_COMUNIDAD_O_ASOCIACION = (
     ('otra','Otra'),
 )
 AMBITO = (
+    ('local','Local'),
     ('regional','Regional'),
     ('nacional','Nacional'),
     ('internacional','Internacional'),
 )
+
+TIPO_PUBLICACION = (
+    ('articulo','Artículo'),
+    ('libro','Libro'),
+    ('capitoDeLibro','Capítulo de libro'),
+    ('documentoResultadoDeInvestigacion','Documento resultado de investigación'),
+    ('otro','Otro'),
+)
+
+PARTICIPACION_ACTIVIDADES = (
+    ('frecuentemente','Frecuentemente'),
+    ('regularmente','Regularmente'),
+    ('eventualmente','Eventualmente'),
+    ('nunca','Nunca'),
+    ('otro','Otro'),
+)
+
+SERVICIOS_DE_INTERES = (
+    ('programasEducacionContinua','Programas de educación continua'),
+    ('programasPosgrados','Programas de posgrados'),
+    ('actualizacinProfesional','Conferencias de actualización profesional'),
+    ('bolsaEmpleoInstitucional','Bolsa de empleo institucional'),
+    ('libreria','Librería'),
+    ('biblioteca','Biblioteca'),
+    ('escenariosDeportivos','Escenarios deportivos'),
+    ('ProgramasDeBienestaInstitucional','Programas de bienestar institucional'),
+    ('ninguno','Ninguno'),
+    ('otro','Otro'),
+)
+
+SATISFACCION = (
+    ('muySatifecho','Muy satisfactorio'),
+    ('satisfecho','Satisfactorio'),
+    ('pocoSatisfecho','Poco Satisfactorio'),
+)
+
+
 

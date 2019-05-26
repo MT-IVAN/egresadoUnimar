@@ -49,19 +49,22 @@ class Persona(models.Model):
     cargoQueOcupa =  models.CharField(max_length=50, choices=CARGO_OCUPADO, blank=True, null=True)
     nombreJefeInmediato = models.CharField(max_length=100, blank=True, null=True)
     areaTrabajoAfinConSuProfesion= models.CharField(max_length=2, choices=SI_NO, blank=True, null=True)
-    tipoDeContrato = models.CharField(max_length=50, choices =TIPO_CONTRATO, blank=True, null=True )
-    rangoSalarial = models.CharField(max_length=26, choices =RANGO_SALARIAL, blank=True, null=True )
+    tipoDeContrato = models.CharField(max_length=50, choices=TIPO_CONTRATO, blank=True, null=True )
+    rangoSalarial = models.CharField(max_length=26, choices=RANGO_SALARIAL, blank=True, null=True )
     #### /3 INFORMACION LABORAL
 
-    #### /4 paticipacion en comunidades y asociaciones
-    # paticipacionEnComunidades = models.CharField(max_length=2, choices=SI_NO, blank=True, null=True)
-    # tipoDeComunidad = models.CharField(max_length = 20, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
-    # nombreDeLaComunidad = models.CharField(max_length = 100, blank=True, null=True)
-    # ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
+
+   
+    ##### 7 
+
+    participacionActividadesUnimar = models.CharField(max_length = 20, choices=PARTICIPACION_ACTIVIDADES, blank=True, null=True)
+    serviciosDeInteres = models.CharField(max_length = 40, choices=SERVICIOS_DE_INTERES, blank=True, null=True)
+
+    ###### 8 
+    
+    procesoDeInformacionUnimar = models.CharField(max_length=20, choices=SATISFACCION, blank=True, null=True )
 
 
-
-    ###### campos editables hasta aqui
 
     def __str__(self):
         return self.nombres
@@ -76,11 +79,30 @@ class Degrees(models.Model):
     def __str__(self):
         return self.titulo_obtenido
 
-# class Reconocimiento(models.Model):
-#     titulo_obtenido = models.CharField(max_length=100)
-#     institucion = models.CharField(max_length=200)
-#     anioGraduacion = models.DateField()
-#     persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+class Participaciones(models.Model):
+    tipoDeComunidad = models.CharField(max_length = 20, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
+    nombreDeLaComunidad = models.CharField(max_length = 100, blank=True, null=True)
+    ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
+    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
 
-#     def __str__(self):
-#         return self.titulo_obtenido
+    def __str__(self):
+        return self.nombreDeLaComunidad
+
+class Reconocimientos(models.Model):
+    titulo_obtenido = models.CharField(max_length=100)
+    institucion = models.CharField(max_length=200)
+    anio = models.DateField()
+    ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
+    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo_obtenido
+
+class Publicaciones(models.Model):
+    titulo_publicacion = models.CharField(max_length=100)
+    anio = models.DateField()
+    tipo_publicacion = models.CharField(max_length = 20, choices=TIPO_PUBLICACION, blank=True, null=True)
+    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo_publicacion
