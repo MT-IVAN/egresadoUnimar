@@ -10,7 +10,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
     # estado_civil = forms.ChoiceField(choices=ESTADO_CIVIL, widget=forms.RadioSelect())
 
     class Meta:
-        model = Persona
+        model = User
 
 
         fields = [
@@ -87,13 +87,13 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'procesoDeInformacionUnimar':'Considera que su proceso de formación en la Universidad fue:',
         }
         widgets= {
-            'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'disabled':'disabled'}),
-            'nombres': forms.TextInput(attrs={'class': 'form-control', 'disabled':'disabled'}),
-            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'disabled':'disabled'}),
-            'fechaNacimiento': forms.TextInput(attrs={'class': 'form-control', 'disabled':'disabled'}),
-            'programa': forms.TextInput(attrs={'class': 'form-control', 'disabled':'disabled'}),
-            'fechaGrado': forms.TextInput(attrs={'class': 'form-control', 'disabled':'disabled'}),
-            'genero': forms.TextInput(attrs={'class': 'form-control', 'disabled':'disabled'}),
+            'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'value':'1', 'readonly':'readonly'}),
+            'nombres': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
+            'fechaNacimiento': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
+            'programa': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
+            'fechaGrado': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
+            'genero': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'direccionResidencia': forms.TextInput(attrs={'class': 'form-control'}),
             'ciudad': forms.TextInput(attrs={'class': 'form-control'}),
             'departamento': forms.TextInput(attrs={'class': 'form-control'}),

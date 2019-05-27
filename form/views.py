@@ -1,57 +1,51 @@
 from django.shortcuts import render, redirect
 from django.forms import modelformset_factory, inlineformset_factory
 from .forms import PersonaFormInformacionPersona, DegreesForm, ReconocimientosForm, ParticipacionesForm, PublicacionesForm
-from .models import Persona, Degrees, Reconocimientos, Participaciones, Publicaciones
+from .models import User, Degrees, Reconocimientos, Participaciones, Publicaciones
+from django.urls import reverse
 
 import json
 from django.http import HttpResponse
 # Create your views here.
 
 def informacionPersonal(request):
-
-    # if request.method == "POST":
-    #     formset = DegreeFormset(request.POST, instance=persona)    
-    #     if formset.is_valid():
-    #          formset.save()
-    #          return redirect('index', person_id=person_id)
-
-
-    persona = Persona.objects.get(identificacion=1)
-    formComunidades = ParticipacionesForm(instance=Participaciones)
-    
-    #necesito saber que informacion ha ingresado la persona
-    form = PersonaFormInformacionPersona(instance=persona)    
-    #informacion asociada a personas 
-    #   
-    degreesPersona = Degrees.objects.filter(persona_identificacion = 1)
-    comunidadesPersona = Participaciones.objects.filter(id= 1) 
-    reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 1)  
-    publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 1)
-
-    #envio el formulario    
-    degreeForm = DegreesForm 
-    reconocimietosForm = ReconocimientosForm
-    participacionesForm = ParticipacionesForm    
-    publicacionesForm = PublicacionesForm 
-
-
-    return render(request, 'formulario/informacionPersonal.html', {'form':form,
-                                                                   'degreeForm':degreeForm,
-                                                                   'reconocimietosForm':reconocimietosForm,
-                                                                   'participacionesForm':participacionesForm,
-                                                                   'publicacionesForm':publicacionesForm,
-                                                                   'titulosPersona':degreesPersona,
-                                                                   'titulosComunidades':comunidadesPersona,
-                                                                   'reconocimientosPersona':reconocimientosPersona,
-                                                                   'publicacionesPersona':publicacionesPersona})
-#     if request.method == "POST":
-#         formset = DegreeFormset(request.POST, instance=persona)    
-#         if formset.is_valid():
-#              formset.save()
-#              return redirect('index', person_id=person_id)
-
-#     formset = DegreeFormset(instance=persona)  
-#     return render(request, 'formulario/index.html', {'formset': formset})
+    persona = User.objects.get(identificacion=1) 
+    if request.method == "POST": 
+        print('llego la peticion por post')
+        form = PersonaFormInformacionPersona(request.POST , instance=persona) 
+        print('tiene el form')  
+        if form.is_valid():
+            print('el form es valido')  
+            form.save()
+            return render(request, 'formulario/informacionPersonal.html',{'form':form})
+        return render(request, 'formulario/fail.html',{'form':form})
+    else:
+        print('llego la peticion por get')
+        #necesito saber que informacion ha ingresado la persona
+        form = PersonaFormInformacionPersona(instance=persona)    
+        #informacion asociada a personas 
+        degreesPersona = Degrees.objects.filter(persona_identificacion = 1)
+        comunidadesPersona = Participaciones.objects.filter(id= 1) 
+        reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 1)  
+        publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 1)
+        #envio el formulario    
+        degreeForm = DegreesForm 
+        reconocimietosForm = ReconocimientosForm
+        participacionesForm = ParticipacionesForm    
+        publicacionesForm = PublicacionesForm 
+        formComunidades = ParticipacionesForm
+        #return render(request, 'formulario/informacionPersonal.html', {'form':form,'degreeForm':degreeForm})
+        return render(request, 'formulario/informacionPersonal.html', {'form':form,
+                                                                    'degreeForm':degreeForm,
+                                                                    'reconocimietosForm':reconocimietosForm,
+                                                                    'participacionesForm':participacionesForm,
+                                                                    'publicacionesForm':publicacionesForm,
+                                                                    'titulosPersona':degreesPersona,
+                                                                    'titulosComunidades':comunidadesPersona,
+                                                                    'reconocimientosPersona':reconocimientosPersona,
+                                                                    'publicacionesPersona':publicacionesPersona})
+   
+   
 
 
 
@@ -63,7 +57,8 @@ def ajaxGrado(request):
                 id_institucion = request.POST.get('id_institucion')
                 id_anioGraduacion = request.POST.get('id_anioGraduacion')
                 id_nivel_educacion_formal = request.POST.get('id_nivel_educacion_formal')
-                persona = Persona.objects.get(identificacion=1)
+
+                persona = User.objects.get(identificacion=1)
                 myDegree = Degrees(nivel_educacion_formal = id_nivel_educacion_formal, titulo_obtenido = id_titulo_obtenido , institucion = id_institucion , anioGraduacion = id_anioGraduacion, persona_identificacion = persona)
                 myDegree.save()
                 dateDegree = myDegree.anioGraduacion
@@ -71,7 +66,7 @@ def ajaxGrado(request):
             except NameError:
                 print("hubo un error con la peticion")
                 name = 'ad';
-                return HttpResponse(json.dumps({'id': primary ,   'id_titulo_obtenido': id_titulo_obtenido, 'id_institucion':id_institucion , 'id_anioGraduacion':dateDegree, 'id_nivel_educacion_formal':id_nivel_educacion_formal}), content_type="application/json")
+            return HttpResponse(json.dumps({'id': primary ,   'id_titulo_obtenido': id_titulo_obtenido, 'id_institucion':id_institucion , 'id_anioGraduacion':dateDegree, 'id_nivel_educacion_formal':id_nivel_educacion_formal}), content_type="application/json")
     else :
         return render_to_response('ajax_test.html', locals())
 

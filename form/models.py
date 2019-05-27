@@ -2,19 +2,32 @@ from django.db import models
 from .choices import *
 # Create your models here.
 
+# from django.contrib.auth.models import ( AbstractBaseUser, BaseUserManager)
 
+# class UserManager(BaseUserManager):
+#     def create_superuser(self,identificacion,fechaNacimiento,password=None):
+#         user = self.create_user(
+#             identificacion,
+#             fechaNacimiento,
+#             is_staff=True,
+#             is_admin=True
+#         )
+#         return user
 
-
-class Persona(models.Model):
+class User(models.Model):
     ###### campos no editables
     identificacion = models.CharField(primary_key=True, max_length=12)
-    nombres = models.CharField(max_length=50)
-    apellidos = models.CharField(max_length=50)
-    fechaNacimiento = models.DateField() 
+    nombres = models.CharField(max_length=51)
+    apellidos = models.CharField(max_length=50, blank=True, null=True)
+    fechaNacimiento = models.CharField(max_length=30) 
+    # objects = UserManager()
+    # USERNAME_FIELD = 'identificacion'
+    # REQUIRED_FIELDS = ['fechaNacimiento']
+    
     
     genero = models.CharField(max_length=10, choices=GENERO)
     programa = models.CharField(max_length=100)
-    fechaGrado = models.DateField()
+    fechaGrado = models.DateField(blank=True, null=True)
     ###### campos no editables
     
     ###### campos editables para el usuario
@@ -71,10 +84,10 @@ class Persona(models.Model):
 
 class Degrees(models.Model):
     nivel_educacion_formal = models.CharField(max_length=16, choices=NIVEL_EDUCACION_FORMAL, blank=True, null=True)
-    titulo_obtenido = models.CharField(max_length=100)
-    institucion = models.CharField(max_length=200)
-    anioGraduacion = models.DateField()
-    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+    titulo_obtenido = models.CharField(max_length=100,null=True, blank=True,)
+    institucion = models.CharField(max_length=200,null=True, blank=True)
+    anioGraduacion = models.DateField(null=True, blank=True)
+    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo_obtenido
@@ -83,26 +96,26 @@ class Participaciones(models.Model):
     tipoDeComunidad = models.CharField(max_length = 20, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
     nombreDeLaComunidad = models.CharField(max_length = 100, blank=True, null=True)
     ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
-    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombreDeLaComunidad
 
 class Reconocimientos(models.Model):
-    titulo_obtenido = models.CharField(max_length=100)
-    institucion = models.CharField(max_length=200)
-    anio = models.DateField()
+    titulo_obtenido = models.CharField(max_length=100,blank=True, null=True)
+    institucion = models.CharField(max_length=200,blank=True, null=True)
+    anio = models.DateField(blank=True, null=True)
     ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
-    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo_obtenido
 
 class Publicaciones(models.Model):
-    titulo_publicacion = models.CharField(max_length=100)
-    anio = models.DateField()
+    titulo_publicacion = models.CharField(max_length=100,blank=True, null=True)
+    anio = models.DateField(blank=True, null=True)
     tipo_publicacion = models.CharField(max_length = 20, choices=TIPO_PUBLICACION, blank=True, null=True)
-    persona_identificacion = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
+    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo_publicacion

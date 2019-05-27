@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<form method="POST" id="personaForm">
+<form method="POST" id="personaForm" action="{% url 'info_personal' %}">
 {% csrf_token %}   
 
         <h1 class="titulo"><strong><center>Información personal</center></strong></strong></h1>
@@ -178,17 +178,17 @@
             </div>
             <div class="modal-body">
               <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form2 method="POST" id="estudio">
-                
+            <form method="POST">
+                {% csrf_token %}
                 {{degreeForm}}
 
                 <!-- falta el submit -->
                 <!-- <input id='enviarAjax' type="submit"> -->
-            </form2>
+            </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='enviarAjax' form="">Save changes</button>
+              <button type="button" class="btn btn-primary" id='enviarAjax'>Save changes</button>
             </div>
           </div>
         </div>
@@ -201,8 +201,7 @@
         <h1 class="titulo"><strong><center>Información laboral</center></strong></strong></h1>
         </div>
         
-        
-            {%csrf_token%}
+
         <div class="col-xs-4 form-group">
             <label>{{form.situacion_laboral_actual.label}}</label>
             {{form.situacion_laboral_actual}}
@@ -253,7 +252,7 @@
         <div class="col-xs-4 form-group">
 
         </div>
-        
+
         <br>
         <br>
 
@@ -344,13 +343,13 @@
             </div>
             <div class="modal-body">
               <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form3 method="POST" id="participacion">
+            <form method="POST">
                 {% csrf_token %}
                 {{participacionesForm}}
 
                 <!-- falta el submit -->
                 <!-- <input id='enviarAjax' type="submit"> -->
-            </form3>
+            </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -451,13 +450,13 @@
             </div>
             <div class="modal-body">
               <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form4 method="POST" id="distincion">
+            <form method="POST">
                 {% csrf_token %}
                 {{reconocimietosForm}}
 
                 <!-- falta el submit -->
                 <!-- <input id='enviarAjax' type="submit"> -->
-            </form4>
+            </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -551,13 +550,13 @@
             </div>
             <div class="modal-body">
               <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form5 method="POST" id="publicacion">
+            <form method="POST">
                 {% csrf_token %}
                 {{publicacionesForm}}
 
                 <!-- falta el submit -->
                 <!-- <input id='enviarAjax' type="submit"> -->
-            </form5>
+            </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -591,12 +590,11 @@
         </div>
 
 
-    </form>
+</form>
 
 <div class="col-xs-12">
         <button type="submit" form="personaForm" class="save btn btn-primary">Save</button>
 </div>
-
 
 
 
