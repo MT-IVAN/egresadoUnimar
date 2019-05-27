@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 from .choices import *
 
-
+#Para usa la fecha evitando el error de hidden.
 class DateInput(forms.DateInput):
     input_type = 'date'
 

@@ -1,7 +1,23 @@
-<h1>fail</h1>
+{% extends  'base/navbar.html' %}
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+{% block content %}
+
+
+
+<h1> Ups! parace que algo salio mal.
+</h1>
+
+
+
 
 {% if form.errors %}
+<p>Por favor ten en cuenta las recomendaciones siguientes e ingresa nuevamente a la página</p>
 {{ form.errors}}
-<a>errir</a>
+
+
+{{% else %}}
+<p>Ingrsa nuevamente a la página y llena tu información de nuevo</p>
 {% endif %}
-<a>N o errir</a>
+
+
+{% endblock%}

@@ -9,11 +9,11 @@ from django.http import HttpResponse
 # Create your views here.
 
 def informacionPersonal(request):
-    persona = User.objects.get(identificacion=1)
-    degreesPersona = Degrees.objects.filter(persona_identificacion = 1)
-    comunidadesPersona = Participaciones.objects.filter(persona_identificacion= 1) 
-    reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 1)  
-    publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 1)
+    persona = User.objects.get(identificacion=3)
+    degreesPersona = Degrees.objects.filter(persona_identificacion = 3)
+    comunidadesPersona = Participaciones.objects.filter(persona_identificacion= 3) 
+    reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 3)  
+    publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 3)
     #envio el formulario    
     degreeForm = DegreesForm 
     reconocimietosForm = ReconocimientosForm
@@ -42,10 +42,10 @@ def informacionPersonal(request):
         #necesito saber que informacion ha ingresado la persona
         form = PersonaFormInformacionPersona(instance=persona)    
         # #informacion asociada a personas 
-        # degreesPersona = Degrees.objects.filter(persona_identificacion = 1)
-        # comunidadesPersona = Participaciones.objects.filter(persona_identificacion= 1) 
-        # reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 1)  
-        # publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 1)
+        # degreesPersona = Degrees.objects.filter(persona_identificacion = 3)
+        # comunidadesPersona = Participaciones.objects.filter(persona_identificacion= 3) 
+        # reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 3)  
+        # publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 3)
         # #envio el formulario    
         # degreeForm = DegreesForm 
         # reconocimietosForm = ReconocimientosForm
@@ -75,7 +75,7 @@ def ajaxGrado(request):
                 id_anioGraduacion = request.POST.get('id_anioGraduacion')
                 id_nivel_educacion_formal = request.POST.get('id_nivel_educacion_formal')
 
-                persona = User.objects.get(identificacion=1)
+                persona = User.objects.get(identificacion=3)
                 myDegree = Degrees(nivel_educacion_formal = id_nivel_educacion_formal, titulo_obtenido = id_titulo_obtenido , institucion = id_institucion , anioGraduacion = id_anioGraduacion, persona_identificacion = persona)
                 myDegree.save()
                 dateDegree = myDegree.anioGraduacion
@@ -84,7 +84,7 @@ def ajaxGrado(request):
                 print("hubo un error con la peticion")
             return HttpResponse(json.dumps({'id': primary ,   'id_titulo_obtenido': id_titulo_obtenido, 'id_institucion':id_institucion , 'id_anioGraduacion':dateDegree, 'id_nivel_educacion_formal':id_nivel_educacion_formal}), content_type="application/json")
     else :
-        return render_to_response('ajax_test.html', locals())
+        return render(request, 'formulario/fail.html',{'form':form})
 
 
 def Participacionajax(request):
@@ -95,7 +95,7 @@ def Participacionajax(request):
                 id_nombreDeLaComunidad = request.POST.get('id_nombreDeLaComunidad')
                 id_ambito = request.POST.get('id_ambito')
 
-                persona = User.objects.get(identificacion=1)
+                persona = User.objects.get(identificacion=3)
 
                 miParticipacion = Participaciones(tipoDeComunidad = id_tipoDeComunidad , nombreDeLaComunidad = id_nombreDeLaComunidad  , ambitoParticipacion = id_ambito  , persona_identificacion = persona)
                 miParticipacion.save()
@@ -117,7 +117,7 @@ def guardar_reconocimiento(request):
                 id_anioReconocimiento = request.POST.get('id_anioReconocimiento')
                 id_ambito = request.POST.get('id_ambito')
 
-                persona = User.objects.get(identificacion=1)
+                persona = User.objects.get(identificacion=3)
 
                 mireconocimiento = Reconocimientos(titulo_obtenido_reconocimiento = id_titulo_obtenido_reconocimiento , institucionReconocimiento = id_institucionReconocimiento  , anioReconocimiento =  id_anioReconocimiento , ambito =id_ambito ,persona_identificacion = persona)
                 mireconocimiento.save()
@@ -140,7 +140,7 @@ def guardar_publicacion(request):
                 id_tipo_publicacion = request.POST.get('id_tipo_publicacion')
 
 
-                persona = User.objects.get(identificacion=1)
+                persona = User.objects.get(identificacion=3)
 
                 miPublicacion = Publicaciones(titulo_publicacion = id_titulo_publicacion , anio = id_anio  , tipo_publicacion =  id_tipo_publicacion ,persona_identificacion = persona)
                 miPublicacion.save()
