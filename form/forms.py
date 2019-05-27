@@ -165,18 +165,18 @@ class ParticipacionesForm(forms.ModelForm):
         fields = [
             'tipoDeComunidad', 
             'nombreDeLaComunidad',
-            'ambito',
+            'ambitoParticipacion',
         ]
         labels= {
             'tipoDeComunidad': 'Tipo de comunidad',
             'nombreDeLaComunidad':'Nombre de la comunidad',
-            'ambito':'ambito',
+            'ambitoParticipacion':'Ámbito',
             
         }
         widgets= {
              'tipoDeComunidad': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
              'nombreDeLaComunidad': forms.TextInput(attrs={'class': 'form-control'}), 
-             'ambito':  forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+             'ambitoParticipacion':  forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
              
         }
 
@@ -186,22 +186,22 @@ class ReconocimientosForm(forms.ModelForm):
         model = Reconocimientos
 
         fields = [
-            'titulo_obtenido', 
-            'institucion',
-            'anio',
+            'titulo_obtenido_reconocimiento', 
+            'institucionReconocimiento',
+            'anioReconocimiento',
             'ambito',     
         ]
         labels= {
-            'titulo_obtenido': 'Nombre del reconocimiento',
-            'institucion':'Institución otorgante',
-            'anio':'Fecha',
+            'titulo_obtenido_reconocimiento': 'Nombre del reconocimiento',
+            'institucionReconocimiento':'Institución otorgante',
+            'anioReconocimiento':'Fecha',
             'ambito':'Ámbito',
         }
         widgets= {
-            'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control'}), 
-            'institucion': forms.TextInput(attrs={'class': 'form-control'}), 
+            'titulo_obtenido_reconocimiento': forms.TextInput(attrs={'class': 'form-control'}), 
+            'institucionReconocimiento': forms.TextInput(attrs={'class': 'form-control'}), 
             'ambito': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
-             'anio': DateInput(attrs={'class': 'form-control'}),
+            'anioReconocimiento': DateInput(attrs={'class': 'form-control'}),
         }
 
       

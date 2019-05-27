@@ -95,16 +95,16 @@ class Degrees(models.Model):
 class Participaciones(models.Model):
     tipoDeComunidad = models.CharField(max_length = 20, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
     nombreDeLaComunidad = models.CharField(max_length = 100, blank=True, null=True)
-    ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
+    ambitoParticipacion = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
     persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombreDeLaComunidad
 
 class Reconocimientos(models.Model):
-    titulo_obtenido = models.CharField(max_length=100,blank=True, null=True)
-    institucion = models.CharField(max_length=200,blank=True, null=True)
-    anio = models.DateField(blank=True, null=True)
+    titulo_obtenido_reconocimiento = models.CharField(max_length=100,blank=True, null=True)
+    institucionReconocimiento = models.CharField(max_length=200,blank=True, null=True)
+    anioReconocimiento = models.DateField(blank=True, null=True)
     ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
     persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 

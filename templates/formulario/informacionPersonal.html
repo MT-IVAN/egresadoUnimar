@@ -277,6 +277,9 @@
         <div class="col-xs-1 form-group">
 
         </div>
+        <div class="col-xs-12 form-group">
+            <hr>
+        </div>
 
         {% if titulosComunidades %}
 
@@ -292,39 +295,29 @@
             </div>
 
             <div class="col-xs-3 form-group">
-            {{curso.ambito}}
+            {{curso.ambitoParticipacion}}
             </div>
 
             <div class="col-xs-1">
-            <a class="btn btn-danger btn-xs" id="tituloComunidades{{curso.id}}" onclick="eliminarTituloComunidades({{curso.id}})">
+            <a class="btn btn-danger btn-xs" id="tituloComunidades{{curso.id}}" onclick="eliminarTituloParticipaciones({{curso.id}})">
                 Borrar
             </a>
             </div>
 
-            <div class="col-xs-12">
-                <hr>
-            </div>
+            
         </div>
 
         {% endfor %}
 
-        {% else %}
-        <div class="col-xs-12">
-            <p>No se han agregado Participaciones en comunidades.</p>
-        </div>
-
-
-
-
-
-
 
         {% endif %}
-        <div class="aux">
+        <div class="auxParticipaciones">
 
         </div>
 
-
+        <div class="col-xs-12">
+            <hr>
+        </div>
 
           <!-- Button trigger modal -->
           <div class="col-xs-12">
@@ -354,7 +347,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='enviarAjax'>Save changes</button>
+              <button type="button" class="btn btn-primary" id='enviarAjaxParticipaciones'>Save changes</button>
             </div>
           </div>
         </div>
@@ -391,47 +384,44 @@
 
 
         {% for curso in reconocimientosPersona %}
-        <div id="ocultar{{curso.id}}">
+        <div id="ocultarReconocimiento{{curso.id}}">
             <div class="col-xs-3 form-group">
-                {{curso.titulo_obtenido}}
+                {{curso.titulo_obtenido_reconocimiento}}
             </div>
             <div class="col-xs-3 form-group">
-                {{curso.institucion}}
+                {{curso.institucionReconocimiento}}
             </div>
 
             <div class="col-xs-2 form-group">
-            {{curso.anio}}
+            {{curso.anioReconocimiento}}
             </div>
             <div class="col-xs-3 form-group">
                 {{curso.ambito}}
             </div>
             <div class="col-xs-1">
-            <a class="btn btn-danger btn-xs" id="tituloReconocimiento{{curso.id}}" onclick="eliminarReconocimiento({{curso.id}})">
+            <a class="btn btn-danger btn-xs" onclick="eliminarReconocimiento({{curso.id}})">
                 Borrar
             </a>
             </div>
 
-            <div class="col-xs-12">
-                <hr>
-            </div>
+            
         </div>
 
         {% endfor %}
 
-        {% else %}
-        <div class="col-xs-12">
-            <p>No se han agregado distinciones.</p>
-        </div>
+        
 
 
 
         {% endif %}
 
-        <div class="aux">
+        <div class="auxReconocimiento">
 
         </div>
 
-
+        <div class="col-xs-12">
+                <hr>
+            </div>
 
           <!-- Button trigger modal -->
           <div class="col-xs-12">
@@ -461,7 +451,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='enviarAjax'>Save changes</button>
+              <button type="button" class="btn btn-primary" id='agregarReconocimientoAjax'>Save changes</button>
             </div>
           </div>
         </div>
@@ -495,7 +485,7 @@
 
 
         {% for curso in publicacionesPersona %}
-        <div id="ocultar{{curso.id}}">
+        <div id="ocultarPublicacion{{curso.id}}">
             <div class="col-xs-4 form-group">
                 {{curso.titulo_publicacion}}
             </div>
@@ -507,29 +497,27 @@
                 {{curso.tipo_publicacion}}
             </div>
             <div class="col-xs-1">
-            <a class="btn btn-danger btn-xs" id="tituloReconocimiento{{curso.id}}" onclick="eliminarReconocimiento({{curso.id}})">
+            <a class="btn btn-danger btn-xs" onclick="eliminarPublicacion({{curso.id}})">
                 Borrar
             </a>
             </div>
 
-            <div class="col-xs-12">
-                <hr>
-            </div>
+            
         </div>
 
         {% endfor %}
 
-        {% else %}
-        <div class="col-xs-12">
-            <p>No se han agregado publicaciones.</p>
-        </div>
+       
 
 
 
         {% endif %}
-        <div class="aux">
+        <div class="auxPublicacion">
 
         </div>
+        <div class="col-xs-12">
+                <hr>
+            </div>
 
 
 
@@ -561,7 +549,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='enviarAjax'>Save changes</button>
+              <button type="button" class="btn btn-primary" id='guardarPublicacion'>Save changes</button>
             </div>
           </div>
         </div>
@@ -679,6 +667,65 @@
 
         }
 
+        function eliminarTituloParticipaciones(cursoIdComunidades){
+            var ed = {
+                cursoId:cursoIdComunidades
+            };
+            console.log(cursoIdComunidades);
+            $.ajax({
+                //url: "/guardarGradoAjax",
+                url: "{% url 'borrar_comunidad' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    $('#ocultarComunidad'+resp.id).hide();
+                    console.log('id eliminado '+ resp.id);
+                    }
+            });
+
+        }
+        function eliminarReconocimiento(cursoIdComunidades){
+            var ed = {
+                cursoId:cursoIdComunidades
+            };
+            console.log(cursoIdComunidades);
+            $.ajax({
+                //url: "/guardarGradoAjax",
+                url: "{% url 'borrar_reconocimiento' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    $('#ocultarReconocimiento'+resp.id).hide();
+                    console.log('id eliminado '+ resp.id);
+                    }
+            });
+
+        }
+        function eliminarPublicacion(cursoIdComunidades){
+            var ed = {
+                cursoId:cursoIdComunidades
+            };
+            console.log(cursoIdComunidades);
+            $.ajax({
+                //url: "/guardarGradoAjax",
+                url: "{% url 'borrar_publicacion' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    $('#ocultarPublicacion'+resp.id).hide();
+                    console.log('id eliminado '+ resp.id);
+                    }
+            });
+
+        }
+
+
         $('#enviarAjax').on('click', function(){
             var id_titulo_obtenido =  $('#id_titulo_obtenido').val();
             var id_institucion =  $('#id_institucion').val();
@@ -732,12 +779,169 @@
                 //console.log(a);
                     }
                 });
-
-
+                //Fin de la peticion AJAX
 
 
             });
 
+        $('#enviarAjaxParticipaciones').on('click',function(){
+            console.log('capturado');
+            var id_tipoDeComunidad =  $('#id_tipoDeComunidad').val();
+            var id_nombreDeLaComunidad =  $('#id_nombreDeLaComunidad').val();
+            var id_ambito =  $('#id_ambitoParticipacion').val();
+            
+            var ed = {
+                id_tipoDeComunidad : id_tipoDeComunidad,
+                id_nombreDeLaComunidad: id_nombreDeLaComunidad,
+                id_ambito: id_ambito
+        };
+
+        $.ajax({
+                url: "{% url 'guardar_participacion' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    
+                    var html = `
+                                <div id="ocultarComunidad${resp.id}">
+                                    <div class="col-xs-4 form-group">
+                                            ${resp.id_tipoDeComunidad}
+                                    </div>
+                                    <div class="col-xs-4 form-group">
+                                            ${resp.id_nombreDeLaComunidad}
+                                    </div>
+
+                                    <div class="col-xs-3 form-group">
+                                            ${resp.id_ambito}
+                                    </div>
+
+                                    <div class="col-xs-1">
+                                        <a class="btn btn-danger btn-xs" id="tituloComunidades${resp.id}" onclick="eliminarTituloParticipaciones(${resp.id})">
+                                            Borrar
+                                        </a>
+                                    </div>
+                                </div>
+                        `;
+
+                document.querySelector('.auxParticipaciones').innerHTML += html;
+                //var a = json_loads(resp)
+
+                //console.log(a);
+                    }
+                });
+
+
+
+
+        });
+
+        $('#agregarReconocimientoAjax').on('click', function(){
+            var id_titulo_obtenido_reconocimiento =  $('#id_titulo_obtenido_reconocimiento').val();
+            var id_institucionReconocimiento =  $('#id_institucionReconocimiento').val();
+            var id_anioReconocimiento =  $('#id_anioReconocimiento').val();
+            var id_ambito =  $('#id_ambito').val();
+
+            var ed = {
+                id_titulo_obtenido_reconocimiento : id_titulo_obtenido_reconocimiento,
+                id_institucionReconocimiento: id_institucionReconocimiento,
+                id_anioReconocimiento: id_anioReconocimiento,
+                id_ambito: id_ambito
+            };
+
+            $.ajax({
+                url: "{% url 'guardar_reconocimiento' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    
+                    var html = `
+                                <div id="ocultarReconocimiento${resp.id}">
+                                    <div class="col-xs-3 form-group">
+                                            ${resp.id_titulo_obtenido_reconocimiento}
+                                    </div>
+                                    <div class="col-xs-3 form-group">
+                                            ${resp.id_institucionReconocimiento}
+                                    </div>
+
+                                    <div class="col-xs-2 form-group">
+                                            ${resp.id_anioReconocimiento}
+                                    </div>
+                                    <div class="col-xs-3 form-group">
+                                            ${resp.id_ambito}
+                                    </div>
+                                    <div class="col-xs-1">
+                                    <a class="btn btn-danger btn-xs" onclick="eliminarReconocimiento(${resp.id})">
+                                        Borrar
+                                    </a>
+                                    </div>
+                    </div>
+                        `;
+
+                document.querySelector('.auxReconocimiento').innerHTML += html;
+                //var a = json_loads(resp)
+
+                //console.log(a);
+                    }
+            });
+
+
+        });
+
+        $('#guardarPublicacion').on('click', function(){
+            var id_titulo_publicacion =  $('#id_titulo_publicacion').val();
+            var id_anio =  $('#id_anio').val();
+            var id_tipo_publicacion =  $('#id_tipo_publicacion').val();
+  
+
+            var ed = {
+                id_titulo_publicacion : id_titulo_publicacion,
+                id_anio: id_anio,
+                id_tipo_publicacion: id_tipo_publicacion
+            };
+
+            $.ajax({
+                url: "{% url 'guardar_publicacion' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    
+                    var html = `
+                                <div id="ocultarPublicacion${resp.id}">
+                                    <div class="col-xs-4 form-group">
+                                            ${resp.id_titulo_publicacion}
+                                    </div>
+                                    <div class="col-xs-3 form-group">
+                                            ${resp.id_anio}
+                                    </div>
+
+                                    <div class="col-xs-4 form-group">
+                                            ${resp.id_tipo_publicacion}
+                                    </div>
+                                    <div class="col-xs-1">
+                                    <a class="btn btn-danger btn-xs" onclick="eliminarPublicacion(${resp.id})">
+                                        Borrar
+                                    </a>
+                                    </div>
+
+                                    
+                                </div>
+                        `;
+
+                document.querySelector('.auxPublicacion').innerHTML += html;
+                //var a = json_loads(resp)
+
+                //console.log(a);
+                    }
+            });
+
+
+        });
 
 
 	</script>
