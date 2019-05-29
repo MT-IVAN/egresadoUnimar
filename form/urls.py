@@ -5,7 +5,7 @@ from .views import informacionPersonal, login, nav, ajaxGrado,borraAjax,Particip
 
 urlpatterns = [
     path('', informacionPersonal, name='info_personal'),
-    # path('login', login, name='login'),
+    path('login', login, name='login'),
     path('guardarGradoAjax', ajaxGrado, name='guardar_titulo'),
     path('guardarParticipacionAjax', Participacionajax, name='guardar_participacion'),
     path('guardar_reconocimiento', guardar_reconocimiento, name='guardar_reconocimiento'),

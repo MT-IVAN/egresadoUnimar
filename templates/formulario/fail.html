@@ -11,13 +11,15 @@
 
 
 {% if form.errors %}
-<p>Por favor ten en cuenta las recomendaciones siguientes e ingresa nuevamente a la página</p>
+<p>Por favor ten en cuenta las siguientes recomendaciones e ingresa nuevamente a la página</p>
+
 {{ form.errors}}
 
 
-{{% else %}}
+{% else %}
 <p>Ingrsa nuevamente a la página y llena tu información de nuevo</p>
 {% endif %}
 
+<a class="btn btn-primary" href="{% url 'info_personal' %}">Regresar</a>
 
 {% endblock%}

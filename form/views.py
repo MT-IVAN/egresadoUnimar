@@ -3,6 +3,7 @@ from django.forms import modelformset_factory, inlineformset_factory
 from .forms import PersonaFormInformacionPersona, DegreesForm, ReconocimientosForm, ParticipacionesForm, PublicacionesForm
 from .models import User, Degrees, Reconocimientos, Participaciones, Publicaciones
 from django.urls import reverse
+from django.contrib import messages
 
 import json
 from django.http import HttpResponse
@@ -27,33 +28,13 @@ def informacionPersonal(request):
         if form.is_valid():
             print('el form es valido')  
             form.save()
-            return render(request, 'formulario/informacionPersonal.html', {'form':form,
-                                                                    'degreeForm':degreeForm,
-                                                                    'reconocimietosForm':reconocimietosForm,
-                                                                    'participacionesForm':participacionesForm,
-                                                                    'publicacionesForm':publicacionesForm,
-                                                                    'titulosPersona':degreesPersona,
-                                                                    'titulosComunidades':comunidadesPersona,
-                                                                    'reconocimientosPersona':reconocimientosPersona,
-                                                                    'publicacionesPersona':publicacionesPersona})
-        return render(request, 'formulario/fail.html',{'form':form})
+        else:
+            return render(request, 'formulario/fail.html',{'form':form})
     else:
         print('llego la peticion por get')
         #necesito saber que informacion ha ingresado la persona
         form = PersonaFormInformacionPersona(instance=persona)    
-        # #informacion asociada a personas 
-        # degreesPersona = Degrees.objects.filter(persona_identificacion = 3)
-        # comunidadesPersona = Participaciones.objects.filter(persona_identificacion= 3) 
-        # reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 3)  
-        # publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 3)
-        # #envio el formulario    
-        # degreeForm = DegreesForm 
-        # reconocimietosForm = ReconocimientosForm
-        # participacionesForm = ParticipacionesForm    
-        # publicacionesForm = PublicacionesForm 
-        # formComunidades = ParticipacionesForm
-        # #return render(request, 'formulario/informacionPersonal.html', {'form':form,'degreeForm':degreeForm})
-        return render(request, 'formulario/informacionPersonal.html', {'form':form,
+    return render(request, 'formulario/informacionPersonal.html', {'form':form,
                                                                     'degreeForm':degreeForm,
                                                                     'reconocimietosForm':reconocimietosForm,
                                                                     'participacionesForm':participacionesForm,
@@ -220,8 +201,33 @@ def borrar_publicacion(request):
 
 
 def login(request):
-        return render(request, 'login/login.html')
+    persona = None
+    if request.method == 'POST':
+        id_persona = request.POST.get('identificacion')
+        nacimiento = request.POST.get('fechaNacimiento')
+        nacimientoSplit = nacimiento.split('-')
+        fechaConFormato = nacimientoSplit[2]+ "/" + nacimientoSplit[1] + "/" + nacimientoSplit[0] 
+        try:
+            persona = User.objects.get(identificacion = int(id_persona) , fechaNacimiento = fechaConFormato )
+            request.session['persona'] = persona.identificacion
+        except:
+            messages.add_message(request, messages.INFO, 'Compruebe que los datos sean correctos ')
 
+        return render(request, 'login/login.html', {'persona':persona})
+    #Si la petición llega por GET    
+    else:
+        ##Aqui llega la peticion de eleminar la sesion, llega por GET
+        if 'action' in request.GET:
+            action = request.GET.get('action')
+            if action == 'logout':
+                request.session.flush()
+            return redirect('info_personal')
+        else:
+            if 'persona' in request.session:
+                persona = request.session["persona"]
+            return render(request, 'login/login.html',{
+            'persona':persona
+            })
 
 def nav(request):
         return render(request, 'base/navbar.html')
