@@ -10,42 +10,45 @@ from django.http import HttpResponse
 # Create your views here.
 
 def informacionPersonal(request):
-    persona = User.objects.get(identificacion=3)
-    degreesPersona = Degrees.objects.filter(persona_identificacion = 3)
-    comunidadesPersona = Participaciones.objects.filter(persona_identificacion= 3) 
-    reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = 3)  
-    publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = 3)
-    #envio el formulario    
-    degreeForm = DegreesForm 
-    reconocimietosForm = ReconocimientosForm
-    participacionesForm = ParticipacionesForm    
-    publicacionesForm = PublicacionesForm 
-    formComunidades = ParticipacionesForm 
-    if request.method == "POST": 
-        print('llego la peticion por post')
-        form = PersonaFormInformacionPersona(request.POST , instance=persona) 
-        print('tiene el form')  
-        if form.is_valid():
-            print('el form es valido')  
-            form.save()
+  
+    if 'persona' in request.session:
+        personaId = int(request.session["persona"])
+        persona = User.objects.get(identificacion=personaId)
+        degreesPersona = Degrees.objects.filter(persona_identificacion = personaId)
+        comunidadesPersona = Participaciones.objects.filter(persona_identificacion= personaId) 
+        reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = personaId)  
+        publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = personaId)
+        #envio el formulario    
+        degreeForm = DegreesForm 
+        reconocimietosForm = ReconocimientosForm
+        participacionesForm = ParticipacionesForm    
+        publicacionesForm = PublicacionesForm 
+        formComunidades = ParticipacionesForm 
+        if request.method == "POST": 
+            print('llego la peticion por post')
+            form = PersonaFormInformacionPersona(request.POST , instance=persona) 
+            print('tiene el form')  
+            if form.is_valid():
+                print('el form es valido')  
+                form.save()
+            else:
+                return render(request, 'formulario/fail.html',{'form':form})
         else:
-            return render(request, 'formulario/fail.html',{'form':form})
+            print('llego la peticion por get')
+            #necesito saber que informacion ha ingresado la persona
+            form = PersonaFormInformacionPersona(instance=persona)    
+        return render(request, 'formulario/informacionPersonal.html', {'form':form,
+                                                                        'degreeForm':degreeForm,
+                                                                        'reconocimietosForm':reconocimietosForm,
+                                                                        'participacionesForm':participacionesForm,
+                                                                        'publicacionesForm':publicacionesForm,
+                                                                        'titulosPersona':degreesPersona,
+                                                                        'titulosComunidades':comunidadesPersona,
+                                                                        'reconocimientosPersona':reconocimientosPersona,
+                                                                        'publicacionesPersona':publicacionesPersona})
+    
     else:
-        print('llego la peticion por get')
-        #necesito saber que informacion ha ingresado la persona
-        form = PersonaFormInformacionPersona(instance=persona)    
-    return render(request, 'formulario/informacionPersonal.html', {'form':form,
-                                                                    'degreeForm':degreeForm,
-                                                                    'reconocimietosForm':reconocimietosForm,
-                                                                    'participacionesForm':participacionesForm,
-                                                                    'publicacionesForm':publicacionesForm,
-                                                                    'titulosPersona':degreesPersona,
-                                                                    'titulosComunidades':comunidadesPersona,
-                                                                    'reconocimientosPersona':reconocimientosPersona,
-                                                                    'publicacionesPersona':publicacionesPersona})
-   
-   
-
+        return render(request, 'login/login.html')
 
 
 def ajaxGrado(request):
@@ -203,6 +206,7 @@ def borrar_publicacion(request):
 def login(request):
     persona = None
     if request.method == 'POST':
+        print("post")
         id_persona = request.POST.get('identificacion')
         nacimiento = request.POST.get('fechaNacimiento')
         nacimientoSplit = nacimiento.split('-')
@@ -210,9 +214,10 @@ def login(request):
         try:
             persona = User.objects.get(identificacion = int(id_persona) , fechaNacimiento = fechaConFormato )
             request.session['persona'] = persona.identificacion
+            print("se creo la sesion")
+            return redirect('info_personal')
         except:
             messages.add_message(request, messages.INFO, 'Compruebe que los datos sean correctos ')
-
         return render(request, 'login/login.html', {'persona':persona})
     #Si la petición llega por GET    
     else:
@@ -221,13 +226,14 @@ def login(request):
             action = request.GET.get('action')
             if action == 'logout':
                 request.session.flush()
-            return redirect('info_personal')
+            return redirect('login')
         else:
             if 'persona' in request.session:
-                persona = request.session["persona"]
-            return render(request, 'login/login.html',{
-            'persona':persona
-            })
+                return redirect('info_personal')
+            else:    
+                return render(request, 'login/login.html',{
+                'persona':persona
+                })
 
 def nav(request):
         return render(request, 'base/navbar.html')
