@@ -48,6 +48,12 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'serviciosDeInteres',
             ## Parte 8
             'procesoDeInformacionUnimar',
+
+            ## Otros 
+            'otroSectorEmpresa',
+            'otraAreaDetrabajo',
+            'otroCargo',
+            'otroServicio',
             
         ]
         labels= {
@@ -85,6 +91,12 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'serviciosDeInteres':'Servicios de mayor interés',
             ## Parte 8
             'procesoDeInformacionUnimar':'Considera que su proceso de formación en la Universidad fue:',
+            ## OTROS
+            'otroSectorEmpresa' : 'Otro sector',
+            'otraAreaDetrabajo' : 'Otra área',
+            'otroCargo' : 'Otro cargo',
+            'otroServicio' : 'Otro servicio',
+
         }
         widgets= {
             'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'value':'1', 'readonly':'readonly'}),
@@ -123,7 +135,11 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             ## Parte 8
             'procesoDeInformacionUnimar':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
 
-
+            ## otros
+            'otroSectorEmpresa' : forms.TextInput(attrs={'class': 'form-control', "placeholder":"Otro sector", 'id':"otroSector"}),
+            'otraAreaDetrabajo' : forms.TextInput(attrs={'class': 'form-control', "placeholder":"Otra área  de trabajo", 'id':"otraArea"}),
+            'otroCargo' : forms.TextInput(attrs={'class': 'form-control', "placeholder":"Otro cargo", 'id':"otroCargo"}),
+            'otroServicio' : forms.TextInput(attrs={'class': 'form-control', "placeholder":"Otros intereses", 'id':"fade2"}),
 
 
            # 'genero': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown'}),

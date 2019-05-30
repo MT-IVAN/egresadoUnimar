@@ -10,7 +10,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def informacionPersonal(request):
-  
+    persona = None
     if 'persona' in request.session:
         personaId = int(request.session["persona"])
         persona = User.objects.get(identificacion=personaId)
@@ -27,18 +27,12 @@ def informacionPersonal(request):
         if request.method == "POST": 
             print('llego la peticion por post')
             form = PersonaFormInformacionPersona(request.POST , instance=persona) 
-            if request.POST.get("otroInteres") == "":
-                print("no hay nadaaaaaaaaaaaaaada")
-            else:
-                form.serviciosDeInteres = request.POST.get("otroInteres")
-                print(request.POST.get("otroInteres"))
-            print('tiene el form')  
-            if form.is_valid():
-                print('el form es valido')  
+            if form.is_valid(): 
                 form.save()
-                #persona.serviciosDeInteres =request.POST.get("otroInteres")
-                #print(form.serviciosDeInteres)
-                #persona.save()
+                if persona.serviciosDeInteres != 'otro':
+                    persona.otroServicio = ''
+                    persona.save()
+                    
             else:
                 return render(request, 'formulario/fail.html',{'form':form})
         else:
@@ -53,7 +47,8 @@ def informacionPersonal(request):
                                                                         'titulosPersona':degreesPersona,
                                                                         'titulosComunidades':comunidadesPersona,
                                                                         'reconocimientosPersona':reconocimientosPersona,
-                                                                        'publicacionesPersona':publicacionesPersona})
+                                                                        'publicacionesPersona':publicacionesPersona,
+                                                                        'personaOtros': persona})
     
     else:
         return render(request, 'login/login.html')

@@ -233,13 +233,13 @@
     </div>
     <div class="col-xs-12">
             <div class="col-xs-4">
-            <input class="form-control" style="display:none" placeholder="Otro sector de empresa" type="text" id="otroSector" name="otroSector">
+                {{form.otroSectorEmpresa}}
             </div>
             <div class="col-xs-4">
-            <input class="form-control" style="display:none" placeholder="Otro àrea de trabajo" type="text" id="otraArea" name="otraArea">
+                {{form.otraAreaDetrabajo}}
              </div>
             <div class="col-xs-4">
-            <input class="form-control" style="display:none" placeholder="Otro cargo" type="text" id="otroCargo" name="otroCargo">
+                {{form.otroCargo}}
             </div>
     </div>
     <div class="col-xs-12">
@@ -596,10 +596,12 @@
             </div>
             <div class="col-xs-12 form-group">
                 <div class="col-xs-6">
-                    
                 </div>
+               
                 <div class="col-xs-6">
-                    <input class="form-control" placeholder="Otros intereses" type="text" style="display:none" name="otroInteres" id="fade2">
+                  
+                            {{ form.otroServicio }}
+                     
                 </div>
             </div>
 
@@ -625,6 +627,49 @@
 
 {% block javascript%}
 	 <script>
+
+
+        $(document).ready(function(){
+            if($('#id_serviciosDeInteres').val() != "otro"){
+                $('#fade2').val();
+                $('#fade2').attr("readonly","readonly");
+            }
+            else{
+                $('#fade2').attr("required","required");
+            }
+
+            if($('#id_sectorDeLaEmpresa').val() != "otro"){
+                $('#otroSector').val();
+                $('#otroSector').attr("readonly","readonly");
+            }
+            else{
+                $('#otroSector').attr("required","required");
+            }
+
+            if($('#id_areaDeTrabajo').val() != "otro"){
+                $('#otraArea').val();
+                $('#otraArea').attr("readonly","readonly");
+            }
+            else{
+                $('#otraArea').attr("required","required");
+            }
+
+            if($('#id_cargoQueOcupa').val() != "otro"){
+                $('#otroCargo').val();
+                $('#otroCargo').attr("readonly","readonly");
+            }
+            else{
+                $('#otroCargo').attr("required","required");
+            }
+
+
+
+
+
+
+
+        });
+
 
 	$(function(){
         //Obtenemos la información de csfrtoken que se almacena por cookies en el cliente
@@ -1024,11 +1069,13 @@
         var sel2 = $('#id_serviciosDeInteres');
         sel2.click(function(){
            if(sel2.val() == "otro"){
-                console.log("Otro fuè precionado");
-                $('#fade2').show();
+                $('#fade2').removeAttr("readonly");
+                $('#fade2').attr("required","required");
 
            }else{
-                $('#fade2').hide();
+                $('#fade2').attr("readonly","readonly");
+                $('#fade2').val('');
+                $('#fade2').removeAttr("required");
            }
         });
 
@@ -1038,11 +1085,13 @@
         var sectorEmpresa = $('#id_sectorDeLaEmpresa');
         sectorEmpresa.click(function(){
            if(sectorEmpresa.val() == "otro"){
-                console.log("Otro fuè precionado");
-                $('#otroSector').show();
+                $('#otroSector').removeAttr("readonly");
+                $('#otroSector').attr("required","required");
 
            }else{
-                $('#otroSector').hide();
+                $('#otroSector').attr("readonly","readonly");
+                $('#otroSector').val('');
+                $('#otroSector').removeAttr("required");
            }
         });
 
@@ -1050,10 +1099,13 @@
         sel4.click(function(){
            if(sel4.val() == "otro"){
                 console.log("Otro fuè precionado");
-                $('#otraArea').show();
+                $('#otraArea').removeAttr("readonly");
+                $('#otraArea').attr("required","required");
 
            }else{
-                $('#otraArea').hide();
+                $('#otraArea').attr("readonly","readonly");
+                $('#otraArea').val('');
+                $('#otraArea').removeAttr("required");
            }
         });
 
@@ -1061,10 +1113,13 @@
         sel5.click(function(){
            if(sel5.val() == "otro"){
                 console.log("Otro fuè precionado");
-                $('#otroCargo').show();
+                $('#otroCargo').removeAttr("readonly");
+                $('#otroCargo').attr("required","required");
 
            }else{
-                $('#otroCargo').hide();
+                $('#otroCargo').attr("readonly","readonly");
+                $('#otroCargo').val('');
+                $('#otroCargo').removeAttr("required");
            }
         });
 

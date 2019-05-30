@@ -78,6 +78,12 @@ class User(models.Model):
     procesoDeInformacionUnimar = models.CharField(max_length=20, choices=SATISFACCION, blank=True, null=True )
 
 
+    ################ otros
+    otroSectorEmpresa = models.CharField(max_length=100, blank=True, null=True)
+    otraAreaDetrabajo = models.CharField(max_length=100, blank=True, null=True)
+    otroCargo = models.CharField(max_length=100, blank=True, null=True)
+    otroServicio = models.CharField(max_length=100, blank=True, null=True)
+
 
     def __str__(self):
         return self.nombres
