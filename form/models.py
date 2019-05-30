@@ -19,7 +19,7 @@ class User(models.Model):
     identificacion = models.CharField(primary_key=True, max_length=12)
     nombres = models.CharField(max_length=51)
     apellidos = models.CharField(max_length=50, blank=True, null=True)
-    fechaNacimiento = models.CharField(max_length=30) 
+    fechaNacimiento = models.DateField(blank=True, null=True) 
     # objects = UserManager()
     # USERNAME_FIELD = 'identificacion'
     # REQUIRED_FIELDS = ['fechaNacimiento']
@@ -71,7 +71,7 @@ class User(models.Model):
     ##### 7 
 
     participacionActividadesUnimar = models.CharField(max_length = 20, choices=PARTICIPACION_ACTIVIDADES, blank=True, null=True)
-    serviciosDeInteres = models.CharField(max_length = 40, choices=SERVICIOS_DE_INTERES, blank=True, null=True)
+    serviciosDeInteres = models.CharField(max_length = 40,  blank=True, null=True)
 
     ###### 8 
     

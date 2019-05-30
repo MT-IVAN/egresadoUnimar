@@ -153,8 +153,6 @@
 
 
         {% endif %}
-
-        <!-- aqui se agregan los estudio por ajax -->
         <div class="aux">
 
         </div>
@@ -189,7 +187,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='enviarAjax' form="">Save changes</button>
+              <button type="button" class="btn btn-primary"  id='enviarAjax' form="">Save changes</button>
             </div>
           </div>
         </div>
@@ -204,6 +202,9 @@
         
         
             {%csrf_token%}
+
+
+        <div class="col-xs-12">    
         <div class="col-xs-4 form-group">
             <label>{{form.situacion_laboral_actual.label}}</label>
             {{form.situacion_laboral_actual}}
@@ -229,6 +230,19 @@
             <label>{{form.cargoQueOcupa.label}}</label>
             <p>{{form.cargoQueOcupa}}</p>
         </div>
+    </div>
+    <div class="col-xs-12">
+            <div class="col-xs-4">
+            <input class="form-control" style="display:none" placeholder="Otro sector de empresa" type="text" id="otroSector" name="otroSector">
+            </div>
+            <div class="col-xs-4">
+            <input class="form-control" style="display:none" placeholder="Otro àrea de trabajo" type="text" id="otraArea" name="otraArea">
+             </div>
+            <div class="col-xs-4">
+            <input class="form-control" style="display:none" placeholder="Otro cargo" type="text" id="otroCargo" name="otroCargo">
+            </div>
+    </div>
+    <div class="col-xs-12">
         <div class="col-xs-4 form-group">
             <label>{{form.nombreJefeInmediato.label}}</label>
             {{form.nombreJefeInmediato}}
@@ -254,7 +268,7 @@
         <div class="col-xs-4 form-group">
 
         </div>
-        
+        </div>
         <br>
         <br>
 
@@ -349,7 +363,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='enviarAjaxParticipaciones'>Save changes</button>
+              <button type="button" class="btn btn-primary"  id='enviarAjaxParticipaciones'>Save changes</button>
             </div>
           </div>
         </div>
@@ -552,7 +566,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='guardarPublicacion'>Save changes</button>
+              <button type="button" class="btn btn-primary"  id='guardarPublicacion'>Save changes</button>
             </div>
           </div>
         </div>
@@ -564,13 +578,29 @@
         <!-- ############################################################################## -->
         <div class="col-xs-12 form-group">
             <h1 class="titulo"><strong><center>Vinculación en la vida institucional</center></strong></strong></h1>
-            <div class="col-xs-6 form-group">
+            <div class="col-xs-12 form-group">
+                <div class="col-xs-6">
                 <label>{{form.participacionActividadesUnimar.label}}</label>
-                {{form.participacionActividadesUnimar}}
-            </div>
-            <div class="col-xs-6 form-group">
+                </div>
+                <div class="col-xs-6">
                 <label>{{form.serviciosDeInteres.label}}</label>
+                </div>
+            </div>
+            <div class="col-xs-12 form-group">
+                <div class="col-xs-6">
+                {{form.participacionActividadesUnimar}}
+                </div>
+                <div class="col-xs-6">
                 {{form.serviciosDeInteres}}
+                </div>
+            </div>
+            <div class="col-xs-12 form-group">
+                <div class="col-xs-6">
+                    
+                </div>
+                <div class="col-xs-6">
+                    <input class="form-control" placeholder="Otros intereses" type="text" style="display:none" name="otroInteres" id="fade2">
+                </div>
             </div>
 
 
@@ -663,7 +693,7 @@
                 cache:false,
                 dataType: "json",
                 success: function(resp){
-                    $('#ocultar'+cursoId).hide();
+                    $('#ocultar'+resp.id).hide();
                     console.log('id eliminado '+ resp.id);
                     }
             });
@@ -735,120 +765,144 @@
             var id_anioGraduacion =  $('#id_anioGraduacion').val();
             var id_nivel_educacion_formal =  $('#id_nivel_educacion_formal').val();
 
-        var ed = {
-            id_titulo_obtenido : id_titulo_obtenido,
-            id_institucion: id_institucion,
-            id_anioGraduacion: id_anioGraduacion,
-            id_nivel_educacion_formal: id_nivel_educacion_formal
-        };
+            if(id_titulo_obtenido != "" & id_institucion != "" & id_anioGraduacion != "" &id_nivel_educacion_formal != "" )
+            {
 
-            $.ajax({
-                url: "{% url 'guardar_titulo' %}",
-                type: "POST",
-                data: ed,
-                cache:false,
-                dataType: "json",
-                success: function(resp){
-                    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-                    var fechaSplit = id_anioGraduacion.split("-");
-                    var html = `
-                    <div class="col-xs-12">
-                            <div id="ocultar${resp.id}">
-                                <div class="col-xs-3 form-group">
-                                ${resp.id_titulo_obtenido}
-                                </div>
-                                <div class="col-xs-3 form-group">
-                                ${resp.id_institucion}
-                                </div>
-                                <div class="col-xs-2 form-group">
-                                ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
-                                </div>
-                                <div class="col-xs-3 form-group">
-                                ${resp.id_nivel_educacion_formal}
-                                </div>
-                                <div class="col-xs-1">
-                                <a class="btn btn-danger btn-xs" onclick="eliminarTitulo(${resp.id})" >
-                                Borrar
-                                </a>
-                                </div>
-                                <div class="col-xs-12">
+                var ed = {
+                    id_titulo_obtenido : id_titulo_obtenido,
+                    id_institucion: id_institucion,
+                    id_anioGraduacion: id_anioGraduacion,
+                    id_nivel_educacion_formal: id_nivel_educacion_formal
+                };
 
+                $.ajax({
+                    url: "{% url 'guardar_titulo' %}",
+                    type: "POST",
+                    data: ed,
+                    cache:false,
+                    dataType: "json",
+                    success: function(resp){
+                        var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                        var fechaSplit = id_anioGraduacion.split("-");
+                        var html = `
+                        <div class="col-xs-12">
+                                <div id="ocultar${resp.id}">
+                                    <div class="col-xs-3 form-group">
+                                    ${resp.id_titulo_obtenido}
+                                    </div>
+                                    <div class="col-xs-3 form-group">
+                                    ${resp.id_institucion}
+                                    </div>
+                                    <div class="col-xs-2 form-group">
+                                    ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
+                                    </div>
+                                    <div class="col-xs-3 form-group">
+                                    ${resp.id_nivel_educacion_formal}
+                                    </div>
+                                    <div class="col-xs-1">
+                                    <a class="btn btn-danger btn-xs" onclick="eliminarTitulo(${resp.id})" >
+                                    Borrar
+                                    </a>
+                                    </div>
+                                    <div class="col-xs-12">
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        `;
+                            `;
+                           
+                                $('#id_titulo_obtenido').val('');
+                                $('#id_institucion').val('');
+                                $('#id_anioGraduacion').val('');
+                                $('#id_nivel_educacion_formal').val('');
+                                $('#exampleModal').modal('toggle');
+                            
+                    document.querySelector('.aux').innerHTML += html;
+                    //var a = json_loads(resp)
 
-                document.querySelector('.aux').innerHTML += html;
-                //var a = json_loads(resp)
+                    //console.log(a);
+                        }
+                    });
+                    //Fin de la peticion AJAX
 
-                //console.log(a);
-                    }
-                });
-                //Fin de la peticion AJAX
-
-
+                }
+                else{
+                    alert("Por favor llena todos los campos");
+                }
             });
 
         $('#enviarAjaxParticipaciones').on('click',function(){
-            console.log('capturado');
+            
+
             var id_tipoDeComunidad =  $('#id_tipoDeComunidad').val();
             var id_nombreDeLaComunidad =  $('#id_nombreDeLaComunidad').val();
             var id_ambito =  $('#id_ambitoParticipacion').val();
             
+            if(id_tipoDeComunidad != "" && id_nombreDeLaComunidad != "" && id_ambito != ""){
+
+
             var ed = {
                 id_tipoDeComunidad : id_tipoDeComunidad,
                 id_nombreDeLaComunidad: id_nombreDeLaComunidad,
                 id_ambito: id_ambito
-        };
+            };
 
-        $.ajax({
-                url: "{% url 'guardar_participacion' %}",
-                type: "POST",
-                data: ed,
-                cache:false,
-                dataType: "json",
-                success: function(resp){
-                    
-                    var html = `
-                            <div class='col-xs-12'>
-                                <div id="ocultarComunidad${resp.id}">
-                                    <div class="col-xs-4 form-group">
-                                            ${resp.id_tipoDeComunidad}
-                                    </div>
-                                    <div class="col-xs-4 form-group">
-                                            ${resp.id_nombreDeLaComunidad}
-                                    </div>
+            $.ajax({
+                    url: "{% url 'guardar_participacion' %}",
+                    type: "POST",
+                    data: ed,
+                    cache:false,
+                    dataType: "json",
+                    success: function(resp){
+                        
+                        var html = `
+                                <div class='col-xs-12'>
+                                    <div id="ocultarComunidad${resp.id}">
+                                        <div class="col-xs-4 form-group">
+                                                ${resp.id_tipoDeComunidad}
+                                        </div>
+                                        <div class="col-xs-4 form-group">
+                                                ${resp.id_nombreDeLaComunidad}
+                                        </div>
 
-                                    <div class="col-xs-3 form-group">
-                                            ${resp.id_ambito}
-                                    </div>
+                                        <div class="col-xs-3 form-group">
+                                                ${resp.id_ambito}
+                                        </div>
 
-                                    <div class="col-xs-1">
-                                        <a class="btn btn-danger btn-xs" id="tituloComunidades${resp.id}" onclick="eliminarTituloParticipaciones(${resp.id})">
-                                            Borrar
-                                        </a>
+                                        <div class="col-xs-1">
+                                            <a class="btn btn-danger btn-xs" id="tituloComunidades${resp.id}" onclick="eliminarTituloParticipaciones(${resp.id})">
+                                                Borrar
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
 
-                document.querySelector('.auxParticipaciones').innerHTML += html;
-                //var a = json_loads(resp)
+                    document.querySelector('.auxParticipaciones').innerHTML += html;
+                        $('#participacionComunidad').modal('toggle');
+                        $('#id_tipoDeComunidad').val('');
+                        $('#id_nombreDeLaComunidad').val('');
+                        $('#id_ambitoParticipacion').val('');
 
-                //console.log(a);
-                    }
+
+                        }
+                    });
+
+
+            }
+            else{
+                alert("Por favor llene todos los campos")
+            }
+
                 });
-
-
-
-
-        });
 
         $('#agregarReconocimientoAjax').on('click', function(){
             var id_titulo_obtenido_reconocimiento =  $('#id_titulo_obtenido_reconocimiento').val();
             var id_institucionReconocimiento =  $('#id_institucionReconocimiento').val();
             var id_anioReconocimiento =  $('#id_anioReconocimiento').val();
             var id_ambito =  $('#id_ambito').val();
+
+            if(id_titulo_obtenido_reconocimiento != "" && id_institucionReconocimiento != "" && id_anioReconocimiento != "" && id_ambito != ""){
 
             var ed = {
                 id_titulo_obtenido_reconocimiento : id_titulo_obtenido_reconocimiento,
@@ -892,20 +946,27 @@
                         `;
 
                 document.querySelector('.auxReconocimiento').innerHTML += html;
-                //var a = json_loads(resp)
-
-                //console.log(a);
+                    $('#id_titulo_obtenido_reconocimiento').val();
+                    $('#id_institucionReconocimiento').val('');
+                    $('#id_anioReconocimiento').val('');
+                    $('#id_ambito').val('');
+                    $('#distincion').modal('toggle');
                     }
+                   
             });
 
+                }else{
+                    alert("Por favor llene todos los campos");
+                }
 
-        });
+            });
 
         $('#guardarPublicacion').on('click', function(){
             var id_titulo_publicacion =  $('#id_titulo_publicacion').val();
             var id_anio =  $('#id_anio').val();
             var id_tipo_publicacion =  $('#id_tipo_publicacion').val();
-  
+            
+            if(id_titulo_publicacion != "" && id_anio != "" && id_tipo_publicacion != ""){
 
             var ed = {
                 id_titulo_publicacion : id_titulo_publicacion,
@@ -945,15 +1006,70 @@
                         `;
 
                 document.querySelector('.auxPublicacion').innerHTML += html;
-                //var a = json_loads(resp)
-
-                //console.log(a);
+                  $('#id_titulo_publicacion').val('');
+                    $('#id_anio').val('');
+                    $('#id_tipo_publicacion').val('');
+                    $('#publicaciones').modal('toggle');
                     }
+                  
             });
 
-
+        }
+        else{
+            alert("Por favor llene todos los campos");
+        }
         });
 
+
+        var sel2 = $('#id_serviciosDeInteres');
+        sel2.click(function(){
+           if(sel2.val() == "otro"){
+                console.log("Otro fuè precionado");
+                $('#fade2').show();
+
+           }else{
+                $('#fade2').hide();
+           }
+        });
+
+
+
+
+        var sectorEmpresa = $('#id_sectorDeLaEmpresa');
+        sectorEmpresa.click(function(){
+           if(sectorEmpresa.val() == "otro"){
+                console.log("Otro fuè precionado");
+                $('#otroSector').show();
+
+           }else{
+                $('#otroSector').hide();
+           }
+        });
+
+        var sel4 = $('#id_areaDeTrabajo');
+        sel4.click(function(){
+           if(sel4.val() == "otro"){
+                console.log("Otro fuè precionado");
+                $('#otraArea').show();
+
+           }else{
+                $('#otraArea').hide();
+           }
+        });
+
+        var sel5 = $('#id_cargoQueOcupa');
+        sel5.click(function(){
+           if(sel5.val() == "otro"){
+                console.log("Otro fuè precionado");
+                $('#otroCargo').show();
+
+           }else{
+                $('#otroCargo').hide();
+           }
+        });
+
+
+        
 
 	</script>
 	 {%endblock%}

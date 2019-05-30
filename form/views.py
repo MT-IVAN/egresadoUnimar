@@ -27,10 +27,18 @@ def informacionPersonal(request):
         if request.method == "POST": 
             print('llego la peticion por post')
             form = PersonaFormInformacionPersona(request.POST , instance=persona) 
+            if request.POST.get("otroInteres") == "":
+                print("no hay nadaaaaaaaaaaaaaada")
+            else:
+                form.serviciosDeInteres = request.POST.get("otroInteres")
+                print(request.POST.get("otroInteres"))
             print('tiene el form')  
             if form.is_valid():
                 print('el form es valido')  
                 form.save()
+                #persona.serviciosDeInteres =request.POST.get("otroInteres")
+                #print(form.serviciosDeInteres)
+                #persona.save()
             else:
                 return render(request, 'formulario/fail.html',{'form':form})
         else:
@@ -59,7 +67,7 @@ def ajaxGrado(request):
                 id_anioGraduacion = request.POST.get('id_anioGraduacion')
                 id_nivel_educacion_formal = request.POST.get('id_nivel_educacion_formal')
 
-                persona = User.objects.get(identificacion=3)
+                persona = User.objects.get(identificacion=int(request.session["persona"]))
                 myDegree = Degrees(nivel_educacion_formal = id_nivel_educacion_formal, titulo_obtenido = id_titulo_obtenido , institucion = id_institucion , anioGraduacion = id_anioGraduacion, persona_identificacion = persona)
                 myDegree.save()
                 dateDegree = myDegree.anioGraduacion
@@ -79,7 +87,7 @@ def Participacionajax(request):
                 id_nombreDeLaComunidad = request.POST.get('id_nombreDeLaComunidad')
                 id_ambito = request.POST.get('id_ambito')
 
-                persona = User.objects.get(identificacion=3)
+                persona = User.objects.get(identificacion=int(request.session["persona"]))
 
                 miParticipacion = Participaciones(tipoDeComunidad = id_tipoDeComunidad , nombreDeLaComunidad = id_nombreDeLaComunidad  , ambitoParticipacion = id_ambito  , persona_identificacion = persona)
                 miParticipacion.save()
@@ -101,7 +109,7 @@ def guardar_reconocimiento(request):
                 id_anioReconocimiento = request.POST.get('id_anioReconocimiento')
                 id_ambito = request.POST.get('id_ambito')
 
-                persona = User.objects.get(identificacion=3)
+                persona = User.objects.get(identificacion=int(request.session["persona"]))
 
                 mireconocimiento = Reconocimientos(titulo_obtenido_reconocimiento = id_titulo_obtenido_reconocimiento , institucionReconocimiento = id_institucionReconocimiento  , anioReconocimiento =  id_anioReconocimiento , ambito =id_ambito ,persona_identificacion = persona)
                 mireconocimiento.save()
@@ -124,7 +132,7 @@ def guardar_publicacion(request):
                 id_tipo_publicacion = request.POST.get('id_tipo_publicacion')
 
 
-                persona = User.objects.get(identificacion=3)
+                persona = User.objects.get(identificacion=int(request.session["persona"]))
 
                 miPublicacion = Publicaciones(titulo_publicacion = id_titulo_publicacion , anio = id_anio  , tipo_publicacion =  id_tipo_publicacion ,persona_identificacion = persona)
                 miPublicacion.save()
@@ -212,7 +220,7 @@ def login(request):
         nacimientoSplit = nacimiento.split('-')
         fechaConFormato = nacimientoSplit[2]+ "/" + nacimientoSplit[1] + "/" + nacimientoSplit[0] 
         try:
-            persona = User.objects.get(identificacion = int(id_persona) , fechaNacimiento = fechaConFormato )
+            persona = User.objects.get(identificacion = int(id_persona) , fechaNacimiento = nacimiento )
             request.session['persona'] = persona.identificacion
             print("se creo la sesion")
             return redirect('info_personal')

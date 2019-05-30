@@ -54,7 +54,7 @@ SECTOR_DE_LA_EMPRESA = (
         ('transporte', 'Transporte'),
         ('turismo', 'Turismo'),
         ('vehiculosYPartes', 'Vehículos y partes'),
-        ('vehiculosYPartes', 'Otros'),
+        ('otro', 'Otro'),
     )
     
 AREA_DE_TRABAJO = (
@@ -107,7 +107,7 @@ AREA_DE_TRABAJO = (
         ('tesoreria', 'Tesorería'),
         ('trabajoSocial', 'Trabajo social'),
         ('ventas', 'Ventas'),
-        ('', 'Otro'),
+        ('otro', 'Otro'),
     )
 
 
@@ -224,7 +224,6 @@ PARTICIPACION_ACTIVIDADES = (
     ('regularmente','Regularmente'),
     ('eventualmente','Eventualmente'),
     ('nunca','Nunca'),
-    ('otro','Otro'),
 )
 
 SERVICIOS_DE_INTERES = (

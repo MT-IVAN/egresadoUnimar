@@ -100,8 +100,8 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'pais': forms.TextInput(attrs={'class': 'form-control'}),
             'telefonoFijo': forms.TextInput(attrs={'class': 'form-control'}),
             'celular': forms.TextInput(attrs={'class': 'form-control'}),
-            'email1': forms.TextInput(attrs={'class': 'form-control'}),
-            'email2': forms.TextInput(attrs={'class': 'form-control'}),
+            'email1': forms.EmailInput(attrs={'class': 'form-control', 'required':'required'}),
+            'email2': forms.EmailInput(attrs={'class': 'form-control'}),
             'estado_civil': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
             # # Informacion academica
             'situacion_laboral_actual':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
@@ -118,7 +118,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             # Participacion en cominudades y asociaciones#
             
             ## PArte 7
-            'serviciosDeInteres':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'serviciosDeInteres':forms.Select(choices=SERVICIOS_DE_INTERES, attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
             'participacionActividadesUnimar':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
             ## Parte 8
             'procesoDeInformacionUnimar':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
