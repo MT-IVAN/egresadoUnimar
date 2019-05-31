@@ -99,14 +99,14 @@ class PersonaFormInformacionPersona(forms.ModelForm):
 
         }
         widgets= {
-            'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'value':'1', 'readonly':'readonly'}),
+            'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'readonly':'readonly'}),
             'nombres': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'apellidos': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'fechaNacimiento': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'programa': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'fechaGrado': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'genero': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
-            'direccionResidencia': forms.TextInput(attrs={'class': 'form-control'}),
+            'direccionResidencia': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Dirección de residencia'}),
             'ciudad': forms.TextInput(attrs={'class': 'form-control'}),
             'departamento': forms.TextInput(attrs={'class': 'form-control'}),
             'pais': forms.TextInput(attrs={'class': 'form-control'}),
@@ -114,7 +114,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'celular': forms.TextInput(attrs={'class': 'form-control'}),
             'email1': forms.EmailInput(attrs={'class': 'form-control', 'required':'required'}),
             'email2': forms.EmailInput(attrs={'class': 'form-control'}),
-            'estado_civil': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'estado_civil': forms.Select(attrs={'class':'form-control selectpicker mdb-select', 'data-style':"btn btn-link"}),
             # # Informacion academica
             'situacion_laboral_actual':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
             'experiencia_laboral': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
