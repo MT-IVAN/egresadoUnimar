@@ -3,638 +3,650 @@
 {% block content %}
 
 
-<form method="POST" id="personaForm">
-{% csrf_token %}   
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+    <form method="POST" id="personaForm">
+    {% csrf_token %}   
 
 
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-danger">
-                    <h4 class="card-title">Información personal</h4>
-                </div>
-                <div class="card-body">
-                <!--inicio del cardbody-->
-                    <div class="row col-md-12">
-
-                        <div class="col-md-3 form-group">
-                            <label>Identificación</label>
-                           <label class="form-control" style="background: #fff"> {{personaOtros.identificacion}}</label>
-                        </div>
-                        <div class="col-md-3 form-group">
-                            <label>Fecha de nacimiento</label>
-                            <label class="form-control" style="background: #fff">{{personaOtros.fechaNacimiento}}</label>
-                        </div>
-
-                        <div class="col-md-3 form-group">
-                                <label>genero</label>
-                                <label class="form-control" style="background: #fff">{{personaOtros.genero}}</label>
-                        </div>
-                        <div class="col-md-3 form-group">
-                            <label>Nombres</label>
-                            <label class="form-control" style="background: #fff">{{personaOtros.nombres}}</label>
-                        </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Información personal</h4>
                     </div>
+                    <div class="card-body">
+                    <!--inicio del cardbody-->
+                        <div class="row col-md-12">
 
-                    <div class="row col-md-12">
-                        <div class="col-md-4 form-group">
-                            <label>Apellidos</label>
-                            <label class="form-control" style="background: #fff">{{personaOtros.apellidos}}</label>
+                            <div class="col-md-3 form-group">
+                                <label>Identificación</label>
+                               <label class="form-control" style="background: #fff"> {{personaOtros.identificacion}}</label>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Fecha de nacimiento</label>
+                                <label class="form-control" style="background: #fff">{{personaOtros.fechaNacimiento}}</label>
+                            </div>
+
+                            <div class="col-md-3 form-group">
+                                    <label>genero</label>
+                                    <label class="form-control" style="background: #fff">{{personaOtros.genero}}</label>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Nombres</label>
+                                <label class="form-control" style="background: #fff">{{personaOtros.nombres}}</label>
+                            </div>
                         </div>
 
-                        <div class="col-md-4 form-group">
-                            <label>Programa</label>
-                            <label class="form-control" style="background: #fff">{{personaOtros.programa}}</label>
+                        <div class="row col-md-12">
+                            <div class="col-md-4 form-group">
+                                <label>Apellidos</label>
+                                <label class="form-control" style="background: #fff">{{personaOtros.apellidos}}</label>
+                            </div>
+
+                            <div class="col-md-4 form-group">
+                                <label>Programa</label>
+                                <label class="form-control" style="background: #fff">{{personaOtros.programa}}</label>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Fecha de grado</label>
+                                <label class="form-control" style="background: #fff">{{personaOtros.fechaGrado}}</label>
+                            </div>
                         </div>
-                        <div class="col-md-4 form-group">
-                            <label>Fecha de grado</label>
-                            <label class="form-control" style="background: #fff">{{personaOtros.fechaGrado}}</label>
+
+
+                        <div class="row col-md-12">
+                            <div class="col-md-4 form-group">
+                               <label>Estado civil</label>
+                                {{form.estado_civil}}
+                            </div>
+
+
+                            <div class="col-md-4 form-group">
+                                <label>Dirección de residencia</label>
+                               {{form.direccionResidencia}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Ciudad</label>
+                                {{form.ciudad}}
+                            </div>
+                        </div>  
+
+                    
+                        <div class="row col-md-12">
+                            <div class="col-md-4 form-group">
+                                <label>Departamento</label>
+                                {{form.departamento}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Pais</label>
+                                {{form.pais}}
+                            </div>
+
+                            <div class="col-md-4 form-group">
+                                <label>Teléfono fijo</label>
+                                {{form.telefonoFijo}}
+                            </div>
                         </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4 form-group">
+                                <label>Celular</label>
+                                {{form.celular}}
+                            </div>
+
+                            <div class="col-md-4 form-group">
+                              <label>Email 1</label>
+                                {{form.email1}}
+                            </div>
+
+                            <div class="col-md-4 form-group">
+                                <label>Email 2</label>
+                                {{form.email2}}
+                            </div>
+                        </div>
+                    <!-- fin del card body-->
                     </div>
-
-
-                    <div class="row col-md-12">
-                        <div class="col-md-4 form-group">
-                           <label>Estado civil</label>
-                            {{form.estado_civil}}
-                        </div>
-
-
-                        <div class="col-md-4 form-group">
-                            <label>Dirección de residencia</label>
-                           {{form.direccionResidencia}}
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>Ciudad</label>
-                            {{form.ciudad}}
-                        </div>
-                    </div>  
-
-                
-                    <div class="row col-md-12">
-                        <div class="col-md-4 form-group">
-                            <label>Departamento</label>
-                            {{form.departamento}}
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>Pais</label>
-                            {{form.pais}}
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                            <label>Teléfono fijo</label>
-                            {{form.telefonoFijo}}
-                        </div>
-                    </div>
-                    <div class="row col-md-12">
-                        <div class="col-md-4 form-group">
-                            <label>Celular</label>
-                            {{form.celular}}
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                          <label>Email 1</label>
-                            {{form.email1}}
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                            <label>Email 2</label>
-                            {{form.email2}}
-                        </div>
-                    </div>
-                <!-- fin del card body-->
                 </div>
             </div>
-        </div>
-        
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-warning">
-                    <h4 class="card-title">Información académica</h4>
-                </div>
-                <div class="card-body">
-                <!--inicio del cardbody-->      
-                    <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th><strong>Título obtenido</strong></th>
-                                    <th><strong>Institución</strong></th>
-                                    <th><strong>Año de graduación</strong></th>
-                                    <th><strong>Nivel de educación formal</strong></th>
-                                    <th><strong></strong></th>
-                                </tr>
-                            </thead>
-                            <tbody class="aux">
-                              
-                                {% if titulosPersona %}
-                                {% for curso in titulosPersona %}
-                                <tr id="ocultar{{curso.id}}">
-                                    <div>
-                                        <td>
-                                            {{curso.titulo_obtenido}}
-                                        </td>
-                                        <td>
-                                            {{curso.institucion}}
-                                        </td>
-
-                                        <td>
-                                        {{curso.anioGraduacion}}
-                                        </td>
-                                        <td>
-                                            {{curso.nivel_educacion_formal}}
-                                        </td>
-                                        <td>
-                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarTitulo({{curso.id}})" >
-                                                    <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
-                                    </div>
-                                </tr>
-                    {% endfor %}
-                    {% endif %}
-                             
-                            </tbody>
-                        </table>
+            
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Información académica</h4>
                     </div>
+                    <div class="card-body">
+                    <!--inicio del cardbody-->      
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><strong>Título obtenido</strong></th>
+                                        <th><strong>Institución</strong></th>
+                                        <th><strong>Año de graduación</strong></th>
+                                        <th><strong>Nivel de educación formal</strong></th>
+                                        <th><strong></strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="aux">
+                                  
+                                    {% if titulosPersona %}
+                                    {% for curso in titulosPersona %}
+                                    <tr id="ocultar{{curso.id}}">
+                                        <div>
+                                            <td>
+                                                {{curso.titulo_obtenido}}
+                                            </td>
+                                            <td>
+                                                {{curso.institucion}}
+                                            </td>
 
-                      <!-- Button trigger modal -->
+                                            <td>
+                                            {{curso.anioGraduacion}}
+                                            </td>
+                                            <td>
+                                                {{curso.nivel_educacion_formal}}
+                                            </td>
+                                            <td>
+                                                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarTitulo({{curso.id}})" >
+                                                        <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </div>
+                                    </tr>
+                        {% endfor %}
+                        {% endif %}
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+
+                          <!-- Button trigger modal -->
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+                                Agregar estudio
+                                </button>
+                            </div>
+                    <!--fin del cardbody-->
+                    </div>
+                </div>
+            </div>
+
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Agregar estudio</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
+                    <form2 method="POST" id="estudio">
+                        
+                        {{degreeForm}}
+
+                        <!-- falta el submit -->
+                        <!-- <input id='enviarAjax' type="submit"> -->
+                    </form2>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary"  id='enviarAjax' form="">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Información laboral</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row col-md-12 ">    
+                            <div class="col-md-4 form-group">
+                                <label>{{form.situacion_laboral_actual.label}}</label>
+                                {{form.situacion_laboral_actual}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>{{form.experiencia_laboral.label}}</label>
+                                {{form.experiencia_laboral}}
+                            </div>
+
+                            <div class="col-md-4 form-group">
+                              <label>{{form.nombreEmpresaTrabajoActual.label}}</label>
+                                {{form.nombreEmpresaTrabajoActual}}
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4 form-group">
+                                <label>{{form.sectorDeLaEmpresa.label}}</label>
+                                {{form.sectorDeLaEmpresa}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>{{form.areaDeTrabajo.label}}</label>
+                                {{form.areaDeTrabajo}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>{{form.cargoQueOcupa.label}}</label>
+                                <p>{{form.cargoQueOcupa}}</p>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                                <div class="col-md-4">
+                                    {{form.otroSectorEmpresa}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.otraAreaDetrabajo}}
+                                 </div>
+                                <div class="col-md-4">
+                                    {{form.otroCargo}}
+                                </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4 form-group">
+                                <label>{{form.nombreJefeInmediato.label}}</label>
+                                {{form.nombreJefeInmediato}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>{{form.areaTrabajoAfinConSuProfesion.label}}</label>
+                                {{form.areaTrabajoAfinConSuProfesion}}
+                            </div>
+
+                            <div class="col-md-4 form-group">
+                                <label>{{form.tipoDeContrato.label}}</label>
+                                {{form.tipoDeContrato}}
+                            </div>
+                        </div>
+                        <div class="row col-md-12"> 
+                            <div class="col-md-4 form-group">
+
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>{{form.rangoSalarial.label}}</label>
+                                {{form.rangoSalarial}}
+                            </div>
+                            <div class="col-md-4 form-group">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ############################################################################## -->
+
+         
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Participación en comunidades y asociaciones</h4>
+                    </div>
+                    <div class="card-body">
+                          
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><strong>Tipo de comunidad</strong></th>
+                                        <th><strong>Nombre de la comunidad</strong></th>
+                                        <th><strong>Ámbito</strong></th>
+                                        <th><strong> </strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="auxParticipaciones">
+                                  
+                                    {% if titulosComunidades %}
+                                    {% for curso in titulosComunidades %}
+                                    <tr id="ocultarComunidad{{curso.id}}">
+                                        <div>
+                                            <td>
+                                                {{curso.tipoDeComunidad}}
+                                            </td>
+                                            <td>
+                                                {{curso.nombreDeLaComunidad}}
+                                            </td>
+
+                                            <td>
+                                                {{curso.ambitoParticipacion}}
+                                            </td>
+                                            <td>
+                                                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarTituloParticipaciones({{curso.id}})" >
+                                                        <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </div>
+                                    </tr>
+                        {% endfor %}
+                        {% endif %}
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+
+                         <!-- Button trigger modal -->
                         <div class="col-xs-12">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Agregar estudio
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#participacionComunidad">
+                            Agregar participación en comunidades
                             </button>
                         </div>
-                <!--fin del cardbody-->
+                    </div>
+
                 </div>
             </div>
-        </div>
 
 
+
+             
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="participacionComunidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Agregar estudio</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Agregar participación en comunidades</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
                   <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-                <form2 method="POST" id="estudio">
-                    
-                    {{degreeForm}}
+                <form3 method="POST" id="participacion">
+                    {% csrf_token %}
+                    {{participacionesForm}}
 
                     <!-- falta el submit -->
                     <!-- <input id='enviarAjax' type="submit"> -->
-                </form2>
+                </form3>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary"  id='enviarAjax' form="">Save changes</button>
+                  <button type="button" class="btn btn-primary"  id='enviarAjaxParticipaciones'>Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- ############################################################################## -->
+
+
+
+            <!-- ############################################################################## -->
+            
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Distinciones y reconocimientos</h4>
+                    </div>
+                    <div class="card-body">
+                         
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><strong>Nombre del reconocimiento</strong></th>
+                                        <th><strong>Institución otorgante</strong></th>
+                                        <th><strong>Fecha</strong></th>
+                                        <th><strong>Ámbito</strong></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="auxReconocimiento">
+                                  
+                                    {% if reconocimientosPersona %}
+                                    {% for curso in reconocimientosPersona %}
+                                    <tr id="ocultarReconocimiento{{curso.id}}">
+                                        <div>
+                                            <td>
+                                                {{curso.titulo_obtenido_reconocimiento}}
+                                            </td>
+                                            <td>
+                                                {{curso.institucionReconocimiento}}
+                                            </td>
+
+                                            <td>
+                                                {{curso.anioReconocimiento}}
+                                            </td>
+                                            <td>
+                                                {{curso.ambito}}
+                                            </td>
+
+                                            <td>
+                                                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarReconocimiento({{curso.id}})" >
+                                                        <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </div>
+                                    </tr>
+                        {% endfor %}
+                        {% endif %}
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Button trigger modal -->
+                            <div class="col-xs-12">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#distincion">
+                                Agregar distinción o reconocimiento
+                            </button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+              
+
+              
+          <!-- Modal -->
+          <div class="modal fade" id="distincion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Agregar distinción o reconocimiento</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
+                <form4 method="POST" id="distincion">
+                    {% csrf_token %}
+                    {{reconocimietosForm}}
+
+                    <!-- falta el submit -->
+                    <!-- <input id='enviarAjax' type="submit"> -->
+                </form4>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id='agregarReconocimientoAjax'>Save changes</button>
                 </div>
               </div>
             </div>
           </div>
 
 
+            <!-- ############################################################################## -->
 
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-header-danger">
-                    <h4 class="card-title">Información laboral</h4>
-                </div>
-                <div class="card-body">
-                    <div class="row col-md-12 ">    
-                        <div class="col-md-4 form-group">
-                            <label>{{form.situacion_laboral_actual.label}}</label>
-                            {{form.situacion_laboral_actual}}
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>{{form.experiencia_laboral.label}}</label>
-                            {{form.experiencia_laboral}}
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                          <label>{{form.nombreEmpresaTrabajoActual.label}}</label>
-                            {{form.nombreEmpresaTrabajoActual}}
-                        </div>
-                    </div>
-                    <div class="row col-md-12">
-                        <div class="col-md-4 form-group">
-                            <label>{{form.sectorDeLaEmpresa.label}}</label>
-                            {{form.sectorDeLaEmpresa}}
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>{{form.areaDeTrabajo.label}}</label>
-                            {{form.areaDeTrabajo}}
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>{{form.cargoQueOcupa.label}}</label>
-                            <p>{{form.cargoQueOcupa}}</p>
-                        </div>
-                    </div>
-                    <div class="row col-md-12">
-                            <div class="col-md-4">
-                                {{form.otroSectorEmpresa}}
-                            </div>
-                            <div class="col-md-4">
-                                {{form.otraAreaDetrabajo}}
-                             </div>
-                            <div class="col-md-4">
-                                {{form.otroCargo}}
-                            </div>
-                    </div>
-                    <div class="row col-md-12">
-                        <div class="col-md-4 form-group">
-                            <label>{{form.nombreJefeInmediato.label}}</label>
-                            {{form.nombreJefeInmediato}}
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>{{form.areaTrabajoAfinConSuProfesion.label}}</label>
-                            {{form.areaTrabajoAfinConSuProfesion}}
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                            <label>{{form.tipoDeContrato.label}}</label>
-                            {{form.tipoDeContrato}}
-                        </div>
-                    </div>
-                    <div class="row col-md-12"> 
-                        <div class="col-md-4 form-group">
-
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>{{form.rangoSalarial.label}}</label>
-                            {{form.rangoSalarial}}
-                        </div>
-                        <div class="col-md-4 form-group">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- ############################################################################## -->
-
-        <div class="col-xs-12 form-group">
-            <h1 class="titulo"><strong><center>Participación en comunidades y asociaciones</center></strong></strong></h1>
-        </div>
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-        <div class="col-xs-4 form-group">
-            <strong>Tipo de comunidad</strong>
-        </div>
-        <div class="col-xs-4 form-group">
-            <strong>Nombre de la comunidad</strong>
-        </div>
-
-        <div class="col-xs-3 form-group">
-            <strong>Ámbito</strong>
-        </div>
-
-        <div class="col-xs-1 form-group">
-
-        </div>
-        <div class="col-xs-12 form-group">
-            <hr>
-        </div>
-
-        {% if titulosComunidades %}
-
-
-
-        {% for curso in titulosComunidades %}
-        <div class="col-xs-12">
-        <div id="ocultarComunidad{{curso.id}}">
-            <div class="col-xs-4 form-group">
-                {{curso.tipoDeComunidad}}
-            </div>
-            <div class="col-xs-4 form-group">
-                {{curso.nombreDeLaComunidad}}
-            </div>
-
-            <div class="col-xs-3 form-group">
-            {{curso.ambitoParticipacion}}
-            </div>
-
-            <div class="col-xs-1">
-            <a class="btn btn-danger btn-xs" id="tituloComunidades{{curso.id}}" onclick="eliminarTituloParticipaciones({{curso.id}})">
-                Borrar
-            </a>
-            </div>
-
-        </div>
-        </div>
-
-        {% endfor %}
-
-
-        {% endif %}
-        <div class="auxParticipaciones">
-
-        </div>
-
-        <div class="col-xs-12">
-            <hr>
-        </div>
-
-          <!-- Button trigger modal -->
-          <div class="col-xs-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#participacionComunidad">
-        Agregar participación en comunidades
-        </button>
-    </div>
-      <!-- Modal -->
-      <div class="modal fade" id="participacionComunidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Agregar participación en comunidades</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form3 method="POST" id="participacion">
-                {% csrf_token %}
-                {{participacionesForm}}
-
-                <!-- falta el submit -->
-                <!-- <input id='enviarAjax' type="submit"> -->
-            </form3>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary"  id='enviarAjaxParticipaciones'>Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-        <!-- ############################################################################## -->
-
-
-
-        <!-- ############################################################################## -->
-        <div class="col-xs-12 form-group">
-            <h1 class="titulo" ><strong><center>Distinciones y reconocimientos</center></strong></strong></h1>
-        </div>
-
-
-        <div class="col-xs-3 form-group">
-            <strong>Nombre del reconocimiento</strong>
-        </div>
-        <div class="col-xs-3 form-group">
-            <strong>Institución otorgante</strong>
-        </div>
-
-        <div class="col-xs-2 form-group">
-            <strong>Fecha</strong>
-        </div>
-        <div class="col-xs-3 form-group">
-            <strong>Ámbito</strong>
-        </div>
-        <div class="col-xs-1 form-group">
-
-        </div>
-        {% if reconocimientosPersona %}
-
-
-
-        {% for curso in reconocimientosPersona %}
-        <div class="col-xs-12">
-        <div id="ocultarReconocimiento{{curso.id}}">
-            <div class="col-xs-3 form-group">
-                {{curso.titulo_obtenido_reconocimiento}}
-            </div>
-            <div class="col-xs-3 form-group">
-                {{curso.institucionReconocimiento}}
-            </div>
-
-            <div class="col-xs-2 form-group">
-            {{curso.anioReconocimiento}}
-            </div>
-            <div class="col-xs-3 form-group">
-                {{curso.ambito}}
-            </div>
-            <div class="col-xs-1">
-            <a class="btn btn-danger btn-xs" onclick="eliminarReconocimiento({{curso.id}})">
-                Borrar
-            </a>
-            </div>
-
-          </div>  
-        </div>
-
-        {% endfor %}
-
-        
-
-
-
-        {% endif %}
-
-        <div class="auxReconocimiento">
-
-        </div>
-
-        <div class="col-xs-12">
-                <hr>
-            </div>
-
-          <!-- Button trigger modal -->
-          <div class="col-xs-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#distincion">
-        Agregar distinción o reconocimiento
-        </button>
-    </div>
-      <!-- Modal -->
-      <div class="modal fade" id="distincion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Agregar distinción o reconocimiento</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form4 method="POST" id="distincion">
-                {% csrf_token %}
-                {{reconocimietosForm}}
-
-                <!-- falta el submit -->
-                <!-- <input id='enviarAjax' type="submit"> -->
-            </form4>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id='agregarReconocimientoAjax'>Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-        <!-- ############################################################################## -->
-
-        <!-- ############################################################################## -->
-        <div class="col-xs-12 form-group">
-            <h1 class="titulo"><strong><center>Publicaciones</center></strong></strong></h1>
-        </div>
-        <div class="col-xs-4 form-group">
-            <strong>Título de la publicación</strong>
-        </div>
-        <div class="col-xs-3 form-group">
-            <strong>Fecha de publicación</strong>
-        </div>
-
-        <div class="col-xs-4 form-group">
-            <strong>Tipo de publicación</strong>
-        </div>
-        <!-- <div class="col-xs-3 form-group">
-            <strong>Ámbito</strong>
-        </div> -->
-        <div class="col-xs-1 form-group">
-
-        </div>
-        {% if publicacionesPersona %}
-
-
-
-        {% for curso in publicacionesPersona %}
-        <div id="ocultarPublicacion{{curso.id}}">
-            <div class="col-xs-4 form-group">
-                {{curso.titulo_publicacion}}
-            </div>
-            <div class="col-xs-3 form-group">
-                {{curso.anio}}
-            </div>
-
-            <div class="col-xs-4 form-group">
-                {{curso.tipo_publicacion}}
-            </div>
-            <div class="col-xs-1">
-            <a class="btn btn-danger btn-xs" onclick="eliminarPublicacion({{curso.id}})">
-                Borrar
-            </a>
-            </div>
-
+            <!-- ############################################################################## -->
             
-        </div>
-
-        {% endfor %}
-
-       
 
 
 
-        {% endif %}
-        <div class="auxPublicacion">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Publicaciones</h4>
+                    </div>
+                    <div class="card-body">
+                          
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><strong>Título de la publicación</strong></th>
+                                        <th><strong>Fecha de publicación</strong></th>
+                                        <th><strong>Tipo de publicación</strong></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="auxPublicacion">
+                                  
+                                    {% if publicacionesPersona %}
+                                    {% for curso in publicacionesPersona %}
+                                    <tr id="ocultarPublicacion{{curso.id}}">
+                                        <div>
+                                            <td>
+                                                {{curso.titulo_publicacion}}
+                                            </td>
+                                            <td>
+                                                {{curso.anio}}
+                                            </td>
 
-        </div>
-        <div class="col-xs-12">
-                <hr>
+                                            <td>
+                                                {{curso.tipo_publicacion}}
+                                            </td>
+                                            <td>
+                                                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarPublicacion({{curso.id}})" >
+                                                        <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </div>
+                                    </tr>
+                        {% endfor %}
+                        {% endif %}
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publicaciones">
+                                Agregar publicación
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
 
-          <!-- Button trigger modal -->
-          <div class="col-xs-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publicaciones">
-        Agregar publicación
-        </button>
-    </div>
-      <!-- Modal -->
-      <div class="modal fade" id="publicaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Agregar publicación</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form5 method="POST" id="publicacion">
-                {% csrf_token %}
-                {{publicacionesForm}}
+              
+          <!-- Modal -->
+          <div class="modal fade" id="publicaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Agregar publicación</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
+                <form5 method="POST" id="publicacion">
+                    {% csrf_token %}
+                    {{publicacionesForm}}
 
-                <!-- falta el submit -->
-                <!-- <input id='enviarAjax' type="submit"> -->
-            </form5>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary"  id='guardarPublicacion'>Save changes</button>
+                    <!-- falta el submit -->
+                    <!-- <input id='enviarAjax' type="submit"> -->
+                </form5>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"  id='guardarPublicacion'>Save changes</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
 
-        <!-- ############################################################################## -->
+            <!-- ############################################################################## -->
 
-        <!-- ############################################################################## -->
-        <div class="col-xs-12 form-group">
-            <h1 class="titulo"><strong><center>Vinculación en la vida institucional</center></strong></strong></h1>
-            <div class="col-xs-12 form-group">
-                <div class="col-xs-6">
-                <label>{{form.participacionActividadesUnimar.label}}</label>
-                </div>
-                <div class="col-xs-6">
-                <label>{{form.serviciosDeInteres.label}}</label>
+            <!-- ############################################################################## -->
+            
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Vinculación en la vida institucional</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row col-md-12 form-group">
+                            <div class="col-md-6">
+                            <label>{{form.participacionActividadesUnimar.label}}</label>
+                            </div>
+                            <div class="col-md-6">
+                            <label>{{form.serviciosDeInteres.label}}</label>
+                            </div>
+                        </div>
+
+                        <div class=" row col-md-12 form-group">
+                            <div class="row col-md-12 form-group">
+                                <div class="col-md-6">
+                                {{form.participacionActividadesUnimar}}
+                                </div>
+                                <div class="col-md-6">
+                                {{form.serviciosDeInteres}}
+                                </div>
+                            </div>
+                            <div class="row col-md-12 form-group">
+                                <div class="col-md-6">
+                                </div>                   
+                                <div class="col-md-6">                             
+                                            {{ form.otroServicio }}          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-12 form-group">
-                <div class="col-xs-6">
-                {{form.participacionActividadesUnimar}}
-                </div>
-                <div class="col-xs-6">
-                {{form.serviciosDeInteres}}
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Calidad de formación recibida</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row col-md-12 form-group">
+                            
+                            <label>{{form.procesoDeInformacionUnimar.label}}</label>
+                      
+                            
+                        </div>
+                        <div class="row col-md-12 form-group">
+                            
+                            {{form.procesoDeInformacionUnimar}}
+                      
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-12 form-group">
-                <div class="col-xs-6">
-                </div>
-               
-                <div class="col-xs-6">
-                  
-                            {{ form.otroServicio }}
-                     
-                </div>
-            </div>
-
-
-        </div>
-        <div class="col-xs-12 form-group">
-            <h1 class="titulo"><strong><center>Calidad de formación recibida</center></strong></strong></h1>
-            {{form.procesoDeInformacionUnimar}}
-
-        </div>
-
 
     </form>
+    </div>
 
-<div class="col-xs-12">
+    <div class="col-md-2"></div>
+</div>
+
+
+
+
+
+
+<div class="col-md-12">
         <button type="submit" form="personaForm" class="save btn btn-primary">Guardar información</button>
 </div>
 
@@ -926,26 +938,25 @@
                     success: function(resp){
                         
                         var html = `
-                                <div class='col-xs-12'>
-                                    <div id="ocultarComunidad${resp.id}">
-                                        <div class="col-xs-4 form-group">
-                                                ${resp.id_tipoDeComunidad}
-                                        </div>
-                                        <div class="col-xs-4 form-group">
-                                                ${resp.id_nombreDeLaComunidad}
-                                        </div>
+                                <tr id="ocultarComunidad${resp.id}">
+                                    <div>
+                                        <td>
+                                            ${resp.id_tipoDeComunidad}
+                                        </td>
+                                        <td>
+                                            ${resp.id_nombreDeLaComunidad}
+                                        </td>
 
-                                        <div class="col-xs-3 form-group">
-                                                ${resp.id_ambito}
-                                        </div>
-
-                                        <div class="col-xs-1">
-                                            <a class="btn btn-danger btn-xs" id="tituloComunidades${resp.id}" onclick="eliminarTituloParticipaciones(${resp.id})">
-                                                Borrar
-                                            </a>
-                                        </div>
+                                        <td>
+                                            ${resp.id_ambito}
+                                        </td>
+                                        <td>
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarTituloParticipaciones(${resp.id})" >
+                                                    <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
                                     </div>
-                                </div>
+                                </tr>
                             `;
 
                     document.querySelector('.auxParticipaciones').innerHTML += html;
@@ -991,28 +1002,30 @@
                     var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                      var fechaSplit = id_anioReconocimiento.split("-");
                     var html = `
-                            <div class="col-xs-12">
-                                <div id="ocultarReconocimiento${resp.id}">
-                                    <div class="col-xs-3 form-group">
-                                            ${resp.id_titulo_obtenido_reconocimiento}
-                                    </div>
-                                    <div class="col-xs-3 form-group">
-                                            ${resp.id_institucionReconocimiento}
-                                    </div>
 
-                                    <div class="col-xs-2 form-group">
-                                             ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
-                                    </div>
-                                    <div class="col-xs-3 form-group">
+                        <tr id="ocultarReconocimiento${resp.id}">
+                                <div>
+                                        <td>
+                                            ${resp.id_titulo_obtenido_reconocimiento}
+                                        </td>
+                                        <td>
+                                            ${resp.id_institucionReconocimiento}
+                                        </td>
+
+                                        <td>
+                                            ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
+                                        </td>
+                                        <td>
                                             ${resp.id_ambito}
-                                    </div>
-                                    <div class="col-xs-1">
-                                    <a class="btn btn-danger btn-xs" onclick="eliminarReconocimiento(${resp.id})">
-                                        Borrar
-                                    </a>
-                                    </div>
+                                        </td>
+
+                                        <td>
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarReconocimiento(${resp.id})" >
+                                                    <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
                                 </div>
-                            </div>
+                            </tr>
                         `;
 
                 document.querySelector('.auxReconocimiento').innerHTML += html;
@@ -1054,25 +1067,25 @@
                     var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                      var fechaSplit = id_anio.split("-");
                     var html = `
-                                <div id="ocultarPublicacion${resp.id}">
-                                    <div class="col-xs-4 form-group">
+                                <tr id="ocultarPublicacion${resp.id}">
+                                    <div>
+                                        <td>
                                             ${resp.id_titulo_publicacion}
-                                    </div>
-                                    <div class="col-xs-3 form-group">
-                                             ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
-                                    </div>
+                                        </td>
+                                        <td>
+                                            ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
+                                        </td>
 
-                                    <div class="col-xs-4 form-group">
+                                        <td>
                                             ${resp.id_tipo_publicacion}
+                                        </td>
+                                        <td>
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarPublicacion(${resp.id})" >
+                                                    <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
                                     </div>
-                                    <div class="col-xs-1">
-                                    <a class="btn btn-danger btn-xs" onclick="eliminarPublicacion(${resp.id})">
-                                        Borrar
-                                    </a>
-                                    </div>
-
-                                    
-                                </div>
+                                </tr>
                         `;
 
                 document.querySelector('.auxPublicacion').innerHTML += html;

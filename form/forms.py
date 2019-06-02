@@ -125,15 +125,15 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'nombreJefeInmediato' : forms.TextInput(attrs={'class': 'form-control'}),
             'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'form-control dropdown'}),
             'tipoDeContrato':forms.Select(attrs={'class':'form-control dropdown'}),
-            'rangoSalarial': forms.Select(attrs={'class':'dropdown   form-control'}),
+            'rangoSalarial': forms.Select(attrs={'class':'dropdown    form-control'}),
            
             # Participacion en cominudades y asociaciones#
             
             ## PArte 7
-            'serviciosDeInteres':forms.Select(choices=SERVICIOS_DE_INTERES, attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
-            'participacionActividadesUnimar':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'serviciosDeInteres':forms.Select(choices=SERVICIOS_DE_INTERES, attrs={'class':'form-control dropdown'}),
+            'participacionActividadesUnimar':forms.Select(attrs={'class':'form-control dropdown'}),
             ## Parte 8
-            'procesoDeInformacionUnimar':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'procesoDeInformacionUnimar':forms.Select(attrs={'class':'form-control dropdown'}),
 
             ## otros
             'otroSectorEmpresa' : forms.TextInput(attrs={'class': 'form-control', "placeholder":"Otro sector", 'id':"otroSector"}),
@@ -169,7 +169,7 @@ class DegreesForm(forms.ModelForm):
              'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control'}), 
              'institucion': forms.TextInput(attrs={'class': 'form-control'}), 
              'anioGraduacion': DateInput(attrs={'class': 'form-control'}),
-             'nivel_educacion_formal': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
+             'nivel_educacion_formal': forms.Select(attrs={'class':'form-control dropdown'}),
         }
         
 
@@ -190,9 +190,9 @@ class ParticipacionesForm(forms.ModelForm):
             
         }
         widgets= {
-             'tipoDeComunidad': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+             'tipoDeComunidad': forms.Select(attrs={'class':'form-control dropdown'}),
              'nombreDeLaComunidad': forms.TextInput(attrs={'class': 'form-control'}), 
-             'ambitoParticipacion':  forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+             'ambitoParticipacion':  forms.Select(attrs={'class':'form-control dropdown'}),
              
         }
 
@@ -216,7 +216,7 @@ class ReconocimientosForm(forms.ModelForm):
         widgets= {
             'titulo_obtenido_reconocimiento': forms.TextInput(attrs={'class': 'form-control'}), 
             'institucionReconocimiento': forms.TextInput(attrs={'class': 'form-control'}), 
-            'ambito': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
+            'ambito': forms.Select(attrs={'class':'form-control dropdown'}),
             'anioReconocimiento': DateInput(attrs={'class': 'form-control'}),
         }
 
@@ -239,6 +239,6 @@ class PublicacionesForm(forms.ModelForm):
         widgets= {
             'titulo_publicacion': forms.TextInput(attrs={'class': 'form-control'}), 
             'anio': DateInput(attrs={'class': 'form-control'}),
-            'tipo_publicacion': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
+            'tipo_publicacion': forms.Select(attrs={'class':'form-control dropdown'}),
         }
 

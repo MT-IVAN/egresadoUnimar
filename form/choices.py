@@ -216,7 +216,6 @@ TIPO_PUBLICACION = (
     ('libro','Libro'),
     ('capitoDeLibro','Capítulo de libro'),
     ('documentoResultadoDeInvestigacion','Documento resultado de investigación'),
-    ('otro','Otro'),
 )
 
 PARTICIPACION_ACTIVIDADES = (
