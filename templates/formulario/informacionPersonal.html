@@ -6,297 +6,295 @@
 <form method="POST" id="personaForm">
 {% csrf_token %}   
 
-        <h1 class="titulo"><strong><center>Información personal</center></strong></strong></h1>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Información personal</h4>
+                </div>
+                <div class="card-body">
+                <!--inicio del cardbody-->
+                    <div class="row col-md-12">
+
+                        <div class="col-md-3 form-group">
+                            <label>Identificación</label>
+                           <label class="form-control" style="background: #fff"> {{personaOtros.identificacion}}</label>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>Fecha de nacimiento</label>
+                            <label class="form-control" style="background: #fff">{{personaOtros.fechaNacimiento}}</label>
+                        </div>
+
+                        <div class="col-md-3 form-group">
+                                <label>genero</label>
+                                <label class="form-control" style="background: #fff">{{personaOtros.genero}}</label>
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>Nombres</label>
+                            <label class="form-control" style="background: #fff">{{personaOtros.nombres}}</label>
+                        </div>
+                    </div>
+
+                    <div class="row col-md-12">
+                        <div class="col-md-4 form-group">
+                            <label>Apellidos</label>
+                            <label class="form-control" style="background: #fff">{{personaOtros.apellidos}}</label>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label>Programa</label>
+                            <label class="form-control" style="background: #fff">{{personaOtros.programa}}</label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Fecha de grado</label>
+                            <label class="form-control" style="background: #fff">{{personaOtros.fechaGrado}}</label>
+                        </div>
+                    </div>
 
 
-        <div class="row col-md-12">
+                    <div class="row col-md-12">
+                        <div class="col-md-4 form-group">
+                           <label>Estado civil</label>
+                            {{form.estado_civil}}
+                        </div>
 
-            <div class="col-md-3 form-group">
-                <label>Identificación</label>
-                {{form.identificacion}}
-            </div>
-            <div class="col-md-3 form-group">
-                <label>Fecha de nacimiento</label>
-                {{form.fechaNacimiento}}
-            </div>
 
-            <div class="col-md-3 form-group">
-                    <label>genero</label>
-                    {{form.genero}}
-            </div>
-            <div class="col-md-3 form-group">
-                <label>Nombres</label>
-                {{form.nombres}}
-            </div>
-        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Dirección de residencia</label>
+                           {{form.direccionResidencia}}
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Ciudad</label>
+                            {{form.ciudad}}
+                        </div>
+                    </div>  
 
-        <div class="row col-md-12">
-            <div class="col-md-4 form-group">
-                <label>Apellidos</label>
-                {{form.apellidos}}
-            </div>
-
-            <div class="col-md-4 form-group">
-                <label>Programa</label>
-                {{form.programa}}
-            </div>
-            <div class="col-md-4 form-group">
-                <label>Fecha de grado</label>
-                {{form.fechaGrado}}
-            </div>
-        </div>
-
-          
-            <div class="col-md-12">
-
-                La anterior información es suministrada por la Universidad Mariana, si algún dato no es correcto, por favor, comuníquese con la universidad.
                 
-            </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-4 form-group">
+                            <label>Departamento</label>
+                            {{form.departamento}}
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Pais</label>
+                            {{form.pais}}
+                        </div>
 
-        <div class="row col-md-12">
-            <div class="col-md-4 form-group">
-               <label>Estado civil</label>
-                {{form.estado_civil}}
-            </div>
+                        <div class="col-md-4 form-group">
+                            <label>Teléfono fijo</label>
+                            {{form.telefonoFijo}}
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-4 form-group">
+                            <label>Celular</label>
+                            {{form.celular}}
+                        </div>
 
+                        <div class="col-md-4 form-group">
+                          <label>Email 1</label>
+                            {{form.email1}}
+                        </div>
 
-            <div class="col-md-4 form-group">
-                <label>Dirección de residencia</label>
-                {{form.direccionResidencia}}
+                        <div class="col-md-4 form-group">
+                            <label>Email 2</label>
+                            {{form.email2}}
+                        </div>
+                    </div>
+                <!-- fin del card body-->
+                </div>
             </div>
-            <div class="col-md-4 form-group">
-                <label>Ciudad</label>
-                {{form.ciudad}}
-            </div>
-        </div>  
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        </div>
         
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <h4 class="card-title">Información académica</h4>
+                </div>
+                <div class="card-body">
+                <!--inicio del cardbody-->      
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><strong>Título obtenido</strong></th>
+                                    <th><strong>Institución</strong></th>
+                                    <th><strong>Año de graduación</strong></th>
+                                    <th><strong>Nivel de educación formal</strong></th>
+                                    <th><strong></strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="aux">
+                              
+                                {% if titulosPersona %}
+                                {% for curso in titulosPersona %}
+                                <tr id="ocultar{{curso.id}}">
+                                    <div>
+                                        <td>
+                                            {{curso.titulo_obtenido}}
+                                        </td>
+                                        <td>
+                                            {{curso.institucion}}
+                                        </td>
 
+                                        <td>
+                                        {{curso.anioGraduacion}}
+                                        </td>
+                                        <td>
+                                            {{curso.nivel_educacion_formal}}
+                                        </td>
+                                        <td>
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarTitulo({{curso.id}})" >
+                                                    <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </div>
+                                </tr>
+                    {% endfor %}
+                    {% endif %}
+                             
+                            </tbody>
+                        </table>
+                    </div>
 
-
-        <div class="row col-md-12">
-            <div class="col-md-4 form-group">
-                <label>Departamento</label>
-                {{form.departamento}}
-            </div>
-            <div class="col-md-4 form-group">
-                <label>Pais</label>
-                {{form.pais}}
-            </div>
-
-            <div class="col-md-4 form-group">
-                <label>Teléfono fijo</label>
-                {{form.telefonoFijo}}
+                      <!-- Button trigger modal -->
+                        <div class="col-xs-12">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Agregar estudio
+                            </button>
+                        </div>
+                <!--fin del cardbody-->
+                </div>
             </div>
         </div>
-            <div class="col-md-4 form-group">
-                <label>Celular</label>
-                {{form.celular}}
-            </div>
-
-            <div class="col-md-4 form-group">
-              <label>Email 1</label>
-                {{form.email1}}
-            </div>
-
-            <div class="col-xs-4 form-group">
-                <label>Email 2</label>
-                {{form.email2}}
-            </div>
-            <br>
 
 
-        
-            <br>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Agregar estudio</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
+                <form2 method="POST" id="estudio">
+                    
+                    {{degreeForm}}
 
-
-
-        <h1 class="titulo"><strong><center>Información académica</center></strong></strong></h1>
-
-
-        <div class="col-xs-3 form-group">
-            <strong>Título obtenido</strong>
-        </div>
-        <div class="col-xs-3 form-group">
-            <strong>Institución</strong>
-        </div>
-
-        <div class="col-xs-2 form-group">
-            <strong>Año de graduación</strong>
-        </div>
-        <div class="col-xs-3 form-group">
-            <strong>Nivel de educación formal</strong>
-        </div>
-        <div class="col-xs-1 form-group">
-
-        </div>
-
-        <div class="col-xs-12"><hr></div>
-
-        {% if titulosPersona %}
-
-
-
-        {% for curso in titulosPersona %}
-        <div class="col-xs-12">
-        <div id="ocultar{{curso.id}}">
-            <div class="col-xs-3 form-group">
-                {{curso.titulo_obtenido}}
-            </div>
-            <div class="col-xs-3 form-group">
-                {{curso.institucion}}
-            </div>
-
-            <div class="col-xs-2 form-group">
-            {{curso.anioGraduacion}}
-            </div>
-            <div class="col-xs-3 form-group">
-                {{curso.nivel_educacion_formal}}
-            </div>
-            <div class="col-xs-1">
-            <a class="btn btn-danger btn-xs" id="titulo{{curso.id}}" onclick="eliminarTitulo({{curso.id}})">
-                Borrar
-            </a>
-            </div>
-
-            
-        </div>
-    </div>
-        {% endfor %}
-
-        
-
-
-
-        {% endif %}
-        <div class="aux">
-
-        </div>
-        <div class="col-xs-12"><hr></div>
-
-
-          <!-- Button trigger modal -->
-          <div class="col-xs-12">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Agregar estudio
-        </button>
-    </div>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Agregar estudio</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-            <form2 method="POST" id="estudio">
-                
-                {{degreeForm}}
-
-                <!-- falta el submit -->
-                <!-- <input id='enviarAjax' type="submit"> -->
-            </form2>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary"  id='enviarAjax' form="">Save changes</button>
+                    <!-- falta el submit -->
+                    <!-- <input id='enviarAjax' type="submit"> -->
+                </form2>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"  id='enviarAjax' form="">Save changes</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
 
 
-        
-        <div class="col-xs-12">
-        <h1 class="titulo"><strong><center>Información laboral</center></strong></strong></h1>
-        </div>
-        
-        
-            {%csrf_token%}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Información laboral</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row col-md-12 ">    
+                        <div class="col-md-4 form-group">
+                            <label>{{form.situacion_laboral_actual.label}}</label>
+                            {{form.situacion_laboral_actual}}
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{form.experiencia_laboral.label}}</label>
+                            {{form.experiencia_laboral}}
+                        </div>
 
+                        <div class="col-md-4 form-group">
+                          <label>{{form.nombreEmpresaTrabajoActual.label}}</label>
+                            {{form.nombreEmpresaTrabajoActual}}
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-4 form-group">
+                            <label>{{form.sectorDeLaEmpresa.label}}</label>
+                            {{form.sectorDeLaEmpresa}}
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{form.areaDeTrabajo.label}}</label>
+                            {{form.areaDeTrabajo}}
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{form.cargoQueOcupa.label}}</label>
+                            <p>{{form.cargoQueOcupa}}</p>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                            <div class="col-md-4">
+                                {{form.otroSectorEmpresa}}
+                            </div>
+                            <div class="col-md-4">
+                                {{form.otraAreaDetrabajo}}
+                             </div>
+                            <div class="col-md-4">
+                                {{form.otroCargo}}
+                            </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-4 form-group">
+                            <label>{{form.nombreJefeInmediato.label}}</label>
+                            {{form.nombreJefeInmediato}}
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{form.areaTrabajoAfinConSuProfesion.label}}</label>
+                            {{form.areaTrabajoAfinConSuProfesion}}
+                        </div>
 
-        <div class="col-xs-12">    
-        <div class="col-xs-4 form-group">
-            <label>{{form.situacion_laboral_actual.label}}</label>
-            {{form.situacion_laboral_actual}}
-        </div>
-        <div class="col-xs-4 form-group">
-            <label>{{form.experiencia_laboral.label}}</label>
-            {{form.experiencia_laboral}}
-        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{form.tipoDeContrato.label}}</label>
+                            {{form.tipoDeContrato}}
+                        </div>
+                    </div>
+                    <div class="row col-md-12"> 
+                        <div class="col-md-4 form-group">
 
-        <div class="col-xs-4 form-group">
-          <label>{{form.nombreEmpresaTrabajoActual.label}}</label>
-            {{form.nombreEmpresaTrabajoActual}}
-        </div>
-        <div class="col-xs-4 form-group">
-            <label>{{form.sectorDeLaEmpresa.label}}</label>
-            {{form.sectorDeLaEmpresa}}
-        </div>
-        <div class="col-xs-4 form-group">
-            <label>{{form.areaDeTrabajo.label}}</label>
-            {{form.areaDeTrabajo}}
-        </div>
-        <div class="col-xs-4 form-group">
-            <label>{{form.cargoQueOcupa.label}}</label>
-            <p>{{form.cargoQueOcupa}}</p>
-        </div>
-    </div>
-    <div class="col-xs-12">
-            <div class="col-xs-4">
-                {{form.otroSectorEmpresa}}
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{form.rangoSalarial.label}}</label>
+                            {{form.rangoSalarial}}
+                        </div>
+                        <div class="col-md-4 form-group">
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-4">
-                {{form.otraAreaDetrabajo}}
-             </div>
-            <div class="col-xs-4">
-                {{form.otroCargo}}
-            </div>
-    </div>
-    <div class="col-xs-12">
-        <div class="col-xs-4 form-group">
-            <label>{{form.nombreJefeInmediato.label}}</label>
-            {{form.nombreJefeInmediato}}
-        </div>
-        <div class="col-xs-4 form-group">
-            <label>{{form.areaTrabajoAfinConSuProfesion.label}}</label>
-            {{form.areaTrabajoAfinConSuProfesion}}
         </div>
 
-        <div class="col-xs-4 form-group">
-            <label>{{form.tipoDeContrato.label}}</label>
-            {{form.tipoDeContrato}}
-        </div>
-
-
-        <div class="col-xs-4 form-group">
-
-        </div>
-        <div class="col-xs-4 form-group">
-            <label>{{form.rangoSalarial.label}}</label>
-            {{form.rangoSalarial}}
-        </div>
-        <div class="col-xs-4 form-group">
-
-        </div>
-        </div>
-        <br>
-        <br>
 
         <!-- ############################################################################## -->
 
         <div class="col-xs-12 form-group">
             <h1 class="titulo"><strong><center>Participación en comunidades y asociaciones</center></strong></strong></h1>
         </div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
 
         <div class="col-xs-4 form-group">
             <strong>Tipo de comunidad</strong>
@@ -653,33 +651,44 @@
             if($('#id_serviciosDeInteres').val() != "otro"){
                 $('#fade2').val();
                 $('#fade2').attr("readonly","readonly");
+                $('#fade2').hide();
             }
             else{
                 $('#fade2').attr("required","required");
+                $('#fade2').show();
             }
 
             if($('#id_sectorDeLaEmpresa').val() != "otro"){
                 $('#otroSector').val();
                 $('#otroSector').attr("readonly","readonly");
+                $('#otroSector').hide();
             }
             else{
                 $('#otroSector').attr("required","required");
+                $('#otroSector').show();
+                $('#otroSector').focus();
             }
 
             if($('#id_areaDeTrabajo').val() != "otro"){
                 $('#otraArea').val();
                 $('#otraArea').attr("readonly","readonly");
+                $('#otraArea').hide();
             }
             else{
                 $('#otraArea').attr("required","required");
+                $('#otraArea').show();
+                $('#otraArea').focus();
             }
 
             if($('#id_cargoQueOcupa').val() != "otro"){
                 $('#otroCargo').val();
                 $('#otroCargo').attr("readonly","readonly");
+                $('#otroCargo').hide();
             }
             else{
                 $('#otroCargo').attr("required","required");
+                $('#otroCargo').show();
+                $('#otroCargo').focus();
             }
 
 
@@ -850,30 +859,26 @@
                         var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                         var fechaSplit = id_anioGraduacion.split("-");
                         var html = `
-                        <div class="col-xs-12">
-                                <div id="ocultar${resp.id}">
-                                    <div class="col-xs-3 form-group">
+                                <tr id="ocultar${resp.id}">
+                                    <td>
                                     ${resp.id_titulo_obtenido}
-                                    </div>
-                                    <div class="col-xs-3 form-group">
+                                    </td>
+                                    <td>
                                     ${resp.id_institucion}
-                                    </div>
-                                    <div class="col-xs-2 form-group">
+                                    </td>
+                                    <td>
                                     ${fechaSplit[2]} de ${meses[fechaSplit[1]-1]} de ${fechaSplit[0]}
-                                    </div>
-                                    <div class="col-xs-3 form-group">
+                                    </td>
+                                    <td>
                                     ${resp.id_nivel_educacion_formal}
-                                    </div>
-                                    <div class="col-xs-1">
-                                    <a class="btn btn-danger btn-xs" onclick="eliminarTitulo(${resp.id})" >
-                                    Borrar
-                                    </a>
-                                    </div>
-                                    <div class="col-xs-12">
+                                    </td>
+                                    <td>  
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarTitulo(${resp.id})" >
+                                                    <i class="material-icons">close</i>
+                                    </button>
+                                    </td>
 
-                                    </div>
-                                </div>
-                            </div>
+                                </tr>
                             `;
                            
                                 $('#id_titulo_obtenido').val('');
@@ -1091,11 +1096,13 @@
            if(sel2.val() == "otro"){
                 $('#fade2').removeAttr("readonly");
                 $('#fade2').attr("required","required");
+                $('#fade2').show();
 
            }else{
                 $('#fade2').attr("readonly","readonly");
                 $('#fade2').val('');
                 $('#fade2').removeAttr("required");
+                $('#fade2').hide();
            }
         });
 
@@ -1107,11 +1114,13 @@
            if(sectorEmpresa.val() == "otro"){
                 $('#otroSector').removeAttr("readonly");
                 $('#otroSector').attr("required","required");
+                $('#otroSector').show();
 
            }else{
                 $('#otroSector').attr("readonly","readonly");
                 $('#otroSector').val('');
                 $('#otroSector').removeAttr("required");
+                $('#otroSector').hide();
            }
         });
 
@@ -1121,11 +1130,13 @@
                 console.log("Otro fuè precionado");
                 $('#otraArea').removeAttr("readonly");
                 $('#otraArea').attr("required","required");
+                $('#otraArea').show();
 
            }else{
                 $('#otraArea').attr("readonly","readonly");
                 $('#otraArea').val('');
                 $('#otraArea').removeAttr("required");
+                $('#otraArea').hide();
            }
         });
 
@@ -1135,11 +1146,13 @@
                 console.log("Otro fuè precionado");
                 $('#otroCargo').removeAttr("readonly");
                 $('#otroCargo').attr("required","required");
+                $('#otroCargo').show();
 
            }else{
                 $('#otroCargo').attr("readonly","readonly");
                 $('#otroCargo').val('');
                 $('#otroCargo').removeAttr("required");
+                $('#otroCargo').hide();
            }
         });
 

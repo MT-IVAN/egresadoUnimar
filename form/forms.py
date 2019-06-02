@@ -14,14 +14,14 @@ class PersonaFormInformacionPersona(forms.ModelForm):
 
 
         fields = [
-            'identificacion',
-            'nombres', 
-            'apellidos',
-            'fechaNacimiento',
+            #'identificacion',
+            #'nombres', 
+            #'apellidos',
+            #'fechaNacimiento',
             'estado_civil',
-            'genero',
-            'programa',
-            'fechaGrado',
+            #'genero',
+            #'programa',
+            #'fechaGrado',
             'direccionResidencia',
             'ciudad',
             'departamento',
@@ -57,7 +57,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             
         ]
         labels= {
-            'identificacion': 'Identificación',
+            #'identificacion': 'Identificación',
             'nombres': 'Nombres',
             'apellidos':'Apellidos',
             'fechaNacimiento':'Fecha de nacimiento',
@@ -73,8 +73,8 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'celular':'Celular',
             'email1':'Email 1',
             'email2':'Email 2',
-            # # Informacion academica
-             'situacion_laboral_actual': 'Situación laboral actual',
+            # # Informacion laboral
+            'situacion_laboral_actual': 'Situación laboral actual',
             'experiencia_laboral': 'Experiencia laboral',
             'nombreEmpresaTrabajoActual': 'Nombre de la empresa donde labora',
             'sectorDeLaEmpresa' : 'Sector de la empresa',
@@ -99,7 +99,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
 
         }
         widgets= {
-            'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'readonly':'readonly'}),
+            #'identificacion': forms.TextInput(attrs={'class': 'form-control',  'id':'disabledTextInput', 'readonly':'readonly'}),
             'nombres': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'apellidos': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'fechaNacimiento': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
@@ -114,18 +114,18 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'celular': forms.TextInput(attrs={'class': 'form-control'}),
             'email1': forms.EmailInput(attrs={'class': 'form-control', 'required':'required'}),
             'email2': forms.EmailInput(attrs={'class': 'form-control'}),
-            'estado_civil': forms.Select(attrs={'class':'form-control selectpicker mdb-select', 'data-style':"btn btn-link"}),
+            'estado_civil': forms.Select(attrs={'class':'form-control dropdown'}),
             # # Informacion academica
-            'situacion_laboral_actual':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker form-control'}),
-            'experiencia_laboral': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'situacion_laboral_actual':forms.Select(attrs={'class':' dropdown   form-control'}),
+            'experiencia_laboral': forms.Select(attrs={'class':'form-control dropdown'}),
             'nombreEmpresaTrabajoActual': forms.TextInput(attrs={'class': 'form-control'}),
-            'sectorDeLaEmpresa' : forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
-            'areaDeTrabajo' :forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
-            'cargoQueOcupa': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'sectorDeLaEmpresa' : forms.Select(attrs={'class':'form-control dropdown'}),
+            'areaDeTrabajo' :forms.Select(attrs={'class':'form-control dropdown'}),
+            'cargoQueOcupa': forms.Select(attrs={'class':'form-control dropdown'}),
             'nombreJefeInmediato' : forms.TextInput(attrs={'class': 'form-control'}),
-            'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
-            'tipoDeContrato':forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
-            'rangoSalarial': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown selectpicker  form-control'}),
+            'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'form-control dropdown'}),
+            'tipoDeContrato':forms.Select(attrs={'class':'form-control dropdown'}),
+            'rangoSalarial': forms.Select(attrs={'class':'dropdown   form-control'}),
            
             # Participacion en cominudades y asociaciones#
             
