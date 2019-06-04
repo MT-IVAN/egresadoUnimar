@@ -115,7 +115,7 @@ class Reconocimientos(models.Model):
     persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.titulo_obtenido
+        return self.titulo_obtenido_reconocimiento
 
 class Publicaciones(models.Model):
     titulo_publicacion = models.CharField(max_length=100,blank=True, null=True)
