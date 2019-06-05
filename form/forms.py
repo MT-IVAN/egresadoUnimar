@@ -154,10 +154,11 @@ class DegreesForm(forms.ModelForm):
         model = Degrees
         
         fields = [
+            'nivel_educacion_formal',
             'titulo_obtenido', 
             'institucion',
             'anioGraduacion',
-            'nivel_educacion_formal',
+            
         ]
         labels= {
             'titulo_obtenido': 'Título obtenido',
@@ -227,9 +228,10 @@ class PublicacionesForm(forms.ModelForm):
         model = Publicaciones
 
         fields = [
+            'tipo_publicacion', 
             'titulo_publicacion', 
             'anio',
-            'tipo_publicacion',  
+             
         ]
         labels= {
             'titulo_publicacion': 'Título de la publicación',

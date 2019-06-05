@@ -671,7 +671,7 @@
 
 
         $(document).ready(function(){
-            if($('#id_serviciosDeInteres').val() != "otro"){
+            if($('#id_serviciosDeInteres').val() != 'Otro'){
                 $('#fade2').val();
                 $('#fade2').attr("readonly","readonly");
                 $('#fade2').hide();
@@ -681,7 +681,7 @@
                 $('#fade2').show();
             }
 
-            if($('#id_sectorDeLaEmpresa').val() != "otro"){
+            if($('#id_sectorDeLaEmpresa').val() != 'Otro'){
                 $('#otroSector').val();
                 $('#otroSector').attr("readonly","readonly");
                 $('#otroSector').hide();
@@ -689,10 +689,10 @@
             else{
                 $('#otroSector').attr("required","required");
                 $('#otroSector').show();
-                $('#otroSector').focus();
+                $
             }
 
-            if($('#id_areaDeTrabajo').val() != "otro"){
+            if($('#id_areaDeTrabajo').val() != 'Otro'){
                 $('#otraArea').val();
                 $('#otraArea').attr("readonly","readonly");
                 $('#otraArea').hide();
@@ -700,10 +700,10 @@
             else{
                 $('#otraArea').attr("required","required");
                 $('#otraArea').show();
-                $('#otraArea').focus();
+               
             }
 
-            if($('#id_cargoQueOcupa').val() != "otro"){
+            if($('#id_cargoQueOcupa').val() != 'Otro'){
                 $('#otroCargo').val();
                 $('#otroCargo').attr("readonly","readonly");
                 $('#otroCargo').hide();
@@ -711,7 +711,7 @@
             else{
                 $('#otroCargo').attr("required","required");
                 $('#otroCargo').show();
-                $('#otroCargo').focus();
+                
             }
 
 
@@ -1117,7 +1117,7 @@
 
         var sel2 = $('#id_serviciosDeInteres');
         sel2.click(function(){
-           if(sel2.val() == "otro"){
+           if(sel2.val() == "Otro"){
                 $('#fade2').removeAttr("readonly");
                 $('#fade2').attr("required","required");
                 $('#fade2').show();
@@ -1135,7 +1135,7 @@
 
         var sectorEmpresa = $('#id_sectorDeLaEmpresa');
         sectorEmpresa.click(function(){
-           if(sectorEmpresa.val() == "otro"){
+           if(sectorEmpresa.val() == "Otro"){
                 $('#otroSector').removeAttr("readonly");
                 $('#otroSector').attr("required","required");
                 $('#otroSector').show();
@@ -1150,7 +1150,7 @@
 
         var sel4 = $('#id_areaDeTrabajo');
         sel4.click(function(){
-           if(sel4.val() == "otro"){
+           if(sel4.val() == "Otro"){
                 console.log("Otro fuè precionado");
                 $('#otraArea').removeAttr("readonly");
                 $('#otraArea').attr("required","required");
@@ -1166,7 +1166,7 @@
 
         var sel5 = $('#id_cargoQueOcupa');
         sel5.click(function(){
-           if(sel5.val() == "otro"){
+           if(sel5.val() == "Otro"){
                 console.log("Otro fuè precionado");
                 $('#otroCargo').removeAttr("readonly");
                 $('#otroCargo').attr("required","required");

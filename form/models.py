@@ -34,7 +34,7 @@ class User(models.Model):
 
     #### 1 INFORMACION PERSONAl
     
-    estado_civil = models.CharField(max_length=12, choices=ESTADO_CIVIL, blank=True, null=True)
+    estado_civil = models.CharField(max_length=20, choices=ESTADO_CIVIL, blank=True, null=True)
     direccionResidencia = models.CharField(max_length=80, blank=True, null=True)
     ciudad = models.CharField(max_length=20, blank=True, null=True)
     departamento = models.CharField(max_length=20, blank=True, null=True)
@@ -54,28 +54,28 @@ class User(models.Model):
 
     #### 3 INFORMACION LABORAL
     
-    situacion_laboral_actual = models.CharField(max_length=34, choices=SITUACION_LABORAR, blank=True, null=True)
-    experiencia_laboral = models.CharField(max_length=50, choices=EXPERIENCIA_LABORAL, blank=True, null=True)
+    situacion_laboral_actual = models.CharField(max_length=100, choices=SITUACION_LABORAR, blank=True, null=True)
+    experiencia_laboral = models.CharField(max_length=60, choices=EXPERIENCIA_LABORAL, blank=True, null=True)
     nombreEmpresaTrabajoActual = models.CharField(max_length=100, blank=True, null=True)
-    sectorDeLaEmpresa =  models.CharField(max_length=50, choices=SECTOR_DE_LA_EMPRESA, blank=True, null=True)
-    areaDeTrabajo = models.CharField(max_length=50, choices=AREA_DE_TRABAJO, blank=True, null=True)
-    cargoQueOcupa =  models.CharField(max_length=50, choices=CARGO_OCUPADO, blank=True, null=True)
+    sectorDeLaEmpresa =  models.CharField(max_length=100, choices=SECTOR_DE_LA_EMPRESA, blank=True, null=True)
+    areaDeTrabajo = models.CharField(max_length=100, choices=AREA_DE_TRABAJO, blank=True, null=True)
+    cargoQueOcupa =  models.CharField(max_length=100, choices=CARGO_OCUPADO, blank=True, null=True)
     nombreJefeInmediato = models.CharField(max_length=100, blank=True, null=True)
     areaTrabajoAfinConSuProfesion= models.CharField(max_length=2, choices=SI_NO, blank=True, null=True)
-    tipoDeContrato = models.CharField(max_length=50, choices=TIPO_CONTRATO, blank=True, null=True )
-    rangoSalarial = models.CharField(max_length=26, choices=RANGO_SALARIAL, blank=True, null=True )
+    tipoDeContrato = models.CharField(max_length=100, choices=TIPO_CONTRATO, blank=True, null=True )
+    rangoSalarial = models.CharField(max_length=100, choices=RANGO_SALARIAL, blank=True, null=True )
     #### /3 INFORMACION LABORAL
 
 
    
     ##### 7 
 
-    participacionActividadesUnimar = models.CharField(max_length = 20, choices=PARTICIPACION_ACTIVIDADES, blank=True, null=True)
+    participacionActividadesUnimar = models.CharField(max_length = 100, choices=PARTICIPACION_ACTIVIDADES, blank=True, null=True)
     serviciosDeInteres = models.CharField(max_length = 40,  blank=True, null=True)
 
     ###### 8 
     
-    procesoDeInformacionUnimar = models.CharField(max_length=20, choices=SATISFACCION, blank=True, null=True )
+    procesoDeInformacionUnimar = models.CharField(max_length=100, choices=SATISFACCION, blank=True, null=True )
 
 
     ################ otros
@@ -89,7 +89,7 @@ class User(models.Model):
         return self.nombres
 
 class Degrees(models.Model):
-    nivel_educacion_formal = models.CharField(max_length=16, choices=NIVEL_EDUCACION_FORMAL, blank=True, null=True)
+    nivel_educacion_formal = models.CharField(max_length=100, choices=NIVEL_EDUCACION_FORMAL, blank=True, null=True)
     titulo_obtenido = models.CharField(max_length=100,null=True, blank=True,)
     institucion = models.CharField(max_length=200,null=True, blank=True)
     anioGraduacion = models.DateField(null=True, blank=True)
@@ -99,9 +99,9 @@ class Degrees(models.Model):
         return self.titulo_obtenido
 
 class Participaciones(models.Model):
-    tipoDeComunidad = models.CharField(max_length = 20, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
+    tipoDeComunidad = models.CharField(max_length = 100, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
     nombreDeLaComunidad = models.CharField(max_length = 100, blank=True, null=True)
-    ambitoParticipacion = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
+    ambitoParticipacion = models.CharField(max_length = 100, choices=AMBITO, blank=True, null=True)
     persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -111,7 +111,7 @@ class Reconocimientos(models.Model):
     titulo_obtenido_reconocimiento = models.CharField(max_length=100,blank=True, null=True)
     institucionReconocimiento = models.CharField(max_length=200,blank=True, null=True)
     anioReconocimiento = models.DateField(blank=True, null=True)
-    ambito = models.CharField(max_length = 20, choices=AMBITO, blank=True, null=True)
+    ambito = models.CharField(max_length = 100, choices=AMBITO, blank=True, null=True)
     persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -120,7 +120,7 @@ class Reconocimientos(models.Model):
 class Publicaciones(models.Model):
     titulo_publicacion = models.CharField(max_length=100,blank=True, null=True)
     anio = models.DateField(blank=True, null=True)
-    tipo_publicacion = models.CharField(max_length = 20, choices=TIPO_PUBLICACION, blank=True, null=True)
+    tipo_publicacion = models.CharField(max_length = 100, choices=TIPO_PUBLICACION, blank=True, null=True)
     persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
