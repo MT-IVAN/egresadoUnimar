@@ -1,8 +1,23 @@
 {% load staticfiles %}
-<link rel="stylesheet" href="{% static 'cssAnteriorNoUsado/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'cssAnteriorNoUsado/global.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'cssAnteriorNoUsado/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'cssAnteriorNoUsado/global.css' %}">
+</head>
+<body>
+    {%block content%}
+    ...si estas mirando esto, por favor re carga la web...
+    {%endblock%}
+</body>
+</html>
 
 
-{%block content%}
-<h2>holi</h2>
-{%endblock%}
+
+
+

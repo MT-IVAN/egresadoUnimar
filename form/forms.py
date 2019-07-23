@@ -106,7 +106,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'programa': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'fechaGrado': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
             'genero': forms.TextInput(attrs={'class': 'form-control', 'readonly':'readonly'}),
-            'direccionResidencia': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Dirección de residencia'}),
+            'direccionResidencia': forms.TextInput(attrs={'class': 'form-control'}),
             'ciudad': forms.TextInput(attrs={'class': 'form-control'}),
             'departamento': forms.TextInput(attrs={'class': 'form-control'}),
             'pais': forms.TextInput(attrs={'class': 'form-control'}),
