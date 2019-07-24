@@ -62,11 +62,11 @@
 
 
                         <div class="row col-md-12">
+
                             <div class="col-md-4 form-group">
-                               <label>Estado civil</label>
+                                <label>{{form.estado_civil.label}}</label>
                                 {{form.estado_civil}}
                             </div>
-
 
                             <div class="col-md-4 form-group">
                                 <label>Dirección de residencia</label>
@@ -87,6 +87,14 @@
                             <div class="col-md-4 form-group">
                                 <label>Pais</label>
                                 {{form.pais}}
+                                <datalist id="paises">
+                                    <option value="Internet Explorer">
+                                    <option value="Firefox">
+                                    <option value="Chrome">
+                                    <option value="Opera">
+                                    <option value="Safari">
+                                </datalist>
+
                             </div>
 
                             <div class="col-md-4 form-group">
@@ -548,33 +556,26 @@
 
 
               
-          <!-- Modal -->
-          <div class="modal fade" id="publicaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Agregar publicación</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-                <form5 method="POST" id="publicacion">
-                    {% csrf_token %}
-                    {{publicacionesForm}}
+          
 
-                    <!-- falta el submit -->
-                    <!-- <input id='enviarAjax' type="submit"> -->
-                </form5>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary"  id='guardarPublicacion'>Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
+ <!-- Modal Trigger -->
+ <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+ <!-- Modal Structure -->
+ <div id="modal1" class="modal modal-fixed-footer">
+   <div class="modal-content">
+        
+                {{publicacionesForm}}
+
+                <!-- falta el submit -->
+                <!-- <input id='enviarAjax' type="submit"> -->
+        
+   </div>
+   <div class="modal-footer">
+     <a id='guardarPublicacion'  class="waves-effect waves-green btn-flat">Agree</a>
+     
+   </div>
+ </div>
 
 
             <!-- ############################################################################## -->
@@ -613,32 +614,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row col-md-12 form-group">
+                                <h5 class="card-title">Calidad de formación recibida</h5>  
+                                
+                        </div>
+                        <div class="row col-md-12 form-group">
+                                <div class="row col-md-12 form-group">
+                                <label>{{form.procesoDeInformacionUnimar.label}}</label>
+                                </div>
+                                <div class="row col-md-12 form-group">
+                                {{form.procesoDeInformacionUnimar}}
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title">Calidad de formación recibida</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row col-md-12 form-group">
-                            
-                            <label>{{form.procesoDeInformacionUnimar.label}}</label>
-                      
-                            
-                        </div>
-                        <div class="row col-md-12 form-group">
-                            
-                            {{form.procesoDeInformacionUnimar}}
-                      
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+
+            
 
     </form>
     </div>
@@ -666,6 +661,26 @@
 
 {% block javascript%}
 	 <script>
+         $(document).ready(function(){
+            $('.modal').modal();
+        });
+        
+        // #########################################################################
+        // estilos de los select 
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            //var instances = M.FormSelect.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+        // #########################################################################
+        
+
+
 
 
         $(document).ready(function(){
@@ -853,6 +868,7 @@
 
         }
 
+        
 
         $('#enviarAjax').on('click', function(){
             var id_titulo_obtenido =  $('#id_titulo_obtenido').val();
@@ -906,7 +922,9 @@
                                 $('#id_institucion').val('');
                                 $('#id_anioGraduacion').val('');
                                 $('#id_nivel_educacion_formal').val('');
-                                $('#exampleModal').modal('toggle');
+                                
+                                $('#exampleModal').modal('close');
+                                
                             
                     document.querySelector('.aux').innerHTML += html;
                     //var a = json_loads(resp)
@@ -1057,7 +1075,7 @@
             var id_titulo_publicacion =  $('#id_titulo_publicacion').val();
             var id_anio =  $('#id_anio').val();
             var id_tipo_publicacion =  $('#id_tipo_publicacion').val();
-            
+            console.log('se fye');
             if(id_titulo_publicacion != "" && id_anio != "" && id_tipo_publicacion != ""){
 
             var ed = {
@@ -1101,7 +1119,12 @@
                   $('#id_titulo_publicacion').val('');
                     $('#id_anio').val('');
                     $('#id_tipo_publicacion').val('');
-                    $('#publicaciones').modal('toggle');
+                    // $('#publicaciones').modal({dismissible: false});      
+                    // $('#publicaciones').modal('close');
+                    // $('#publicaciones').modal('toggle');
+                    var instance = M.Modal.getInstance(document.querySelector('#publicaciones'));
+                    instance.destroy();
+                    instance.close();
                     }
                   
             });

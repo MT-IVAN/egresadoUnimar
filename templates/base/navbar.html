@@ -18,50 +18,22 @@
     <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/material-dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/sociales.css' %}">
-  
+
+    <!-- material ice css -->
+    <link rel="stylesheet" href="{% static 'material-ice/css/materialize.min.css' %}">
 
   </head>
   <body>
 
 
-<!--Navbar-->
-<nav class="navbar navbar-expand-md navbar-dark primary-color">
-
-  <!-- Navbar brand -->
-
-
-  <!-- Collapse button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Collapsible content -->
-  <div class="collapse navbar-collapse" id="basicExampleNav">
-
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <fg class="nav-link" href="">Egresados Unimar
-        </fg>
-      </li>
-      
-      
-
-     
-
-    </ul>
-    <!-- Links -->
-
-    <form class="form-inline">
-      <div class="md-form my-0">
-        <a class="nav-link" href="{% url 'login'%}?action=logout">Cerrar sesiòn</a>
+    <nav>
+      <div class="nav-wrapper grey">
+        <a href="#" class="brand-logo">Egresados Unimar</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="{% url 'login'%}?action=logout">Cerrar sesiòn</a></li>
+        </ul>
       </div>
-    </form>
-  </div>
-  <!-- Collapsible content -->
-
-</nav>
+    </nav>
 
 {% block content%}
 
@@ -129,8 +101,11 @@
   <!--  Notifications Plugin    -->
   <script src="{% static 'assets/js/plugins/bootstrap-notify.js' %}"></script>
 
+  <!-- js de material ice -->
+  <script src="{% static 'material-ice/js/materialize.min.js' %}"></script>
+
     
-  <script>
+  <!-- <script>
     $('.datetimepicker').datetimepicker({
     icons: {
         time: "fa fa-clock-o",
@@ -144,7 +119,7 @@
         close: 'fa fa-remove'
     }
 });
-  </script>
+  </script> -->
   <!--<script src="{% static 'assets/js/material-dashboard.min.js' %}" type="text/javascript"></script>-->
 
    {% block javascript%}
