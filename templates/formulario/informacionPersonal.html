@@ -23,97 +23,101 @@
                     </div>
                     <div class="card-body">
                     <!--inicio del cardbody-->
-                        <div class="row col-md-12">
+                        <div class="row">
 
-                            <div class="col-md-3 form-group">
+                            <div class="col s3 form-group">
                                 <label>Identificación</label>
                                <label class="form-control" style="background: #fff"> {{personaOtros.identificacion}}</label>
                             </div>
-                            <div class="col-md-3 form-group">
+                            <div class="col s3 form-group">
                                 <label>Fecha de nacimiento</label>
                                 <label class="form-control" style="background: #fff">{{personaOtros.fechaNacimiento}}</label>
                             </div>
 
-                            <div class="col-md-3 form-group">
+                            <div class="col s3 form-group">
                                     <label>genero</label>
                                     <label class="form-control" style="background: #fff">{{personaOtros.genero}}</label>
                             </div>
-                            <div class="col-md-3 form-group">
+                            <div class="col s3 form-group">
                                 <label>Nombres</label>
                                 <label class="form-control" style="background: #fff">{{personaOtros.nombres}}</label>
                             </div>
                         </div>
 
-                        <div class="row col-md-12">
-                            <div class="col-md-4 form-group">
+                        <div class="row ">
+                            <div class="col s4 form-group">
                                 <label>Apellidos</label>
                                 <label class="form-control" style="background: #fff">{{personaOtros.apellidos}}</label>
                             </div>
 
-                            <div class="col-md-4 form-group">
+                            <div class="col s4 form-group">
                                 <label>Programa</label>
                                 <label class="form-control" style="background: #fff">{{personaOtros.programa}}</label>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col s4 form-group">
                                 <label>Fecha de grado</label>
                                 <label class="form-control" style="background: #fff">{{personaOtros.fechaGrado}}</label>
                             </div>
                         </div>
 
 
-                        <div class="row col-md-12">
+                        <div class="row">
 
-                            <div class="col-md-4 form-group">
-                                <label>{{form.estado_civil.label}}</label>
+                            <div class="col s4 input-field">
+                                
                                 {{form.estado_civil}}
+                                <label for="id_estado_civil">{{form.estado_civil.label}}</label>
                             </div>
 
-                            <div class="col-md-4 form-group">
-                                <label>Dirección de residencia</label>
-                               {{form.direccionResidencia}}
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label>Ciudad</label>
-                                {{form.ciudad}}
-                            </div>
+                            <div class="espacioArriba input-field col s4">
+                                    {{form.direccionResidencia}}
+                                    <label for="id_direccionResidencia">Dirección de residencia</label>  
+                            </div> 
+
+                            
+                            
+                            <div class="col s4 input-field">
+                                    <label>Pais</label>
+                                    {{form.pais}}
+                                    <datalist id="paises">
+                                        <option value="Internet Explorer">
+                                        <option value="Firefox">
+                                        <option value="Chrome">
+                                        <option value="Opera">
+                                        <option value="Safari">
+                                    </datalist>
+    
+                                </div>
                         </div>  
 
                     
-                        <div class="row col-md-12">
-                            <div class="col-md-4 form-group">
+                        <div class="row">
+                            <div class="col s4 input-field">
                                 <label>Departamento</label>
                                 {{form.departamento}}
                             </div>
-                            <div class="col-md-4 form-group">
-                                <label>Pais</label>
-                                {{form.pais}}
-                                <datalist id="paises">
-                                    <option value="Internet Explorer">
-                                    <option value="Firefox">
-                                    <option value="Chrome">
-                                    <option value="Opera">
-                                    <option value="Safari">
-                                </datalist>
-
+                            <div class="col s4 input-field">
+                                <label>Ciudad</label>
+                                {{form.ciudad}}
                             </div>
 
-                            <div class="col-md-4 form-group">
+                            <div class="col s4 input-field">
                                 <label>Teléfono fijo</label>
                                 {{form.telefonoFijo}}
                             </div>
                         </div>
-                        <div class="row col-md-12">
-                            <div class="col-md-4 form-group">
-                                <label>Celular</label>
+                        <div class="row ">
+                            <div class="col s4 input-field">
+                                <label>Teléfono de contacto(Celular)</label>
                                 {{form.celular}}
                             </div>
 
-                            <div class="col-md-4 form-group">
+                            <div class="col s4 input-field">
                               <label>Email 1</label>
                                 {{form.email1}}
                             </div>
 
-                            <div class="col-md-4 form-group">
+                            <div class="col s4 input-field">
                                 <label>Email 2</label>
                                 {{form.email2}}
                             </div>
@@ -174,45 +178,43 @@
                             </table>
                         </div>
 
-                          <!-- Button trigger modal -->
-                            <div class="col-xs-12">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Agregar estudio
-                                </button>
+                          <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger light-blue darken-4" href="#modal1">Agregar nueva información</a>
+
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal modal-fixed-footer modalInstitucion">
+                        <div class="modal-content">
+                           
+                            <div class="input-field col s12">
+                                {{degreeForm.titulo_obtenido}}
+                                <label for="id_titulo_obtenido">{{degreeForm.titulo_obtenido.label}}</label>   
+                            </div> 
+                            <div class="input-field col s12">
+                                {{degreeForm.institucion}}
+                                <label for="id_institucion">{{degreeForm.institucion.label}}</label>   
+                            </div>                            
+                            <div class="input-field col s12">
+                                {{degreeForm.anioGraduacion}}
+                                <label for="id_anioGraduacion">{{degreeForm.anioGraduacion.label}}</label>   
                             </div>
+                            <div class="input-field col s12">
+                                {{degreeForm.nivel_educacion_formal}}
+                                <label for="id_nivel_educacion_formal">{{degreeForm.nivel_educacion_formal.label}}</label>   
+                            </div>  
+                                
+                        </div>
+                        <div class="modal-footer">
+                            <a id='enviarAjax'  class="waves-effect waves-green btn-flat ">Agregar</a>
+                            
+                        </div>
+                        </div>
                     <!--fin del cardbody-->
                     </div>
                 </div>
             </div>
 
 
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Agregar estudio</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-                    <form2 method="POST" id="estudio">
-                        
-                        {{degreeForm}}
-
-                        <!-- falta el submit -->
-                        <!-- <input id='enviarAjax' type="submit"> -->
-                    </form2>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary"  id='enviarAjax' form="">Save changes</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            
 
 
 
@@ -346,11 +348,33 @@
                             </table>
                         </div>
 
-                         <!-- Button trigger modal -->
-                        <div class="col-xs-12">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#participacionComunidad">
-                            Agregar participación en comunidades
-                            </button>
+                       
+                        <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger light-blue darken-4" href="#modal2">Agregar nueva participación</a>
+
+                        <!-- Modal Structure -->
+                        <div id="modal2" class="modal modal-fixed-footer modalParticipaciones">
+                        <div class="modal-content">
+                                 
+                            <div class="input-field col s12">
+                                    {{participacionesForm.tipoDeComunidad}}
+                                    <label for="id_tipoDeComunidad">{{participacionesForm.tipoDeComunidad.label}}</label>   
+                            </div>                            
+                            <div class="input-field col s12">
+                                    {{participacionesForm.nombreDeLaComunidad}}
+                                    <label for="id_nombreDeLaComunidad">{{participacionesForm.nombreDeLaComunidad.label}}</label>   
+                            </div> 
+                            <div class="input-field col s12">
+                                    {{participacionesForm.ambitoParticipacion}}
+                                    <label for="id_ambitoParticipacion">{{participacionesForm.ambitoParticipacion.label}}</label>   
+                            </div> 
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <a id='enviarAjaxParticipaciones'  class="waves-effect waves-green btn-flat ">Agregar</a>
+                            
+                        </div>
                         </div>
                     </div>
 
@@ -360,33 +384,7 @@
 
 
              
-          <!-- Modal -->
-          <div class="modal fade" id="participacionComunidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Agregar participación en comunidades</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-                <form3 method="POST" id="participacion">
-                    {% csrf_token %}
-                    {{participacionesForm}}
-
-                    <!-- falta el submit -->
-                    <!-- <input id='enviarAjax' type="submit"> -->
-                </form3>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary"  id='enviarAjaxParticipaciones'>Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          
 
             <!-- ############################################################################## -->
 
@@ -446,12 +444,331 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- Button trigger modal -->
-                            <div class="col-xs-12">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#distincion">
-                                Agregar distinción o reconocimiento
-                            </button>
+                             <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger light-blue darken-4" href="#modal3">Agregar nuevo reconocimiento</a>
+
+                        <!-- Modal Structure -->
+                        <div id="modal3" class="modal modal-fixed-footer modalReconocimiento">
+                        <div class="modal-content">
+                                
+                                
+                            <div class="input-field col s12">
+                                {{reconocimietosForm.titulo_obtenido_reconocimiento}}
+                                <label for="id_titulo_obtenido_reconocimiento">{{reconocimietosForm.titulo_obtenido_reconocimiento.label}}</label>
                             </div>
+                            <div class="input-field col s12">
+                                {{reconocimietosForm.institucionReconocimiento}}
+                                <datalist id="universidades">
+                                        <option value="CENTRO EDUCACIONAL DE COMPUTOS Y SISTEMAS-CEDESISTEMAS-">            
+                                        <option value="COLEGIO DE ESTUDIOS SUPERIORES DE ADMINISTRACION-CESA-">            
+                                        <option value="COLEGIO INTEGRADO NACIONAL ORIENTE DE CALDAS - IES CINOC">            
+                                        <option value="COLEGIO MAYOR DE ANTIOQUIA">            
+                                        <option value="COLEGIO MAYOR DE BOLIVAR">            
+                                        <option value="COLEGIO MAYOR DE NUESTRA SEÑORA DEL ROSARIO">            
+                                        <option value="COLEGIO MAYOR DEL CAUCA">            
+                                        <option value="CONSERVATORIO DEL TOLIMA">            
+                                        <option value="CORPORACION ACADEMIA SUPERIOR DE ARTES">            
+                                        <option value="CORPORACION ACADEMIA TECNOLOGICA DE COLOMBIA -ATEC-">            
+                                        <option value="CORPORACION BOLIVARIANA DE EDUCACION SUPERIOR - CORBES -">            
+                                        <option value="CORPORACION CENTRO DE ESTUDIOS ARTISTICOS Y TECNICOS-CEART-">            
+                                        <option value="CORPORACION CENTRO DE NUESTRA SEÑORA DE LAS MERCEDES">            
+                                        <option value="CORPORACION CENTRO TECNICO ARQUITECTONICO">            
+                                        <option value="CORPORACION COLEGIATURA COLOMBIANA">            
+                                        <option value="CORPORACION COLOMBO - ALEMANA PARA LA FORMACION TECNOLOGICA-ICAFT-">            
+                                        <option value="CORPORACION CRISTIANA UNIVERSITARIA DE SAN ANDRES, PROVIDENCIA Y SANTA CATALINA">            
+                                        <option value="CORPORACION DE EDUCACION DEL NORTE DEL TOLIMA - COREDUCACION">            
+                                        <option value="CORPORACION DE EDUCACION SUPERIOR MIGUEL CAMACHO PEREA">            
+                                        <option value="CORPORACION DE EDUCACION TECNOLOGICA COLSUBSIDIO EADS">            
+                                        <option value="CORPORACION DE ESTUDIOS SUPERIORES SALAMANDRA">            
+                                        <option value="CORPORACION DE ESTUDIOS TECNOLOGICOS DEL NORTE DEL VALLE">            
+                                        <option value="CORPORACION EDUCATIVA DEL LITORAL">            
+                                        <option value="CORPORACION EDUCATIVA INSTITUTO TECNICO SUPERIOR DE ARTES, IDEARTES">            
+                                        <option value="CORPORACION EDUCATIVA -ITAE-">            
+                                        <option value="CORPORACION EDUCATIVA TALLER 5 CENTRO DE DISEÑO">            
+                                        <option value="CORPORACION ESCUELA DE ARTES Y LETRAS">            
+                                        <option value="CORPORACION ESCUELA SUPERIOR DE ADMINISTRACION Y ESTUDIOS TECNOLOGICOS- EAE">            
+                                        <option value="CORPORACION ESCUELA TECNOLOGICA DEL ORIENTE">            
+                                        <option value="CORPORACION INSTITUTO DE ADMINISTRACION Y FINANZAS - CIAF">            
+                                        <option value="CORPORACION INSTITUTO SUPERIOR DE EDUCACION SOCIAL-ISES-">            
+                                        <option value="CORPORACION INTERAMERICANA DE EDUCACION SUPERIOR-CORPOCIDES">            
+                                        <option value="CORPORACION INTERNACIONAL PARA EL DESARROLLO EDUCATIVO -CIDE-">            
+                                        <option value="CORPORACION JHON F. KENNEDY">            
+                                        <option value="CORPORACION POLITECNICO COLOMBO ANDINO">            
+                                        <option value="CORPORACION POLITECNICO DE LA COSTA ATLANTICA">            
+                                        <option value="CORPORACION POLITECNICO MARCO FIDEL SUAREZ">            
+                                        <option value="CORPORACION REGIONAL DE EDUCACION SUPERIOR-CRES-DE CALI">            
+                                        <option value="CORPORACION TECNICA DE COLOMBIA -CORPOTEC-">            
+                                        <option value="CORPORACION TECNOLOGICA  SUPERIOR SIGLO  XXI">            
+                                        <option value="CORPORACION TECNOLOGICA CATOLICA DE OCCIDENTE - TECOC -">            
+                                        <option value="CORPORACION TECNOLOGICA DE BOGOTA - CTB">            
+                                        <option value="CORPORACION TECNOLOGICA INDOAMERICA">            
+                                        <option value="CORPORACION TECNOLOGICA INDUSTRIAL COLOMBIANA - TEINCO">            
+                                        <option value="CORPORACION TECNOLOGICO COPACABANA - TECO -">            
+                                        <option value="CORPORACION UNIFICADA NACIONAL DE EDUCACION SUPERIOR-CUN-">            
+                                        <option value="CORPORACION UNIVERSAL DE INVESTIGACION Y TECNOLOGIA -CORUNIVERSITEC-">            
+                                        <option value="CORPORACION UNIVERSIDAD DE LA COSTA CUC">            
+                                        <option value="CORPORACION UNIVERSIDAD PILOTO DE COLOMBIA">            
+                                        <option value="CORPORACION UNIVERSITARIA  UNITEC">            
+                                        <option value="CORPORACION UNIVERSITARIA ADVENTISTA - UNAC">            
+                                        <option value="CORPORACION UNIVERSITARIA AMERICANA">            
+                                        <option value="CORPORACION UNIVERSITARIA ANTONIO JOSE DE SUCRE - CORPOSUCRE">            
+                                        <option value="CORPORACION UNIVERSITARIA AUTONOMA DE NARIÑO -AUNAR-">            
+                                        <option value="CORPORACION UNIVERSITARIA AUTONOMA DEL CAUCA">            
+                                        <option value="CORPORACION UNIVERSITARIA CENDA">            
+                                        <option value="CORPORACION UNIVERSITARIA CENTRO SUPERIOR - UNICUCES">            
+                                        <option value="CORPORACION UNIVERSITARIA DE ASTURIAS">            
+                                        <option value="CORPORACION UNIVERSITARIA DE CIENCIA Y DESARROLLO - UNICIENCIA">            
+                                        <option value="CORPORACION UNIVERSITARIA DE CIENCIA Y TECNOLOGIA DE COLOMBIA">            
+                                        <option value="CORPORACION UNIVERSITARIA DE COLOMBIA IDEAS">            
+                                        <option value="CORPORACION UNIVERSITARIA DE INVESTIGACION Y DESARROLLO - UDI">            
+                                        <option value="CORPORACION UNIVERSITARIA DE SABANETA J. EMILIO VALDERRAMA">            
+                                        <option value="CORPORACION UNIVERSITARIA DE SANTA ROSA DE CABAL-UNISARC-">            
+                                        <option value="CORPORACION UNIVERSITARIA DEL CARIBE - CECAR">            
+                                        <option value="CORPORACION UNIVERSITARIA DEL HUILA-CORHUILA-">            
+                                        <option value="CORPORACION UNIVERSITARIA DEL META">            
+                                        <option value="CORPORACION UNIVERSITARIA EMPRESARIAL ALEXANDER VON HUMBOLDT - CUE">            
+                                        <option value="CORPORACION UNIVERSITARIA EMPRESARIAL DE SALAMANCA">            
+                                        <option value="CORPORACION UNIVERSITARIA IBEROAMERICANA">            
+                                        <option value="CORPORACION UNIVERSITARIA LASALLISTA">            
+                                        <option value="CORPORACION UNIVERSITARIA LATINOAMERICANA - CUL">            
+                                        <option value="CORPORACION UNIVERSITARIA MINUTO DE DIOS -UNIMINUTO-">            
+                                        <option value="CORPORACION UNIVERSITARIA PARA EL DESARROLLO EMPRESARIAL Y SOCIAL- CUDES">            
+                                        <option value="CORPORACION UNIVERSITARIA RAFAEL NUÑEZ">            
+                                        <option value="CORPORACION UNIVERSITARIA REFORMADA - CUR -">            
+                                        <option value="CORPORACION UNIVERSITARIA REGIONAL DEL CARIBE -IAFIC-">            
+                                        <option value="CORPORACION UNIVERSITARIA REMINGTON">            
+                                        <option value="CORPORACION UNIVERSITARIA REPUBLICANA">            
+                                        <option value="DIRECCION NACIONAL DE ESCUELAS">            
+                                        <option value="ELITE- ESCUELA LATINOAMERICANA DE INGENIEROS, TECNOLOGOS Y EMPRESARIOS">            
+                                        <option value="ESCUELA  MILITAR DE SUBOFICIALES SARGENTO INOCENCIO CHINCA">            
+                                        <option value="ESCUELA COLOMBIANA DE CARRERAS INDUSTRIALES">            
+                                        <option value="ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO">            
+                                        <option value="ESCUELA DE ADMINISTRACION Y MERCADOTECNIA DEL QUINDIO E.A.M.">            
+                                        <option value="ESCUELA DE COMUNICACIONES">            
+                                        <option value="ESCUELA DE FORMACION DE INFANTERIA DE MARINA">            
+                                        <option value="ESCUELA DE INGENIERIA DE ANTIOQUIA">            
+                                        <option value="ESCUELA DE INGENIEROS MILITARES">            
+                                        <option value="ESCUELA DE INVESTIGACION CRIMINAL">            
+                                        <option value="ESCUELA DE LOGISTICA">            
+                                        <option value="ESCUELA DE SUBOFICIALES DE LA FUERZA AEREA COLOMBIANA ANDRES M. DIAZ">            
+                                        <option value="ESCUELA DE TECNOLOGIAS DE ANTIOQUIA -ETA-">            
+                                        <option value="ESCUELA MILITAR DE AVIACION MARCO FIDEL SUAREZ">            
+                                        <option value="ESCUELA MILITAR DE CADETES GENERAL JOSE MARIA CORDOVA">            
+                                        <option value="ESCUELA NACIONAL DEL DEPORTE">            
+                                        <option value="ESCUELA NAVAL DE CADETES ALMIRANTE PADILLA">            
+                                        <option value="ESCUELA NAVAL DE SUBOFICIALES ARC BARRANQUILLA">            
+                                        <option value="ESCUELA SUPERIOR DE ADMINISTRACION PUBLICA-ESAP-">            
+                                        <option value="ESCUELA SUPERIOR DE CIENCIAS EMPRESARIALES - ECIEM">            
+                                        <option value="ESCUELA SUPERIOR DE GUERRA">            
+                                        <option value="ESCUELA SUPERIOR DE OFTALMOLOGIA, INSTITUTO BARRAQUER DE AMERICA">            
+                                        <option value="ESCUELA SUPERIOR TECNOLOGICA DE ARTES DEBORA ARANGO">            
+                                        <option value="ESCUELA TECNOLOGICA INSTITUTO TECNICO CENTRAL">            
+                                        <option value="FUNDACION ACADEMIA DE DIBUJO PROFESIONAL">            
+                                        <option value="FUNDACION CENTRO COLOMBIANO DE ESTUDIOS PROFESIONALES, -F.C.E.C.E.P.">            
+                                        <option value="FUNDACION CENTRO DE INVESTIGACION DOCENCIA Y CONSULTORIA ADMINISTRATIVA-F-CIDCA-">            
+                                        <option value="FUNDACION CENTRO UNIVERSITARIO DE BIENESTAR RURAL">            
+                                        <option value="FUNDACION DE EDUCACION SUPERIOR ESATEC">            
+                                        <option value="FUNDACION DE EDUCACION SUPERIOR NUEVA AMERICA">            
+                                        <option value="FUNDACION DE EDUCACION SUPERIOR SAN JOSE -FESSANJOSE-">            
+                                        <option value="FUNDACION DE EDUCACION SUPERIOR SIKUANI - FESI">            
+                                        <option value="FUNDACION DE ESTUDIOS SUPERIORES - MONSEÑOR ABRAHAM ESCUDERO MONTOYA  - FUNDES">            
+                                        <option value="FUNDACION DE ESTUDIOS SUPERIORES COMFANORTE -F.E.S.C.-">            
+                                        <option value="FUNDACION DE ESTUDIOS SUPERIORES UNIVERSITARIOS DE URABA ANTONIO ROLDAN BETANCUR">            
+                                        <option value="FUNDACION ESCUELA COLOMBIANA DE HOTELERIA Y TURISMO-ECOTET-">            
+                                        <option value="FUNDACION ESCUELA COLOMBIANA DE MERCADOTECNIA -ESCOLME-">            
+                                        <option value="FUNDACION ESCUELA COLOMBIANA DE REHABILITACION">            
+                                        <option value="FUNDACION ESCUELA TECNOLOGICA DE NEIVA - JESUS OVIEDO PEREZ -FET">            
+                                        <option value="FUNDACION INSTITUTO DE CARRERAS TECNICAS PROFESIONALES-FIDCI-">            
+                                        <option value="FUNDACION INSTITUTO SUPERIOR DE CARRERAS TECNICAS-INSUTEC-">            
+                                        <option value="FUNDACION INTERAMERICANA TECNICA-FIT-">            
+                                        <option value="FUNDACION PARA LA EDUCACION SUPERIOR REAL DE COLOMBIA">            
+                                        <option value="FUNDACION PARA LA EDUCACION SUPERIOR SAN MATEO">            
+                                        <option value="FUNDACION POLITECNICA - CORPO">            
+                                        <option value="FUNDACION TECNOLOGICA ANTONIO DE AREVALO">            
+                                        <option value="FUNDACION TECNOLOGICA AUTONOMA DE BOGOTA-FABA-">            
+                                        <option value="FUNDACION TECNOLOGICA AUTONOMA DEL PACIFICO">            
+                                        <option value="FUNDACION TECNOLOGICA COLOMBO GERMANA">            
+                                        <option value="FUNDACION TECNOLOGICA DE MADRID">            
+                                        <option value="FUNDACION TECNOLOGICA RURAL - COREDI">            
+                                        <option value="FUNDACION TECNOLOGICA SAN FRANCISCO DE ASIS">            
+                                        <option value="FUNDACION UNIVERSIDAD AUTONOMA DE COLOMBIA -FUAC-">            
+                                        <option value="FUNDACION UNIVERSIDAD DE AMERICA">            
+                                        <option value="FUNDACION UNIVERSIDAD DE BOGOTA - JORGE TADEO LOZANO">            
+                                        <option value="FUNDACION UNIVERSITARIA AGRARIA DE COLOMBIA -UNIAGRARIA-">            
+                                        <option value="FUNDACION UNIVERSITARIA AUTONOMA DE LAS AMERICAS">            
+                                        <option value="FUNDACION UNIVERSITARIA BELLAS ARTES">            
+                                        <option value="FUNDACION UNIVERSITARIA CAFAM">            
+                                        <option value="FUNDACION UNIVERSITARIA CATOLICA DEL NORTE">            
+                                        <option value="FUNDACION UNIVERSITARIA CATOLICA LUMEN GENTIUM">            
+                                        <option value="FUNDACION UNIVERSITARIA CERVANTINA SAN AGUSTIN - UNICERVANTINA SAN AGUSTIN">            
+                                        <option value="FUNDACION UNIVERSITARIA CIEO - UNICIEO">            
+                                        <option value="FUNDACION UNIVERSITARIA CLARETIANA - FUCLA">            
+                                        <option value="FUNDACION UNIVERSITARIA COLOMBO INTERNACIONAL - UNICOLOMBO">            
+                                        <option value="FUNDACION UNIVERSITARIA COMFENALCO SANTANDER">            
+                                        <option value="FUNDACION UNIVERSITARIA DE CIENCIAS DE LA SALUD">            
+                                        <option value="FUNDACION UNIVERSITARIA DE POPAYAN">            
+                                        <option value="FUNDACION UNIVERSITARIA DE SAN GIL - UNISANGIL -">            
+                                        <option value="FUNDACION UNIVERSITARIA DEL AREA ANDINA">            
+                                        <option value="FUNDACION UNIVERSITARIA ESUMER">            
+                                        <option value="FUNDACION UNIVERSITARIA INTERNACIONAL DEL TROPICO AMERICANO">            
+                                        <option value="FUNDACION UNIVERSITARIA JUAN DE CASTELLANOS">            
+                                        <option value="FUNDACION UNIVERSITARIA JUAN N. CORPAS">            
+                                        <option value="FUNDACION UNIVERSITARIA KONRAD LORENZ">            
+                                        <option value="FUNDACION UNIVERSITARIA LOS LIBERTADORES">            
+                                        <option value="FUNDACION UNIVERSITARIA LUIS AMIGO FUNLAM">            
+                                        <option value="FUNDACION UNIVERSITARIA MARIA CANO">            
+                                        <option value="FUNDACION UNIVERSITARIA MONSERRATE">            
+                                        <option value="FUNDACION UNIVERSITARIA NAVARRA - UNINAVARRA">            
+                                        <option value="FUNDACION UNIVERSITARIA PARA EL DESARROLLO HUMANO - UNINPAHU">            
+                                        <option value="FUNDACIÓN UNIVERSITARIA SAN ALFONSO- FUSA-">            
+                                        <option value="FUNDACION UNIVERSITARIA SAN MARTIN">            
+                                        <option value="FUNDACION UNIVERSITARIA SANITAS">            
+                                        <option value="FUNDACION UNIVERSITARIA SEMINARIO BIBLICO DE COLOMBIA">            
+                                        <option value="FUNDACION UNIVERSITARIA SEMINARIO TEOLOGICO BAUTISTA INTERNACIONAL">            
+                                        <option value="FUNDACION UNIVERSITARIA TECNOLOGICO COMFENALCO - CARTAGENA">            
+                                        <option value="FUNDACION UNIVERSITARIA-CEIPA-">            
+                                        <option value="FUNDACION UNIVESITARIA EMPRESARIAL DE LA CAMARA DE COMERCIO DE BOGOTA">            
+                                        <option value="INSTITUCION UNIVERSITARIA  SALAZAR Y HERRERA">            
+                                        <option value="INSTITUCION UNIVERSITARIA ANTONIO JOSE CAMACHO">            
+                                        <option value="INSTITUCION UNIVERSITARIA BELLAS ARTES Y CIENCIAS DE BOLIVAR">            
+                                        <option value="INSTITUCION UNIVERSITARIA CENTRO DE ESTUDIOS SUPERIORES MARIA GORETTI">            
+                                        <option value="INSTITUCION UNIVERSITARIA COLEGIOS DE COLOMBIA - UNICOC">            
+                                        <option value="INSTITUCION UNIVERSITARIA COLOMBO AMERICANA - UNICA">            
+                                        <option value="INSTITUCION UNIVERSITARIA CONOCIMIENTO E INNOVACION PARA LA JUSTICIA – CIJ">            
+                                        <option value="INSTITUCION UNIVERSITARIA DE COLOMBIA - UNIVERSITARIA DE COLOMBIA">            
+                                        <option value="INSTITUCION UNIVERSITARIA DE ENVIGADO">            
+                                        <option value="INSTITUCION UNIVERSITARIA LATINA - UNILATINA">            
+                                        <option value="INSTITUCIÓN UNIVERSITARIA PASCUAL BRAVO">            
+                                        <option value="INSTITUCION UNIVERSITARIA TECNOLOGICA DE COMFACAUCA I.T.C.">            
+                                        <option value="INSTITUTO CARO Y CUERVO">            
+                                        <option value="INSTITUTO DE EDUCACION EMPRESARIAL-IDEE-">            
+                                        <option value="INSTITUTO DE EDUCACION TECNICA PROFESIONAL DE ROLDANILLO">            
+                                        <option value="INSTITUTO DEPARTAMENTAL DE BELLAS ARTES">            
+                                        <option value="INSTITUTO NACIONAL DE FORMACION TECNICA PROFESIONAL - HUMBERTO VELASQUEZ GARCIA">            
+                                        <option value="INSTITUTO NACIONAL DE FORMACION TECNICA PROFESIONAL DE SAN ANDRES">            
+                                        <option value="INSTITUTO NACIONAL DE FORMACION TECNICA PROFESIONAL DE SAN JUAN DEL CESAR">            
+                                        <option value="INSTITUTO SUPERIOR DE CIENCIAS SOCIALES Y ECONOMICO FAMILIARES-ICSEF-">            
+                                        <option value="INSTITUTO SUPERIOR DE EDUCACION RURAL-ISER-">            
+                                        <option value="INSTITUTO TECNICO AGRICOLA ITA">            
+                                        <option value="INSTITUTO TECNICO NACIONAL DE COMERCIO SIMON RODRIGUEZ - INTENALCO">            
+                                        <option value="INSTITUTO TECNOLOGICO COMFAMILIAR DE PUTUMAYO">            
+                                        <option value="INSTITUTO TECNOLOGICO DE ELECTRONICA Y COMUNICACIONES-ITEC-">            
+                                        <option value="INSTITUTO TECNOLOGICO DE SOLEDAD ATLANTICO">            
+                                        <option value="INSTITUTO TECNOLOGICO DEL PUTUMAYO">            
+                                        <option value="INSTITUTO TECNOLOGICO METROPOLITANO">            
+                                        <option value="INSTITUTO TOLIMENSE DE FORMACION TECNICA PROFESIONAL">            
+                                        <option value="INSTITUTO UNIVERSITARIO DE HISTORIA DE COLOMBIA">            
+                                        <option value="INSTITUTO UNIVERSITARIO DE LA PAZ">            
+                                        <option value="LCI - FUNDACION TECNOLOGICA">            
+                                        <option value="POLITECNICO COLOMBIANO JAIME ISAZA CADAVID">            
+                                        <option value="POLITECNICO GRANCOLOMBIANO">            
+                                        <option value="POLITECNICO INDOAMERICANO">            
+                                        <option value="POLITECNICO INTERNACIONAL INSTITUCION DE EDUCACION SUPERIOR">            
+                                        <option value="POLITECNICO SANTAFE DE BOGOTA">            
+                                        <option value="PONTIFICIA UNIVERSIDAD JAVERIANA">            
+                                        <option value="SERVICIO NACIONAL DE APRENDIZAJE-SENA-">            
+                                        <option value="TECNOLOGICA DEL SUR">            
+                                        <option value="TECNOLOGICA FITEC">            
+                                        <option value="TECNOLOGICO DE ANTIOQUIA">            
+                                        <option value="UNIDAD CENTRAL DEL VALLE DEL CAUCA">            
+                                        <option value="UNIDAD TECNICA PROFESIONAL DE SEVILLA-UNITEPS-">            
+                                        <option value="UNIDADES TECNOLOGICAS DE SANTANDER">            
+                                        <option value="UNION AMERICANA DE EDUCACION SUPERIOR- UNION AMERICANA">            
+                                        <option value="UNIPANAMERICANA - FUNDACION UNIVERSITARIA PANAMERICANA">            
+                                        <option value="UNIVERSIDAD ANTONIO NARIÑO">            
+                                        <option value="UNIVERSIDAD AUTONOMA DE BUCARAMANGA-UNAB-">            
+                                        <option value="UNIVERSIDAD AUTONOMA DE MANIZALES">            
+                                        <option value="UNIVERSIDAD AUTONOMA DE OCCIDENTE">            
+                                        <option value="UNIVERSIDAD AUTONOMA DEL CARIBE">            
+                                        <option value="UNIVERSIDAD AUTONOMA LATINOAMERICANA-UNAULA-">            
+                                        <option value="UNIVERSIDAD CATOLICA DE COLOMBIA">            
+                                        <option value="UNIVERSIDAD CATOLICA DE MANIZALES">            
+                                        <option value="UNIVERSIDAD CATOLICA DE ORIENTE">            
+                                        <option value="UNIVERSIDAD CATOLICA DE PEREIRA">            
+                                        <option value="UNIVERSIDAD CENTRAL">            
+                                        <option value="UNIVERSIDAD CES">            
+                                        <option value="UNIVERSIDAD COOPERATIVA DE COLOMBIA">            
+                                        <option value="UNIVERSIDAD DE ANTIOQUIA">            
+                                        <option value="UNIVERSIDAD DE BOYACA UNIBOYACA">            
+                                        <option value="UNIVERSIDAD DE CALDAS">            
+                                        <option value="UNIVERSIDAD DE CARTAGENA">            
+                                        <option value="UNIVERSIDAD DE CIENCIAS APLICADAS Y AMBIENTALES UDCA.">            
+                                        <option value="UNIVERSIDAD DE CORDOBA">            
+                                        <option value="UNIVERSIDAD DE CUNDINAMARCA-UDEC">            
+                                        <option value="UNIVERSIDAD DE IBAGUE">            
+                                        <option value="UNIVERSIDAD DE LA AMAZONIA">            
+                                        <option value="UNIVERSIDAD DE LA GUAJIRA">            
+                                        <option value="UNIVERSIDAD DE LA SABANA">            
+                                        <option value="UNIVERSIDAD DE LA SALLE">            
+                                        <option value="UNIVERSIDAD DE LOS ANDES">            
+                                        <option value="UNIVERSIDAD DE LOS LLANOS">            
+                                        <option value="UNIVERSIDAD DE MANIZALES">            
+                                        <option value="UNIVERSIDAD DE MEDELLIN">            
+                                        <option value="UNIVERSIDAD DE NARIÑO">            
+                                        <option value="UNIVERSIDAD DE PAMPLONA">            
+                                        <option value="UNIVERSIDAD DE SAN BUENAVENTURA">            
+                                        <option value="UNIVERSIDAD DE SANTANDER - UDES">            
+                                        <option value="UNIVERSIDAD DE SUCRE">            
+                                        <option value="UNIVERSIDAD DEL ATLANTICO">            
+                                        <option value="UNIVERSIDAD DEL CAUCA">            
+                                        <option value="UNIVERSIDAD DEL MAGDALENA">            
+                                        <option value="UNIVERSIDAD DEL NORTE">            
+                                        <option value="UNIVERSIDAD DEL PACIFICO">            
+                                        <option value="UNIVERSIDAD DEL QUINDIO">            
+                                        <option value="UNIVERSIDAD DEL SINU - ELIAS BECHARA ZAINUM - UNISINU -">            
+                                        <option value="UNIVERSIDAD DEL TOLIMA">            
+                                        <option value="UNIVERSIDAD DEL VALLE">            
+                                        <option value="UNIVERSIDAD DISTRITAL-FRANCISCO JOSE DE CALDAS">            
+                                        <option value="UNIVERSIDAD EAFIT-">            
+                                        <option value="UNIVERSIDAD EAN">            
+                                        <option value="UNIVERSIDAD EL BOSQUE">            
+                                        <option value="UNIVERSIDAD EXTERNADO DE COLOMBIA">            
+                                        <option value="UNIVERSIDAD FRANCISCO DE PAULA SANTANDER">            
+                                        <option value="UNIVERSIDAD ICESI">            
+                                        <option value="UNIVERSIDAD INCCA DE COLOMBIA">            
+                                        <option value="UNIVERSIDAD INDUSTRIAL DE SANTANDER">            
+                                        <option value="UNIVERSIDAD LA GRAN COLOMBIA">            
+                                        <option value="UNIVERSIDAD LIBRE">            
+                                        <option value="UNIVERSIDAD MANUELA BELTRAN-UMB-">            
+                                        <option value="UNIVERSIDAD MARIANA">            
+                                        <option value="UNIVERSIDAD METROPOLITANA">            
+                                        <option value="UNIVERSIDAD MILITAR-NUEVA GRANADA">            
+                                        <option value="UNIVERSIDAD NACIONAL ABIERTA Y A DISTANCIA UNAD">            
+                                        <option value="UNIVERSIDAD NACIONAL DE COLOMBIA">            
+                                        <option value="UNIVERSIDAD PEDAGOGICA NACIONAL">            
+                                        <option value="UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA - UPTC">            
+                                        <option value="UNIVERSIDAD PONTIFICIA BOLIVARIANA">            
+                                        <option value="UNIVERSIDAD POPULAR DEL CESAR">            
+                                        <option value="UNIVERSIDAD SANTIAGO DE CALI">            
+                                        <option value="UNIVERSIDAD SANTO TOMAS">            
+                                        <option value="UNIVERSIDAD SERGIO ARBOLEDA">            
+                                        <option value="UNIVERSIDAD SIMON BOLIVAR">            
+                                        <option value="UNIVERSIDAD SURCOLOMBIANA">            
+                                        <option value="UNIVERSIDAD TECNOLOGICA DE BOLIVAR">            
+                                        <option value="UNIVERSIDAD TECNOLOGICA DE PEREIRA - UTP">            
+                                        <option value="UNIVERSIDAD TECNOLOGICA DEL CHOCO-DIEGO LUIS CORDOBA">            
+                                        <option value="UNIVERSIDAD-COLEGIO MAYOR DE CUNDINAMARCA">            
+                                        <option value="UNIVERSITARIA AGUSTINIANA- UNIAGUSTINIANA">            
+                                        <option value="UNIVERSITARIA VIRTUAL INTERNACIONAL">            
+                                        <option value="OTRA INSTITUCIÓN">
+                                </datalist>
+                                <label for="id_institucionReconocimiento">{{reconocimietosForm.institucionReconocimiento.label}}</label>
+                            </div>    
+                            <div class="input-field col s12">
+                                {{reconocimietosForm.anioReconocimiento}}
+                                <label for="id_anioReconocimiento">{{reconocimietosForm.anioReconocimiento.label}}</label>
+                            </div>  
+                            <div class="input-field col s12">
+                                {{reconocimietosForm.ambito}}
+                                <label for="id_ambito">{{reconocimietosForm.ambito.label}}</label>
+                            </div>                       
+                                
+                        </div>
+                        <div class="modal-footer">
+                            <a id='agregarReconocimientoAjax'  class="waves-effect waves-green btn-flat ">Agregar</a>
+                            
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -461,33 +778,7 @@
               
 
               
-          <!-- Modal -->
-          <div class="modal fade" id="distincion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Agregar distinción o reconocimiento</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- AQUI VA EL CUERPO DEL FORMULARIO -->
-                <form4 method="POST" id="distincion">
-                    {% csrf_token %}
-                    {{reconocimietosForm}}
-
-                    <!-- falta el submit -->
-                    <!-- <input id='enviarAjax' type="submit"> -->
-                </form4>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id='agregarReconocimientoAjax'>Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
+         
 
 
             <!-- ############################################################################## -->
@@ -543,12 +834,38 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- Button trigger modal -->
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publicaciones">
-                                Agregar publicación
-                            </button>
+                         <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger light-blue darken-4" href="#modal4">Agregar nueva publicación</a>
+
+                        <!-- Modal Structure -->
+                        <div id="modal4" class="modal modal-fixed-footer modalPublicaciones">
+                        <div class="modal-content">
+                                
+                            <div class="input-field col s12">
+                                {{publicacionesForm.tipo_publicacion}}
+                                <label for="id_tipo_publicacion">{{publicacionesForm.tipo_publicacion.label}}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                {{publicacionesForm.titulo_publicacion}}
+                                <label for="id_titulo_publicacion">{{publicacionesForm.titulo_publicacion.label}}</label>
+                            </div>
+                            
+
+                            <div class="input-field col s12">
+                                {{publicacionesForm.anio}}
+                                <label for="id_anio">Fecha de publicacion</label>
+                            </div>
+                            
+                           
+                            
+                        
                         </div>
+                        <div class="modal-footer">
+                            <a id='guardarPublicacion'  class="waves-effect waves-green btn-flat ">Agregar</a>
+                            
+                        </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -558,24 +875,7 @@
               
           
 
- <!-- Modal Trigger -->
- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
- <!-- Modal Structure -->
- <div id="modal1" class="modal modal-fixed-footer">
-   <div class="modal-content">
-        
-                {{publicacionesForm}}
-
-                <!-- falta el submit -->
-                <!-- <input id='enviarAjax' type="submit"> -->
-        
-   </div>
-   <div class="modal-footer">
-     <a id='guardarPublicacion'  class="waves-effect waves-green btn-flat">Agree</a>
-     
-   </div>
- </div>
 
 
             <!-- ############################################################################## -->
@@ -643,6 +943,8 @@
 
 
 
+
+
  
 <div class="row">
 <div class="col-md-2"></div>
@@ -660,6 +962,8 @@
 {% endblock %}
 
 {% block javascript%}
+    <!-- <script src="../../static/assets/js/jsDeInformacionPersonal/country.js"></script> -->
+
 	 <script>
          $(document).ready(function(){
             $('.modal').modal();
@@ -922,8 +1226,9 @@
                                 $('#id_institucion').val('');
                                 $('#id_anioGraduacion').val('');
                                 $('#id_nivel_educacion_formal').val('');
-                                
-                                $('#exampleModal').modal('close');
+                                let auxIns = document.querySelector('.modalInstitucion');
+                                let instance = M.Modal.getInstance(auxIns);
+                                instance.close();
                                 
                             
                     document.querySelector('.aux').innerHTML += html;
@@ -987,11 +1292,12 @@
                             `;
 
                     document.querySelector('.auxParticipaciones').innerHTML += html;
-                        $('#participacionComunidad').modal('toggle');
                         $('#id_tipoDeComunidad').val('');
                         $('#id_nombreDeLaComunidad').val('');
                         $('#id_ambitoParticipacion').val('');
-
+                        let aux = document.querySelector('.modalParticipaciones');
+                        var instance = M.Modal.getInstance(aux);
+                        instance.close();
 
                         }
                     });
@@ -999,7 +1305,7 @@
 
             }
             else{
-                alert("Por favor llene todos los campos")
+                alert("Por favor complete todos los campos")
             }
 
                 });
@@ -1056,17 +1362,23 @@
                         `;
 
                 document.querySelector('.auxReconocimiento').innerHTML += html;
-                    $('#id_titulo_obtenido_reconocimiento').val();
+                    $('#id_titulo_obtenido_reconocimiento').val('');
                     $('#id_institucionReconocimiento').val('');
                     $('#id_anioReconocimiento').val('');
                     $('#id_ambito').val('');
-                    $('#distincion').modal('toggle');
+
+                    let aux = document.querySelector('.modalReconocimiento');
+                    var instance = M.Modal.getInstance(aux);
+                    instance.close();
+                    
                     }
                    
             });
 
                 }else{
-                    alert("Por favor llene todos los campos");
+                    console.log(id_titulo_obtenido_reconocimiento, id_institucionReconocimiento, id_anioReconocimiento, id_ambito);
+                    alert("Por favor complete todos los campos");
+                    
                 }
 
             });
@@ -1122,16 +1434,17 @@
                     // $('#publicaciones').modal({dismissible: false});      
                     // $('#publicaciones').modal('close');
                     // $('#publicaciones').modal('toggle');
-                    var instance = M.Modal.getInstance(document.querySelector('#publicaciones'));
-                    instance.destroy();
+                    let aux = document.querySelector('.modalPublicaciones');
+                    var instance = M.Modal.getInstance(aux);
                     instance.close();
+
                     }
                   
             });
 
         }
         else{
-            alert("Por favor llene todos los campos");
+            alert("Por favor complete todos los campos");
         }
         });
 

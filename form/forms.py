@@ -106,7 +106,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'programa': forms.TextInput(attrs={'class': 'validate', 'readonly':'readonly'}),
             'fechaGrado': forms.TextInput(attrs={'class': 'validate', 'readonly':'readonly'}),
             'genero': forms.TextInput(attrs={'class': 'validate', 'readonly':'readonly'}),
-            'direccionResidencia': forms.TextInput(attrs={'class': 'validate'}),
+            'direccionResidencia': forms.TextInput(attrs={'class': 'validate', 'required':'required'}),
             'ciudad': forms.TextInput(attrs={'class': 'validate'}),
             'departamento': forms.TextInput(attrs={'class': 'validate'}),
             'pais': forms.TextInput(attrs={'class': 'validate', 'list':'paises'}),
@@ -114,7 +114,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'celular': forms.TextInput(attrs={'class': 'validate'}),
             'email1': forms.EmailInput(attrs={'class': 'validate', 'required':'required'}),
             'email2': forms.EmailInput(attrs={'class': 'validate'}),
-            'estado_civil': forms.Select(attrs={'class':'validate dropdown'}),
+            'estado_civil': forms.Select(attrs={'class':'validate '}),
             # # Informacion academica
             'situacion_laboral_actual':forms.Select(attrs={'class':' dropdown   validate'}),
             'experiencia_laboral': forms.Select(attrs={'class':'validate dropdown'}),
@@ -167,10 +167,10 @@ class DegreesForm(forms.ModelForm):
             'nivel_educacion_formal':'Nivel alcanzado en educación formal',
         }
         widgets= {
-             'titulo_obtenido': forms.TextInput(attrs={'class': 'form-control'}), 
-             'institucion': forms.TextInput(attrs={'class': 'form-control'}), 
-             'anioGraduacion': DateInput(attrs={'class': 'form-control'}),
-             'nivel_educacion_formal': forms.Select(attrs={'class':'form-control dropdown'}),
+             'titulo_obtenido': forms.TextInput(attrs={'class': 'validate'}), 
+             'institucion': forms.TextInput(attrs={'class': 'validate', 'list':'universidades'}), 
+             'anioGraduacion': DateInput(attrs={'class': 'validate'}),
+             'nivel_educacion_formal': forms.Select(attrs={'class':'validate dropdown'}),
         }
         
 
@@ -191,9 +191,9 @@ class ParticipacionesForm(forms.ModelForm):
             
         }
         widgets= {
-             'tipoDeComunidad': forms.Select(attrs={'class':'form-control dropdown'}),
-             'nombreDeLaComunidad': forms.TextInput(attrs={'class': 'form-control'}), 
-             'ambitoParticipacion':  forms.Select(attrs={'class':'form-control dropdown'}),
+             'tipoDeComunidad': forms.Select(attrs={'class':'validate dropdown'}),
+             'nombreDeLaComunidad': forms.TextInput(attrs={'class': 'validate'}), 
+             'ambitoParticipacion':  forms.Select(attrs={'class':'validate dropdown'}),
              
         }
 
@@ -215,10 +215,10 @@ class ReconocimientosForm(forms.ModelForm):
             'ambito':'Ámbito',
         }
         widgets= {
-            'titulo_obtenido_reconocimiento': forms.TextInput(attrs={'class': 'form-control'}), 
-            'institucionReconocimiento': forms.TextInput(attrs={'class': 'form-control'}), 
-            'ambito': forms.Select(attrs={'class':'form-control dropdown'}),
-            'anioReconocimiento': DateInput(attrs={'class': 'form-control'}),
+            'titulo_obtenido_reconocimiento': forms.TextInput(attrs={'class': 'validate'}), 
+            'institucionReconocimiento': forms.TextInput(attrs={'class': 'validate', 'list':'universidades'}), 
+            'ambito': forms.Select(attrs={'class':'validate dropdown'}),
+            'anioReconocimiento': DateInput(attrs={'class': 'validate'}),
         }
 
       
@@ -239,8 +239,8 @@ class PublicacionesForm(forms.ModelForm):
             'tipo_publicacion': 'Tipo de publicación', 
         }
         widgets= {
-            'titulo_publicacion': forms.TextInput(attrs={'class': 'form-control'}), 
-            'anio': DateInput(attrs={'class': 'form-control'}),
-            'tipo_publicacion': forms.Select(attrs={'class':'form-control dropdown'}),
+            'titulo_publicacion': forms.TextInput(attrs={'class': 'validate'}), 
+            'anio': DateInput(attrs={'class': 'validate'}),
+            'tipo_publicacion': forms.Select(attrs={'class':'validate dropdown'}),
         }
 
