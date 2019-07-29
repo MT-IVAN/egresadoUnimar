@@ -10,7 +10,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
     # estado_civil = forms.ChoiceField(choices=ESTADO_CIVIL, widget=forms.RadioSelect())
 
     class Meta:
-        model = User
+        model = Egresado
 
 
         fields = [
@@ -107,9 +107,9 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'fechaGrado': forms.TextInput(attrs={'class': 'validate', 'readonly':'readonly'}),
             'genero': forms.TextInput(attrs={'class': 'validate', 'readonly':'readonly'}),
             'direccionResidencia': forms.TextInput(attrs={'class': 'validate', 'required':'required'}),
-            'ciudad': forms.TextInput(attrs={'class': 'validate'}),
-            'departamento': forms.TextInput(attrs={'class': 'validate'}),
-            'pais': forms.TextInput(attrs={'class': 'validate', 'list':'paises'}),
+            'ciudad': forms.TextInput(attrs={'class': 'validate','autocomplete':'off', 'list':'city'}),
+            'departamento': forms.TextInput(attrs={'class': 'validate','autocomplete':'off', 'list':'dpto'}),
+            'pais': forms.TextInput(attrs={'class': 'validate','autocomplete':'off', 'list':'country'}),
             'telefonoFijo': forms.TextInput(attrs={'class': 'validate'}),
             'celular': forms.TextInput(attrs={'class': 'validate'}),
             'email1': forms.EmailInput(attrs={'class': 'validate', 'required':'required'}),

@@ -4,7 +4,7 @@ from .models import *
 
 
 
-admin.site.register(User)
+admin.site.register(Egresado)
 admin.site.register(Degrees)
 admin.site.register(Reconocimientos)
 admin.site.register(Publicaciones)

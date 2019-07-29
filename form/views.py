@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.forms import modelformset_factory, inlineformset_factory
 from .forms import PersonaFormInformacionPersona, DegreesForm, ReconocimientosForm, ParticipacionesForm, PublicacionesForm
-from .models import User, Degrees, Reconocimientos, Participaciones, Publicaciones
+from .models import Egresado, Degrees, Reconocimientos, Participaciones, Publicaciones
 from django.urls import reverse
 from django.contrib import messages
 
@@ -13,7 +13,7 @@ def informacionPersonal(request):
     persona = None
     if 'persona' in request.session:
         personaId = int(request.session["persona"])
-        persona = User.objects.get(identificacion=personaId)
+        persona = Egresado.objects.get(identificacion=personaId)
         degreesPersona = Degrees.objects.filter(persona_identificacion = personaId)
         comunidadesPersona = Participaciones.objects.filter(persona_identificacion= personaId) 
         reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = personaId)  
@@ -62,7 +62,7 @@ def ajaxGrado(request):
                 id_anioGraduacion = request.POST.get('id_anioGraduacion')
                 id_nivel_educacion_formal = request.POST.get('id_nivel_educacion_formal')
 
-                persona = User.objects.get(identificacion=int(request.session["persona"]))
+                persona = Egresado.objects.get(identificacion=int(request.session["persona"]))
                 myDegree = Degrees(nivel_educacion_formal = id_nivel_educacion_formal, titulo_obtenido = id_titulo_obtenido , institucion = id_institucion , anioGraduacion = id_anioGraduacion, persona_identificacion = persona)
                 myDegree.save()
                 dateDegree = myDegree.anioGraduacion
@@ -82,7 +82,7 @@ def Participacionajax(request):
                 id_nombreDeLaComunidad = request.POST.get('id_nombreDeLaComunidad')
                 id_ambito = request.POST.get('id_ambito')
 
-                persona = User.objects.get(identificacion=int(request.session["persona"]))
+                persona = Egresado.objects.get(identificacion=int(request.session["persona"]))
 
                 miParticipacion = Participaciones(tipoDeComunidad = id_tipoDeComunidad , nombreDeLaComunidad = id_nombreDeLaComunidad  , ambitoParticipacion = id_ambito  , persona_identificacion = persona)
                 miParticipacion.save()
@@ -104,7 +104,7 @@ def guardar_reconocimiento(request):
                 id_anioReconocimiento = request.POST.get('id_anioReconocimiento')
                 id_ambito = request.POST.get('id_ambito')
 
-                persona = User.objects.get(identificacion=int(request.session["persona"]))
+                persona = Egresado.objects.get(identificacion=int(request.session["persona"]))
 
                 mireconocimiento = Reconocimientos(titulo_obtenido_reconocimiento = id_titulo_obtenido_reconocimiento , institucionReconocimiento = id_institucionReconocimiento  , anioReconocimiento =  id_anioReconocimiento , ambito =id_ambito ,persona_identificacion = persona)
                 mireconocimiento.save()
@@ -127,7 +127,7 @@ def guardar_publicacion(request):
                 id_tipo_publicacion = request.POST.get('id_tipo_publicacion')
 
 
-                persona = User.objects.get(identificacion=int(request.session["persona"]))
+                persona = Egresado.objects.get(identificacion=int(request.session["persona"]))
 
                 miPublicacion = Publicaciones(titulo_publicacion = id_titulo_publicacion , anio = id_anio  , tipo_publicacion =  id_tipo_publicacion ,persona_identificacion = persona)
                 miPublicacion.save()
@@ -215,7 +215,7 @@ def login(request):
         nacimientoSplit = nacimiento.split('-')
         fechaConFormato = nacimientoSplit[2]+ "/" + nacimientoSplit[1] + "/" + nacimientoSplit[0] 
         try:
-            persona = User.objects.get(identificacion = int(id_persona) , fechaNacimiento = nacimiento )
+            persona = Egresado.objects.get(identificacion = int(id_persona) , fechaNacimiento = nacimiento )
             request.session['persona'] = persona.identificacion
             print("se creo la sesion")
             return redirect('info_personal')

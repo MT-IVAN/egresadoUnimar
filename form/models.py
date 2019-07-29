@@ -14,7 +14,7 @@ from .choices import *
 #         )
 #         return user
 
-class User(models.Model):
+class Egresado(models.Model):
     ###### campos no editables
     identificacion = models.CharField(primary_key=True, max_length=12)
     nombres = models.CharField(max_length=51)
@@ -32,13 +32,14 @@ class User(models.Model):
     
     ###### campos editables para el usuario
 
+
     #### 1 INFORMACION PERSONAl
     
     estado_civil = models.CharField(max_length=20, choices=ESTADO_CIVIL, blank=True, null=True)
     direccionResidencia = models.CharField(max_length=80, blank=True, null=True)
-    ciudad = models.CharField(max_length=20, blank=True, null=True)
-    departamento = models.CharField(max_length=20, blank=True, null=True)
-    pais = models.CharField(max_length=40, blank=True, null=True)
+    ciudad = models.CharField(max_length=50, blank=True, null=True)
+    departamento = models.CharField(max_length=50, blank=True, null=True)
+    pais = models.CharField(max_length=50, blank=True, null=True)
     telefonoFijo = models.CharField(max_length=12, blank=True, null=True)
     celular = models.CharField(max_length=15, blank=True, null=True)
     email1 = models.EmailField(max_length=150, blank=True, null=True)
@@ -93,7 +94,7 @@ class Degrees(models.Model):
     titulo_obtenido = models.CharField(max_length=100,null=True, blank=True,)
     institucion = models.CharField(max_length=200,null=True, blank=True)
     anioGraduacion = models.DateField(null=True, blank=True)
-    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    persona_identificacion = models.ForeignKey(Egresado, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo_obtenido
@@ -102,7 +103,7 @@ class Participaciones(models.Model):
     tipoDeComunidad = models.CharField(max_length = 100, choices=TIPO_COMUNIDAD_O_ASOCIACION, blank=True, null=True)
     nombreDeLaComunidad = models.CharField(max_length = 100, blank=True, null=True)
     ambitoParticipacion = models.CharField(max_length = 100, choices=AMBITO, blank=True, null=True)
-    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    persona_identificacion = models.ForeignKey(Egresado, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombreDeLaComunidad
@@ -112,7 +113,7 @@ class Reconocimientos(models.Model):
     institucionReconocimiento = models.CharField(max_length=200,blank=True, null=True)
     anioReconocimiento = models.DateField(blank=True, null=True)
     ambito = models.CharField(max_length = 100, choices=AMBITO, blank=True, null=True)
-    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    persona_identificacion = models.ForeignKey(Egresado, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo_obtenido_reconocimiento
@@ -121,7 +122,7 @@ class Publicaciones(models.Model):
     titulo_publicacion = models.CharField(max_length=100,blank=True, null=True)
     anio = models.DateField(blank=True, null=True)
     tipo_publicacion = models.CharField(max_length = 100, choices=TIPO_PUBLICACION, blank=True, null=True)
-    persona_identificacion = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    persona_identificacion = models.ForeignKey(Egresado, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo_publicacion

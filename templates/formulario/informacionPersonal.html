@@ -25,108 +25,115 @@
                     <!--inicio del cardbody-->
                         <div class="row">
 
-                            <div class="col s3 form-group">
+                            <div class="col-lg-4  col-md-6 form-group">
                                 <label>Identificación</label>
-                               <label class="form-control" style="background: #fff"> {{personaOtros.identificacion}}</label>
+                               <label class="form-control" style="background: #fff"> <strong>{{personaOtros.identificacion}}</strong></label>
                             </div>
-                            <div class="col s3 form-group">
+                            <div class="col-lg-4 col-md-6 form-group">
                                 <label>Fecha de nacimiento</label>
-                                <label class="form-control" style="background: #fff">{{personaOtros.fechaNacimiento}}</label>
+                                <label class="form-control" style="background: #fff"><strong>{{personaOtros.fechaNacimiento}}</strong></label>
                             </div>
 
-                            <div class="col s3 form-group">
-                                    <label>genero</label>
-                                    <label class="form-control" style="background: #fff">{{personaOtros.genero}}</label>
-                            </div>
-                            <div class="col s3 form-group">
+                            
+                            <div class="col-lg-4 col-md-6 form-group">
                                 <label>Nombres</label>
-                                <label class="form-control" style="background: #fff">{{personaOtros.nombres}}</label>
+                                <label class="form-control" style="background: #fff"><strong>{{personaOtros.nombres}} {{personaOtros.apellidos}}</strong></label>
                             </div>
-                        </div>
+                       
+                            
 
-                        <div class="row ">
-                            <div class="col s4 form-group">
-                                <label>Apellidos</label>
-                                <label class="form-control" style="background: #fff">{{personaOtros.apellidos}}</label>
-                            </div>
-
-                            <div class="col s4 form-group">
+                            <div class="col-lg-4 col-md-6 form-group">
                                 <label>Programa</label>
-                                <label class="form-control" style="background: #fff">{{personaOtros.programa}}</label>
+                                <label class="form-control" style="background: #fff"><strong>{{personaOtros.programa}}</strong></label>
                             </div>
-                            <div class="col s4 form-group">
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <label>genero</label>
+                                <label class="form-control" style="background: #fff"><strong>{{personaOtros.genero}}</strong></label>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group">
                                 <label>Fecha de grado</label>
-                                <label class="form-control" style="background: #fff">{{personaOtros.fechaGrado}}</label>
+                                <label class="form-control" style="background: #fff"><strong>{{personaOtros.fechaGrado}}</strong></label>
                             </div>
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="col s4 input-field">
-                                
-                                {{form.estado_civil}}
-                                <label for="id_estado_civil">{{form.estado_civil.label}}</label>
-                            </div>
-
-                            <div class="espacioArriba input-field col s4">
-                                    {{form.direccionResidencia}}
-                                    <label for="id_direccionResidencia">Dirección de residencia</label>  
-                            </div> 
-
-                            
-                            
-                            <div class="col s4 input-field">
-                                    <label>Pais</label>
-                                    {{form.pais}}
-                                    <datalist id="paises">
-                                        <option value="Internet Explorer">
-                                        <option value="Firefox">
-                                        <option value="Chrome">
-                                        <option value="Opera">
-                                        <option value="Safari">
-                                    </datalist>
-    
+                        
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class=" input-field ">
+                                    {{form.estado_civil}}
+                                    <label for="id_estado_civil">{{form.estado_civil.label}}</label>
                                 </div>
-                        </div>  
+                            </div>
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class=" input-field  ">
+                                        {{form.direccionResidencia}}
+                                        <label for="id_direccionResidencia">Dirección de residencia</label>  
+                                </div> 
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class="input-field">
+                                        <label>Pais</label>
+                                        {{form.pais}}
 
+                                        <datalist id="country">
                     
-                        <div class="row">
-                            <div class="col s4 input-field">
-                                <label>Departamento</label>
-                                {{form.departamento}}
+                                        </datalist>
+                                </div>
                             </div>
-                            <div class="col s4 input-field">
-                                <label>Ciudad</label>
-                                {{form.ciudad}}
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class="input-field ">
+                                    <label id="id_label_departamento">Departamento</label>
+                                    {{form.departamento}}
+                                    <datalist id="dpto">
+                    
+                                    </datalist>
+                                </div>
                             </div>
-
-                            <div class="col s4 input-field">
-                                <label>Teléfono fijo</label>
-                                {{form.telefonoFijo}}
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col s4 input-field">
-                                <label>Teléfono de contacto(Celular)</label>
-                                {{form.celular}}
-                            </div>
-
-                            <div class="col s4 input-field">
-                              <label>Email 1</label>
-                                {{form.email1}}
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class="input-field ">
+                                    <label id="id_label_ciudad">Ciudad</label>
+                                    {{form.ciudad}}
+                                    <datalist id="city">
+                    
+                                    </datalist>
+                                </div>
                             </div>
 
-                            <div class="col s4 input-field">
-                                <label>Email 2</label>
-                                {{form.email2}}
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class="input-field">
+                                    <label>Teléfono fijo</label>
+                                    {{form.telefonoFijo}}
+                                </div>
                             </div>
+                            
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class="input-field">
+                                    <label>Teléfono de contacto</label>
+                                    {{form.celular}}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6  form-group">
+                                <div class="input-field">
+                                <label>Email 1</label>
+                                    {{form.email1}}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <div class=" input-field ">
+                                    <label>Email 2</label>
+                                    {{form.email2}}
+                                </div>
+                            </div>
+                        <!--fin del row-->    
                         </div>
                     <!-- fin del card body-->
                     </div>
                 </div>
+                <button type="submit" form="personaForm" class="save btn btn-primary">Guardar información</button>
             </div>
             
+            <br>
+
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
@@ -134,8 +141,8 @@
                     </div>
                     <div class="card-body">
                     <!--inicio del cardbody-->      
-                        <div class="col-md-12">
-                            <table class="table">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th><strong>Título obtenido</strong></th>
@@ -204,6 +211,7 @@
                                 
                         </div>
                         <div class="modal-footer">
+                            <a  class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                             <a id='enviarAjax'  class="waves-effect waves-green btn-flat ">Agregar</a>
                             
                         </div>
@@ -214,7 +222,7 @@
             </div>
 
 
-            
+            <br>
 
 
 
@@ -297,7 +305,7 @@
 
 
             <!-- ############################################################################## -->
-
+            <br>
          
 
 
@@ -308,8 +316,8 @@
                     </div>
                     <div class="card-body">
                           
-                        <div class="col-md-12">
-                            <table class="table">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th><strong>Tipo de comunidad</strong></th>
@@ -372,6 +380,7 @@
 
                         </div>
                         <div class="modal-footer">
+                            <a  class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                             <a id='enviarAjaxParticipaciones'  class="waves-effect waves-green btn-flat ">Agregar</a>
                             
                         </div>
@@ -384,7 +393,7 @@
 
 
              
-          
+            <br>
 
             <!-- ############################################################################## -->
 
@@ -400,7 +409,7 @@
                     </div>
                     <div class="card-body">
                          
-                        <div class="col-md-12">
+                        <div class="col-md-12  table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -765,6 +774,7 @@
                                 
                         </div>
                         <div class="modal-footer">
+                                <a  class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                             <a id='agregarReconocimientoAjax'  class="waves-effect waves-green btn-flat ">Agregar</a>
                             
                         </div>
@@ -775,7 +785,7 @@
 
 
 
-              
+            <br> 
 
               
          
@@ -795,8 +805,8 @@
                     </div>
                     <div class="card-body">
                           
-                        <div class="col-md-12">
-                            <table class="table">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th><strong>Título de la publicación</strong></th>
@@ -861,6 +871,7 @@
                         
                         </div>
                         <div class="modal-footer">
+                            <a  class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                             <a id='guardarPublicacion'  class="waves-effect waves-green btn-flat ">Agregar</a>
                             
                         </div>
@@ -870,7 +881,7 @@
                 </div>
             </div>
 
-
+            <br>
 
               
           
@@ -888,32 +899,27 @@
                         <h4 class="card-title">Vinculación en la vida institucional</h4>
                     </div>
                     <div class="card-body">
-                        <div class="row col-md-12 form-group">
-                            <div class="col-md-6">
-                            <label>{{form.participacionActividadesUnimar.label}}</label>
-                            </div>
-                            <div class="col-md-6">
-                            <label>{{form.serviciosDeInteres.label}}</label>
-                            </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12  form-group">
+                                <div class=" input-field  ">
+                                        {{form.participacionActividadesUnimar}}
+                                        
+                                        <label for="id_direccionResidencia">{{form.participacionActividadesUnimar.label}}</label>  
+                                </div> 
+                            </div>  
+
+                            <div class="col-lg-12 col-md-12  form-group">
+                                <div class=" input-field  ">
+                                        {{form.serviciosDeInteres}}
+                                        <label for="id_direccionResidencia">{{form.serviciosDeInteres.label}}</label>  
+                                </div> 
+                            </div>                      
                         </div>
 
-                        <div class=" row col-md-12 form-group">
-                            <div class="row col-md-12 form-group">
-                                <div class="col-md-6">
-                                {{form.participacionActividadesUnimar}}
-                                </div>
-                                <div class="col-md-6">
-                                {{form.serviciosDeInteres}}
-                                </div>
-                            </div>
-                            <div class="row col-md-12 form-group">
-                                <div class="col-md-6">
-                                </div>                   
-                                <div class="col-md-6">                             
-                                            {{ form.otroServicio }}          
-                                </div>
-                            </div>
-                        </div>
+
+
+
                         <div class="row col-md-12 form-group">
                                 <h5 class="card-title">Calidad de formación recibida</h5>  
                                 
@@ -930,7 +936,7 @@
                 </div>
             </div>
 
-
+            
             
 
             
@@ -962,7 +968,9 @@
 {% endblock %}
 
 {% block javascript%}
-    <!-- <script src="../../static/assets/js/jsDeInformacionPersonal/country.js"></script> -->
+
+    
+     <script src="../../static/assets/js/jsDeInformacionPersonal/country.js"></script>
 
 	 <script>
          $(document).ready(function(){
