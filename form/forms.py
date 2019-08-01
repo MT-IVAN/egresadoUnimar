@@ -31,16 +31,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'email1',
             'email2',
             # # Informacion academica
-            'situacion_laboral_actual',
-            'experiencia_laboral',
-            'nombreEmpresaTrabajoActual',
-            'sectorDeLaEmpresa',
-            'areaDeTrabajo',
-            'cargoQueOcupa',
-            'nombreJefeInmediato',
-            'areaTrabajoAfinConSuProfesion',
-            'tipoDeContrato',
-            'rangoSalarial',
+           
             # Participacion en cominudades y asociaciones#
             
             ## PArte 7
@@ -74,16 +65,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'email1':'Email 1',
             'email2':'Email 2',
             # # Informacion laboral
-            'situacion_laboral_actual': 'Situación laboral actual',
-            'experiencia_laboral': 'Experiencia laboral',
-            'nombreEmpresaTrabajoActual': 'Nombre de la empresa donde labora',
-            'sectorDeLaEmpresa' : 'Sector de la empresa',
-            'areaDeTrabajo' :'Área de trabajo',
-            'cargoQueOcupa': 'Cargo que ocupa',
-            'nombreJefeInmediato' : 'Nombre del jefe inmediato',
-            'areaTrabajoAfinConSuProfesion':'¿El área de trabajo es afín a su profesión?',
-            'tipoDeContrato':'Tipo de contrato',
-            'rangoSalarial': 'Rango de salario',
+            
             # Participacion en cominudades y asociaciones#
   
             ## PArte 7
@@ -116,16 +98,7 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'email2': forms.EmailInput(attrs={'class': 'validate'}),
             'estado_civil': forms.Select(attrs={'class':'validate '}),
             # # Informacion academica
-            'situacion_laboral_actual':forms.Select(attrs={'class':' dropdown   validate'}),
-            'experiencia_laboral': forms.Select(attrs={'class':'validate dropdown'}),
-            'nombreEmpresaTrabajoActual': forms.TextInput(attrs={'class': 'validate'}),
-            'sectorDeLaEmpresa' : forms.Select(attrs={'class':'validate dropdown'}),
-            'areaDeTrabajo' :forms.Select(attrs={'class':'validate dropdown'}),
-            'cargoQueOcupa': forms.Select(attrs={'class':'validate dropdown'}),
-            'nombreJefeInmediato' : forms.TextInput(attrs={'class': 'validate'}),
-            'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'validate dropdown'}),
-            'tipoDeContrato':forms.Select(attrs={'class':'validate dropdown'}),
-            'rangoSalarial': forms.Select(attrs={'class':'dropdown    validate'}),
+            
            
             # Participacion en cominudades y asociaciones#
             
@@ -144,6 +117,48 @@ class PersonaFormInformacionPersona(forms.ModelForm):
 
            # 'genero': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown'}),
             
+        }
+
+class InfoLaboralForm(forms.ModelForm):
+    class Meta:
+        model = InfoLaboral
+        
+        fields = [
+            'situacion_laboral_actual',
+            'experiencia_laboral',
+            'nombreEmpresaTrabajoActual',
+            'sectorDeLaEmpresa',
+            'areaDeTrabajo',
+            'cargoQueOcupa',
+            'nombreJefeInmediato',
+            'areaTrabajoAfinConSuProfesion',
+            'tipoDeContrato',
+            'rangoSalarial',
+            
+        ]
+        labels= {
+            'situacion_laboral_actual': 'Situación laboral actual',
+            'experiencia_laboral': 'Experiencia laboral',
+            'nombreEmpresaTrabajoActual': 'Nombre de la empresa donde labora',
+            'sectorDeLaEmpresa' : 'Sector de la empresa',
+            'areaDeTrabajo' :'Área de trabajo',
+            'cargoQueOcupa': 'Cargo que ocupa',
+            'nombreJefeInmediato' : 'Nombre del jefe inmediato',
+            'areaTrabajoAfinConSuProfesion':'¿El área de trabajo es afín a su profesión?',
+            'tipoDeContrato':'Tipo de contrato',
+            'rangoSalarial': 'Rango de salario',
+        }
+        widgets= {
+            'situacion_laboral_actual':forms.Select(attrs={'class':' dropdown   validate'}),
+            'experiencia_laboral': forms.Select(attrs={'class':'validate dropdown'}),
+            'nombreEmpresaTrabajoActual': forms.TextInput(attrs={'class': 'validate'}),
+            'sectorDeLaEmpresa' : forms.Select(attrs={'class':'validate dropdown'}),
+            'areaDeTrabajo' :forms.Select(attrs={'class':'validate dropdown'}),
+            'cargoQueOcupa': forms.Select(attrs={'class':'validate dropdown'}),
+            'nombreJefeInmediato' : forms.TextInput(attrs={'class': 'validate'}),
+            'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'validate dropdown'}),
+            'tipoDeContrato':forms.Select(attrs={'class':'validate dropdown'}),
+            'rangoSalarial': forms.Select(attrs={'class':'dropdown    validate'}),
         }
 
 

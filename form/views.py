@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.forms import modelformset_factory, inlineformset_factory
-from .forms import PersonaFormInformacionPersona, DegreesForm, ReconocimientosForm, ParticipacionesForm, PublicacionesForm
-from .models import Egresado, Degrees, Reconocimientos, Participaciones, Publicaciones
+from .forms import PersonaFormInformacionPersona, DegreesForm, ReconocimientosForm, ParticipacionesForm, PublicacionesForm, InfoLaboralForm
+from .models import Egresado, Degrees, Reconocimientos, Participaciones, Publicaciones, InfoLaboral
 from django.urls import reverse
 from django.contrib import messages
 from .choices import *
@@ -19,12 +19,14 @@ def informacionPersonal(request):
         comunidadesPersona = Participaciones.objects.filter(persona_identificacion= personaId) 
         reconocimientosPersona = Reconocimientos.objects.filter(persona_identificacion = personaId)  
         publicacionesPersona = Publicaciones.objects.filter(persona_identificacion = personaId)
+        infoLaboralPersona = InfoLaboral.objects.filter(persona_identificacion = personaId)
         #envio el formulario    
         degreeForm = DegreesForm 
         reconocimietosForm = ReconocimientosForm
         participacionesForm = ParticipacionesForm    
         publicacionesForm = PublicacionesForm 
         formComunidades = ParticipacionesForm 
+        infoLaboralForm = InfoLaboralForm
         if request.method == "POST": 
             print('llego la peticion por post')
             form = PersonaFormInformacionPersona(request.POST , instance=persona) 
@@ -45,11 +47,13 @@ def informacionPersonal(request):
                                                                         'reconocimietosForm':reconocimietosForm,
                                                                         'participacionesForm':participacionesForm,
                                                                         'publicacionesForm':publicacionesForm,
+                                                                        'infoLaboralForm':infoLaboralForm,
                                                                         'titulosPersona':degreesPersona,
                                                                         'titulosComunidades':comunidadesPersona,
                                                                         'reconocimientosPersona':reconocimientosPersona,
                                                                         'publicacionesPersona':publicacionesPersona,
                                                                         'personaOtros': persona,
+                                                                        'infoLaboral':infoLaboralPersona,
                                                                         'opcionesSectorEmpresa':SECTOR_DE_LA_EMPRESA})
     
     else:
