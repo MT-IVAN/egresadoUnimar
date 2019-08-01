@@ -245,5 +245,7 @@ SATISFACCION = (
     ('Poco Satisfactorio','Poco Satisfactorio'),
 )
 
-
+VACIO = (
+    ('escoger','...'),
+)
 

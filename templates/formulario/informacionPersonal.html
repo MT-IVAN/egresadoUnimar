@@ -126,10 +126,11 @@
                             </div>
                         <!--fin del row-->    
                         </div>
+                        <button type="submit" form="personaForm" class="waves-effect waves-light btn modal-trigger light-blue darken-4">Guardar información</button>
                     <!-- fin del card body-->
                     </div>
                 </div>
-                <button type="submit" form="personaForm" class="save btn btn-primary">Guardar información</button>
+                
             </div>
             
             <br>
@@ -212,7 +213,7 @@
                         </div>
                         <div class="modal-footer">
                             <a  class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                            <a id='enviarAjax'  class="waves-effect waves-green btn-flat ">Agregar</a>
+                            <a id='enviarAjax'  class="waves-effect waves-green btn-flat">Agregar</a>
                             
                         </div>
                         </div>
@@ -221,8 +222,6 @@
                 </div>
             </div>
 
-
-            <br>
 
 
 
@@ -261,17 +260,7 @@
                                 <p>{{form.cargoQueOcupa}}</p>
                             </div>
                         </div>
-                        <div class="row col-md-12">
-                                <div class="col-md-4">
-                                    {{form.otroSectorEmpresa}}
-                                </div>
-                                <div class="col-md-4">
-                                    {{form.otraAreaDetrabajo}}
-                                 </div>
-                                <div class="col-md-4">
-                                    {{form.otroCargo}}
-                                </div>
-                        </div>
+                        
                         <div class="row col-md-12">
                             <div class="col-md-4 form-group">
                                 <label>{{form.nombreJefeInmediato.label}}</label>
@@ -992,62 +981,6 @@
         // #########################################################################
         
 
-
-
-
-        $(document).ready(function(){
-            if($('#id_serviciosDeInteres').val() != 'Otro'){
-                $('#fade2').val();
-                $('#fade2').attr("readonly","readonly");
-                $('#fade2').hide();
-            }
-            else{
-                $('#fade2').attr("required","required");
-                $('#fade2').show();
-            }
-
-            if($('#id_sectorDeLaEmpresa').val() != 'Otro'){
-                $('#otroSector').val();
-                $('#otroSector').attr("readonly","readonly");
-                $('#otroSector').hide();
-            }
-            else{
-                $('#otroSector').attr("required","required");
-                $('#otroSector').show();
-                $
-            }
-
-            if($('#id_areaDeTrabajo').val() != 'Otro'){
-                $('#otraArea').val();
-                $('#otraArea').attr("readonly","readonly");
-                $('#otraArea').hide();
-            }
-            else{
-                $('#otraArea').attr("required","required");
-                $('#otraArea').show();
-               
-            }
-
-            if($('#id_cargoQueOcupa').val() != 'Otro'){
-                $('#otroCargo').val();
-                $('#otroCargo').attr("readonly","readonly");
-                $('#otroCargo').hide();
-            }
-            else{
-                $('#otroCargo').attr("required","required");
-                $('#otroCargo').show();
-                
-            }
-
-
-
-
-
-
-
-        });
-
-
 	$(function(){
         //Obtenemos la información de csfrtoken que se almacena por cookies en el cliente
         var csrftoken = getCookie('csrftoken');
@@ -1454,72 +1387,6 @@
         else{
             alert("Por favor complete todos los campos");
         }
-        });
-
-
-        var sel2 = $('#id_serviciosDeInteres');
-        sel2.click(function(){
-           if(sel2.val() == "Otro"){
-                $('#fade2').removeAttr("readonly");
-                $('#fade2').attr("required","required");
-                $('#fade2').show();
-
-           }else{
-                $('#fade2').attr("readonly","readonly");
-                $('#fade2').val('');
-                $('#fade2').removeAttr("required");
-                $('#fade2').hide();
-           }
-        });
-
-
-
-
-        var sectorEmpresa = $('#id_sectorDeLaEmpresa');
-        sectorEmpresa.click(function(){
-           if(sectorEmpresa.val() == "Otro"){
-                $('#otroSector').removeAttr("readonly");
-                $('#otroSector').attr("required","required");
-                $('#otroSector').show();
-
-           }else{
-                $('#otroSector').attr("readonly","readonly");
-                $('#otroSector').val('');
-                $('#otroSector').removeAttr("required");
-                $('#otroSector').hide();
-           }
-        });
-
-        var sel4 = $('#id_areaDeTrabajo');
-        sel4.click(function(){
-           if(sel4.val() == "Otro"){
-                console.log("Otro fuè precionado");
-                $('#otraArea').removeAttr("readonly");
-                $('#otraArea').attr("required","required");
-                $('#otraArea').show();
-
-           }else{
-                $('#otraArea').attr("readonly","readonly");
-                $('#otraArea').val('');
-                $('#otraArea').removeAttr("required");
-                $('#otraArea').hide();
-           }
-        });
-
-        var sel5 = $('#id_cargoQueOcupa');
-        sel5.click(function(){
-           if(sel5.val() == "Otro"){
-                console.log("Otro fuè precionado");
-                $('#otroCargo').removeAttr("readonly");
-                $('#otroCargo').attr("required","required");
-                $('#otroCargo').show();
-
-           }else{
-                $('#otroCargo').attr("readonly","readonly");
-                $('#otroCargo').val('');
-                $('#otroCargo').removeAttr("required");
-                $('#otroCargo').hide();
-           }
         });
 
 

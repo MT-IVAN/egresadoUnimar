@@ -7,7 +7,7 @@
     
 
 
-        var urlCountry="https://geo-battuta.net/api/country/all/?key="+BATTUTA_KEY+"&callback=?";
+        var urlCountry="https://api-world-egresados.herokuapp.com";
           $.getJSON(urlCountry,function(countries)
           {
              
@@ -19,13 +19,15 @@
                 let miOption=document.createElement("option");
                  
                 // Añadimos las propiedades value y label
-                miOption.setAttribute("data-value",country.code);
+                miOption.setAttribute("data-value",country.id);
+         
                 miOption.append(country.name);
+               
                
               //se agerega las opciones a el datalist
                 document.getElementById('country').appendChild(miOption);
+               
               
-            
                
             });
           
@@ -38,9 +40,6 @@
               countryname=$("#id_pais").val();
               
               //borro los departamentos en caso de que haya cambiado de Pais
-
-              
-             
               $("#id_label_departamento").removeClass('active');
               $("#id_departamento ").val('').prop('disabled', true);
               $("#id_departamento").removeClass( "valid invalid" );
@@ -56,18 +55,8 @@
                 $("#id_label_departamento").html('Cargando...');
 
 
-              var urlCode = "http://battuta.medunes.net/api/country/search/?country="+countryname+"&key=e3dde5425198c63a574c90abfa81d5db"+"&callback=?";
-              $.ajax({
-                dataType: "json",
-                url: urlCode,
-                cache:false,
-                success: function(res){
-                var countryCode =res[0].code;
-                auxCode = countryCode;
-                    // Populate country select box from battuta API
-                      var url=`http://battuta.medunes.net/api/region/${countryCode}/all/?key=${BATTUTA_KEY}&callback=?`;
-
-                        $.getJSON(url,function(regions)
+              var urlCode = "https://api-world-egresados.herokuapp.com/"+countryname;
+                        $.getJSON(urlCode,function(regions)
                         {
                           
                           //cambio el label de cargando a deptamentos
@@ -81,8 +70,8 @@
                             let miOption=document.createElement("option");
                           
                             // Añadimos las propiedades value y label
-                            miOption.setAttribute("data-value",region.code);
-                            miOption.append(region.region);
+                            miOption.setAttribute("data-value",region.id);
+                            miOption.append(region.name);
                           
             
                             document.getElementById('dpto').appendChild(miOption);
@@ -90,8 +79,8 @@
                         
                           
                       }); 
-                }
-              });
+                
+              
               
            //si el pais es diferente de vacio >
            }
@@ -107,16 +96,9 @@
             //quito los anteriores elementos de la ciudad
             document.getElementById('city').innerHTML = '';
      
-              // Populate country select box from battuta API
-            countryCode=$("#country").val();
+          
             region=$("#id_departamento").val();
-            url="http://geo-battuta.net/api/city/"
-            +auxCode
-            +"/search/?region="
-            +region
-            +"&key="
-            +BATTUTA_KEY
-            +"&callback=?";
+            url="https://api-world-egresados.herokuapp.com/region/"+region;;
               
               $.getJSON(url,function(cities)
               {
@@ -129,8 +111,8 @@
                   let miOption=document.createElement("option");
                  
                   // Añadimos las propiedades value y label
-                  miOption.setAttribute("data-value",city.city);
-                  miOption.append(city.city);
+                  miOption.setAttribute("data-value",city.id);
+                  miOption.append(city.name);
                  
                 //se agerega las opciones a el datalist
                   document.getElementById('city').appendChild(miOption);
@@ -143,6 +125,5 @@
           
        //-------------------------------END OF SELECT CASCADING-------------------------//
 
-// var url="http://battuta.medunes.net/api/country/all/?key=e3dde5425198c63a574c90abfa81d5db"
 
     //Fin de la peticion AJAX

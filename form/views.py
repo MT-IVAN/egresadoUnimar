@@ -4,12 +4,13 @@ from .forms import PersonaFormInformacionPersona, DegreesForm, ReconocimientosFo
 from .models import Egresado, Degrees, Reconocimientos, Participaciones, Publicaciones
 from django.urls import reverse
 from django.contrib import messages
+from .choices import *
 
 import json
 from django.http import HttpResponse
 # Create your views here.
 
-def informacionPersonal(request):
+def informacionPersonal(request):       
     persona = None
     if 'persona' in request.session:
         personaId = int(request.session["persona"])
@@ -48,7 +49,8 @@ def informacionPersonal(request):
                                                                         'titulosComunidades':comunidadesPersona,
                                                                         'reconocimientosPersona':reconocimientosPersona,
                                                                         'publicacionesPersona':publicacionesPersona,
-                                                                        'personaOtros': persona})
+                                                                        'personaOtros': persona,
+                                                                        'opcionesSectorEmpresa':SECTOR_DE_LA_EMPRESA})
     
     else:
         return render(request, 'login/login.html')
