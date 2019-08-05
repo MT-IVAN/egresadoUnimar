@@ -44,6 +44,8 @@ class Egresado(models.Model):
     celular = models.CharField(max_length=15, blank=True, null=True)
     email1 = models.EmailField(max_length=150, blank=True, null=True)
     email2 = models.EmailField(max_length=150, blank=True, null=True)
+    situacion_laboral_actual = models.CharField(max_length=100, choices=SITUACION_LABORAR, blank=True, null=True)
+    experiencia_laboral = models.CharField(max_length=60, choices=EXPERIENCIA_LABORAL, blank=True, null=True)
     ####/ 1 INFORMACION PERSONAl
 
     #### 2 ACADEMICA - PENDIENTE
@@ -66,10 +68,10 @@ class Egresado(models.Model):
 
 
     ################ otros
-    otroSectorEmpresa = models.CharField(max_length=100, blank=True, null=True)
-    otraAreaDetrabajo = models.CharField(max_length=100, blank=True, null=True)
-    otroCargo = models.CharField(max_length=100, blank=True, null=True)
-    otroServicio = models.CharField(max_length=100, blank=True, null=True)
+    # otroSectorEmpresa = models.CharField(max_length=100, blank=True, null=True)
+    # otraAreaDetrabajo = models.CharField(max_length=100, blank=True, null=True)
+    # otroCargo = models.CharField(max_length=100, blank=True, null=True)
+    # otroServicio = models.CharField(max_length=100, blank=True, null=True)
 
 
     def __str__(self):
@@ -117,8 +119,8 @@ class Publicaciones(models.Model):
 
 #### 3 INFORMACION LABORAL
 class InfoLaboral(models.Model):
-    situacion_laboral_actual = models.CharField(max_length=100, choices=SITUACION_LABORAR, blank=True, null=True)
-    experiencia_laboral = models.CharField(max_length=60, choices=EXPERIENCIA_LABORAL, blank=True, null=True)
+    fechaInicio = models.DateField(blank=True, null=True)
+    fechaFin = models.DateField(blank=True, null=True)
     nombreEmpresaTrabajoActual = models.CharField(max_length=100, blank=True, null=True)
     sectorDeLaEmpresa =  models.CharField(max_length=100, choices=SECTOR_DE_LA_EMPRESA, blank=True, null=True)
     areaDeTrabajo = models.CharField(max_length=100, choices=AREA_DE_TRABAJO, blank=True, null=True)
@@ -127,7 +129,9 @@ class InfoLaboral(models.Model):
     areaTrabajoAfinConSuProfesion= models.CharField(max_length=2, choices=SI_NO, blank=True, null=True)
     tipoDeContrato = models.CharField(max_length=100, choices=TIPO_CONTRATO, blank=True, null=True )
     rangoSalarial = models.CharField(max_length=100, choices=RANGO_SALARIAL, blank=True, null=True )
+    checkTrabajoActual = models.CharField(max_length=2, choices=SI_NO, blank=True, null=True)
     persona_identificacion = models.ForeignKey(Egresado, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombreEmpresaTrabajoActual
+        

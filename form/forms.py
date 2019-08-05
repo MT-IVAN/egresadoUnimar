@@ -39,12 +39,14 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'serviciosDeInteres',
             ## Parte 8
             'procesoDeInformacionUnimar',
+            'situacion_laboral_actual',
+            'experiencia_laboral',
 
             ## Otros 
-            'otroSectorEmpresa',
-            'otraAreaDetrabajo',
-            'otroCargo',
-            'otroServicio',
+            
+            
+            
+            
             
         ]
         labels= {
@@ -64,6 +66,8 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'celular':'Celular',
             'email1':'Email 1',
             'email2':'Email 2',
+            'situacion_laboral_actual':'Situacion laboral actual',
+            'experiencia_laboral':'Experiencia laboral',
             # # Informacion laboral
             
             # Participacion en cominudades y asociaciones#
@@ -73,11 +77,12 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'serviciosDeInteres':'Servicios de mayor interés',
             ## Parte 8
             'procesoDeInformacionUnimar':'Considera que su proceso de formación en la Universidad fue:',
-            ## OTROS
-            'otroSectorEmpresa' : 'Otro sector',
-            'otraAreaDetrabajo' : 'Otra área',
-            'otroCargo' : 'Otro cargo',
-            'otroServicio' : 'Otro servicio',
+            'tipoDeContrato':'Tipo de contrato',
+            'rangoSalarial': 'Rango de salario',
+            
+            
+            
+            
 
         }
         widgets= {
@@ -97,6 +102,8 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'email1': forms.EmailInput(attrs={'class': 'validate', 'required':'required'}),
             'email2': forms.EmailInput(attrs={'class': 'validate'}),
             'estado_civil': forms.Select(attrs={'class':'validate '}),
+            'situacion_laboral_actual':forms.Select(attrs={'class':' dropdown   validate'}),
+            'experiencia_laboral': forms.Select(attrs={'class':'validate dropdown'}),
             # # Informacion academica
             
            
@@ -109,10 +116,10 @@ class PersonaFormInformacionPersona(forms.ModelForm):
             'procesoDeInformacionUnimar':forms.Select(attrs={'class':'validate dropdown'}),
 
             ## otros
-            'otroSectorEmpresa' : forms.TextInput(attrs={'class': 'validate', "placeholder":"Otro sector", 'id':"otroSector"}),
-            'otraAreaDetrabajo' : forms.TextInput(attrs={'class': 'validate', "placeholder":"Otra área  de trabajo", 'id':"otraArea"}),
-            'otroCargo' : forms.TextInput(attrs={'class': 'validate', "placeholder":"Otro cargo", 'id':"otroCargo"}),
-            'otroServicio' : forms.TextInput(attrs={'class': 'validate', "placeholder":"Otros intereses", 'id':"fade2"}),
+            
+            
+            
+            
 
 
            # 'genero': forms.Select(attrs={'class':'extra-widget extra-widget-dropdown'}),
@@ -124,8 +131,7 @@ class InfoLaboralForm(forms.ModelForm):
         model = InfoLaboral
         
         fields = [
-            'situacion_laboral_actual',
-            'experiencia_laboral',
+            
             'nombreEmpresaTrabajoActual',
             'sectorDeLaEmpresa',
             'areaDeTrabajo',
@@ -134,23 +140,25 @@ class InfoLaboralForm(forms.ModelForm):
             'areaTrabajoAfinConSuProfesion',
             'tipoDeContrato',
             'rangoSalarial',
+            'fechaInicio',
+            'fechaFin',
+            'checkTrabajoActual',
             
         ]
         labels= {
             'situacion_laboral_actual': 'Situación laboral actual',
-            'experiencia_laboral': 'Experiencia laboral',
-            'nombreEmpresaTrabajoActual': 'Nombre de la empresa donde labora',
+            'nombreEmpresaTrabajoActual': 'Nombre de la empresa',
             'sectorDeLaEmpresa' : 'Sector de la empresa',
             'areaDeTrabajo' :'Área de trabajo',
             'cargoQueOcupa': 'Cargo que ocupa',
             'nombreJefeInmediato' : 'Nombre del jefe inmediato',
             'areaTrabajoAfinConSuProfesion':'¿El área de trabajo es afín a su profesión?',
-            'tipoDeContrato':'Tipo de contrato',
-            'rangoSalarial': 'Rango de salario',
+            'fechaInicio':'Fecha de ingreso',
+            'fechaFin':'Fecha de finalización',
+            'checkTrabajoActual': '¿Este es su trabajo actual?',
         }
         widgets= {
-            'situacion_laboral_actual':forms.Select(attrs={'class':' dropdown   validate'}),
-            'experiencia_laboral': forms.Select(attrs={'class':'validate dropdown'}),
+            
             'nombreEmpresaTrabajoActual': forms.TextInput(attrs={'class': 'validate'}),
             'sectorDeLaEmpresa' : forms.Select(attrs={'class':'validate dropdown'}),
             'areaDeTrabajo' :forms.Select(attrs={'class':'validate dropdown'}),
@@ -159,6 +167,9 @@ class InfoLaboralForm(forms.ModelForm):
             'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'validate dropdown'}),
             'tipoDeContrato':forms.Select(attrs={'class':'validate dropdown'}),
             'rangoSalarial': forms.Select(attrs={'class':'dropdown    validate'}),
+            'checkTrabajoActual': forms.Select(attrs={'class':'validate '}),
+            'fechaInicio': DateInput(attrs={'class': 'validate'}),
+            'fechaFin':DateInput(attrs={'class': 'validate'}),
         }
 
 

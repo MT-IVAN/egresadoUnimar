@@ -147,6 +147,66 @@ def guardar_publicacion(request):
 
 
 
+
+
+def guardar_info_laboral(request):
+    if request.method == 'POST' and request.is_ajax():
+        try:
+            id_nombreEmpresaTrabajoActual = request.POST.get('id_nombreEmpresaTrabajoActual')
+            id_sectorDeLaEmpresa = request.POST.get('id_sectorDeLaEmpresa')
+            id_areaDeTrabajo = request.POST.get('id_areaDeTrabajo')
+            id_cargoQueOcupa = request.POST.get('id_cargoQueOcupa')
+            id_nombreJefeInmediato = request.POST.get('id_nombreJefeInmediato')
+            id_areaTrabajoAfinConSuProfesion = request.POST.get('id_areaTrabajoAfinConSuProfesion')
+            id_tipoDeContrato = request.POST.get('id_tipoDeContrato')
+            id_rangoSalarial = request.POST.get('id_rangoSalarial')
+            id_checkTrabajoActual = request.POST.get('id_checkTrabajoActual')
+            id_fechaInicio = request.POST.get('id_fechaInicio')
+            id_fechaFin = request.POST.get('id_fechaFin')
+
+            persona = Egresado.objects.get(identificacion=int(request.session["persona"]))
+
+            miInfoLaboral = InfoLaboral(nombreEmpresaTrabajoActual = id_nombreEmpresaTrabajoActual,
+                                        sectorDeLaEmpresa = id_sectorDeLaEmpresa,
+                                        areaDeTrabajo = id_areaDeTrabajo,
+                                        cargoQueOcupa = id_cargoQueOcupa,
+                                        nombreJefeInmediato = id_nombreJefeInmediato,
+                                        areaTrabajoAfinConSuProfesion = id_areaTrabajoAfinConSuProfesion,
+                                        tipoDeContrato = id_tipoDeContrato,
+                                        rangoSalarial = id_rangoSalarial,
+                                        checkTrabajoActual = id_checkTrabajoActual,
+                                        persona_identificacion = persona,
+                                        fechaInicio = id_fechaInicio,
+                                        fechaFin = id_fechaFin)
+            print(id_checkTrabajoActual)
+            if id_checkTrabajoActual == "Sí":
+               InfoLaboral.objects.filter(persona_identificacion = int(request.session["persona"])).update(checkTrabajoActual='No')
+
+
+            miInfoLaboral.save()
+            primary = miInfoLaboral.id
+
+
+            
+
+
+        except NameError:
+            print("hubo un error con la peticion")
+
+        return HttpResponse(json.dumps({'id': primary , 'id_nombreEmpresaTrabajoActual' : id_nombreEmpresaTrabajoActual,
+                                        'id_sectorDeLaEmpresa' : id_sectorDeLaEmpresa,
+                                        'id_areaDeTrabajo' : id_areaDeTrabajo,
+                                        'id_cargoQueOcupa' : id_cargoQueOcupa,
+                                        'id_nombreJefeInmediato' : id_nombreJefeInmediato,
+                                        'id_areaTrabajoAfinConSuProfesion' : id_areaTrabajoAfinConSuProfesion,
+                                        'id_tipoDeContrato' : id_tipoDeContrato,
+                                        'id_rangoSalarial' : id_rangoSalarial,
+                                        'id_checkTrabajoActual' : id_checkTrabajoActual,
+                                        'id_fechaInicio' : id_fechaInicio,
+                                        'id_fechaFin' : id_fechaFin }), content_type="application/json")
+    else:    
+        return render_to_response('ajax_test.html', locals())
+
 def borraAjax(request):
         if request.method == 'POST' and request.is_ajax():
                 try:
@@ -202,6 +262,20 @@ def borrar_publicacion(request):
                         comunidadEliminar = Publicaciones.objects.get(id=comunidadId);
                         iden = comunidadEliminar.id
                         comunidadEliminar.delete()
+                except NameError:
+                        print("hubo un error con la peticion")
+
+                return HttpResponse(json.dumps({'id': iden}), content_type="application/json")
+        else :
+                return render_to_response('ajax_test.html', locals())
+
+def borrar_info_laboral(request):
+        if request.method == 'POST' and request.is_ajax():
+                try:
+                        infoLabId = request.POST.get('infoLabId')
+                        infEliminar = InfoLaboral.objects.get(id=infoLabId);
+                        iden = infEliminar.id
+                        infEliminar.delete()
                 except NameError:
                         print("hubo un error con la peticion")
 

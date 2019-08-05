@@ -70,7 +70,7 @@
                             
                             <div class="col-lg-4 col-md-6  form-group">
                                 <div class="input-field">
-                                        <label>Pais</label>
+                                        <label id="cambiarLabelPais">Pais</label>
                                         {{form.pais}}
 
                                         <datalist id="country">
@@ -124,6 +124,25 @@
                                     {{form.email2}}
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <div class=" input-field ">
+                                    
+                                    {{form.situacion_laboral_actual}}
+                                    <label>{{form.situacion_laboral_actual.label}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <div class=" input-field ">
+                                    
+                                    {{form.experiencia_laboral}}
+                                    <label>{{form.experiencia_laboral.label}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <div class=" input-field ">
+                                    
+                                </div>
+                            </div>
                         <!--fin del row-->    
                         </div>
                         <button type="submit" form="personaForm" class="waves-effect waves-light btn modal-trigger light-blue darken-4">Guardar información</button>
@@ -167,7 +186,7 @@
                                             </td>
 
                                             <td>
-                                            {{curso.anioGraduacion}}
+                                                {{curso.anioGraduacion}}
                                             </td>
                                             <td>
                                                 {{curso.nivel_educacion_formal}}
@@ -235,9 +254,9 @@
                             <table class="table ">
                                 <thead>
                                     <tr>
-                                        <th><strong>nombreEmpresaTrabajoActual</strong></th>
-                                        <th><strong>sectorDeLaEmpresa</strong></th>
-                                        <th><strong>nombreJefeInmediato</strong></th>
+                                        <th><strong>Nombre de la empresa</strong></th>
+                                        <th><strong>Fecha de Ingreso</strong></th>
+                                        <th><strong>Fecha de finalización</strong></th>
                                         
                                         <th><strong></strong></th>
                                     </tr>
@@ -252,15 +271,16 @@
                                                 {{inf.nombreEmpresaTrabajoActual}}
                                             </td>
                                             <td>
-                                                {{inf.sectorDeLaEmpresa}}
+                                                {{inf.fechaInicio}}
                                             </td>
 
                                             <td>
-                                            {{inf.nombreJefeInmediato}}
+                                            {{inf.fechaFin}}
                                             </td>
                                             
                                             <td>
-                                                    <a class="btn btn-info btn-round btn-sm btn modal-trigger" href="#infoModal{{inf.id}}"><i class="material-icons">zoom_in</i></a>
+                                                <!-- Modal Trigger -->
+                                                <a class="btn btn-info btn-round btn-sm btn modal-trigger" href="#infoModal{{inf.id}}"><i class="material-icons">zoom_in</i></a>
                                                 <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarLaboral({{inf.id}})" >
                                                         <i class="material-icons">close</i>
                                                 </button>
@@ -270,11 +290,11 @@
                                     </tr>
                                     <!-- Modal para Mostrar mas informaci]on-->
                                     
-                                    <!-- Modal Trigger -->
+                                    
                                     
 
                                     <!-- Modal Structure -->
-                                    <div id="infoModal{{inf.id}}" class="modal">
+                                    <div id="infoModal{{inf.id}}" class="modal bottom-sheet">
                                         <div class="modal-content">
                                         <h5>Más información</h5>
                                         <br>
@@ -282,52 +302,57 @@
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.situacion_laboral_actual}}<br>
-                                                <label for="id_situacion_laboral_actual">{{infoLaboralForm.situacion_laboral_actual.label}}</label>
+
+                                                <label for="id_situacion_laboral_actual">{{infoLaboralForm.fechaInicio.label}}</label><br>
+                                                {{inf.fechaInicio}}
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.experiencia_laboral}}<br>
-                                                <label for="inf.experiencia_laboral">{{infoLaboralForm.experiencia_laboral.label}}</label>
+                                                <label for="id_situacion_laboral_actual">{{infoLaboralForm.fechaFin.label}}</label><br>
+                                                {{inf.fechaFin}}
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.nombreEmpresaTrabajoActual}}<br>
-                                                <label for="inf.nombreEmpresaTrabajoActual">{{infoLaboralForm.nombreEmpresaTrabajoActual.label}}</label>
+                                                <label for="inf.nombreEmpresaTrabajoActual">{{infoLaboralForm.nombreEmpresaTrabajoActual.label}}</label><br>
+                                                {{inf.nombreEmpresaTrabajoActual}}
                                                 </div>
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.sectorDeLaEmpresa}}<br>
-                                                <label for="inf.sectorDeLaEmpresa">{{infoLaboralForm.sectorDeLaEmpresa.label}}</label>
+                                                <label for="inf.sectorDeLaEmpresa">{{infoLaboralForm.sectorDeLaEmpresa.label}}</label><br>
+                                                {{inf.sectorDeLaEmpresa}}
                                                 </div>
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.areaDeTrabajo}}<br>
-                                                <label for="inf.areaDeTrabajo">{{infoLaboralForm.areaDeTrabajo.label}}</label>
+                                                <label for="inf.areaDeTrabajo">{{infoLaboralForm.areaDeTrabajo.label}}</label><br>
+                                                {{inf.areaDeTrabajo}}
                                                 </div>
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.cargoQueOcupa}}<br>
-                                                <label for="inf.cargoQueOcupa">{{infoLaboralForm.cargoQueOcupa.label}}</label>
+                                                <label for="inf.cargoQueOcupa">{{infoLaboralForm.cargoQueOcupa.label}}</label><br>
+                                                {{inf.cargoQueOcupa}}
                                                 </div>
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.nombreJefeInmediato}}<br>
-                                                <label for="inf.nombreJefeInmediato">{{infoLaboralForm.nombreJefeInmediato.label}}</label>
+                                                <label for="inf.nombreJefeInmediato">{{infoLaboralForm.nombreJefeInmediato.label}}</label><br>
+                                                {{inf.nombreJefeInmediato}}
                                                 </div>
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.areaTrabajoAfinConSuProfesion}}<br>
-                                                <label for="inf.areaTrabajoAfinConSuProfesion">{{infoLaboralForm.areaTrabajoAfinConSuProfesion.label}}</label>
+                                                <label for="inf.areaTrabajoAfinConSuProfesion">{{infoLaboralForm.areaTrabajoAfinConSuProfesion.label}}</label><br>
+                                                {{inf.areaTrabajoAfinConSuProfesion}}
                                                 </div>
                                                 <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.tipoDeContrato}}<br>
-                                                <label for="inf.tipoDeContrato">{{infoLaboralForm.tipoDeContrato.label}}</label>
+                                                <label for="inf.tipoDeContrato">Tipo de contrato</label><br>
+                                                {{inf.tipoDeContrato}}
                                                 </div>
-                                                <div class="col-lg-4 col-md-6  form-group">
-                                                {{inf.rangoSalarial}}<br>
-                                                <label for="inf.rangoSalarial">{{infoLaboralForm.rangoSalarial.label}}</label>
-
-                                            </div>
+                                                <div class="col-lg-4 col-md-6  form-group">                               
+                                                <label for="inf.rangoSalarial">Rango salarial</label>  <br>  
+                                                {{inf.rangoSalarial}}                                
+                                                </div>
+                                                <div class="col-lg-4 col-md-6  form-group">                               
+                                                <label for="inf.rangoSalarial">{{infoLaboralForm.checkTrabajoActual.label}}</label>    
+                                                <p class="quitarCheckTrabajo">{{inf.checkTrabajoActual }}</p>
+                                                </div>
                                         </div>
                                         <div class="modal-footer">
                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                                         </div>
+                                    </div>
                                     </div>
         
                                     {% endfor %}
@@ -343,23 +368,24 @@
                         <a class="waves-effect waves-light btn modal-trigger light-blue darken-4" href="#modal5">Agregar nueva información laboral</a>
                         <div id="modal5" class="modal modal-fixed-footer modalInfoLaboral">
                         <div class="modal-content">
-                            <div class="row col-lg-12 col-md-12"> 
-                                <div class="col-lg-6 col-md-6 ">
-                                    <div class="input-field">
-                                        {{infoLaboralForm.situacion_laboral_actual}}
-                                       <label for="id_situacion_laboral_actual">{{infoLaboralForm.situacion_laboral_actual.label}}</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6  ">
-                                    <div class="input-field">
-                                        {{infoLaboralForm.experiencia_laboral}}
-                                        <label for="id_experiencia_laboral">{{infoLaboralForm.experiencia_laboral.label}}</label>
-                                    </div>
-                                </div>
+                            <div class="row "> 
+
                                 <div class="col-lg-6 col-md-6 ">
                                     <div class="input-field">
                                         {{infoLaboralForm.nombreEmpresaTrabajoActual}}
                                        <label for="id_nombreEmpresaTrabajoActual">{{infoLaboralForm.nombreEmpresaTrabajoActual.label}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 ">
+                                    <div class="input-field">
+                                        {{infoLaboralForm.fechaInicio}}
+                                       <label for="id_fechaInicio">{{infoLaboralForm.fechaInicio.label}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 ">
+                                    <div class="input-field">
+                                        {{infoLaboralForm.fechaFin}}
+                                       <label for="id_fechaFin">{{infoLaboralForm.fechaFin.label}}</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6  ">
@@ -402,6 +428,12 @@
                                     <div class="input-field">
                                         {{infoLaboralForm.rangoSalarial}}
                                         <label for="id_rangoSalarial">{{infoLaboralForm.rangoSalarial.label}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6  ">
+                                    <div class="input-field">
+                                    {{infoLaboralForm.checkTrabajoActual}}
+                                        <label for="id_rangoSalarial">{{infoLaboralForm.checkTrabajoActual.label}}</label>
                                     </div>
                                 </div>
                                 
@@ -1095,9 +1127,26 @@
      <script src="../../static/assets/js/jsDeInformacionPersonal/country.js"></script>
 
 	 <script>
+          
          $(document).ready(function(){
             $('.modal').modal();
+            // $('.datepicker').datepicker({
+            //     min: new Date(2022,1,1)
+            // });
+           
+            
+           
         });
+         //seleccionar texto cuando se haga click
+        $("#id_pais").click(function() {
+              $("#id_pais").select();
+        })
+        $("#id_departamento").click(function() {
+              $("#id_departamento").select();
+        })
+        $("#id_ciudad").click(function() {
+              $("#id_ciudad").select();
+        })
         
         // #########################################################################
         // estilos de los select 
@@ -1240,6 +1289,24 @@
                 dataType: "json",
                 success: function(resp){
                     $('#ocultarPublicacion'+resp.id).hide();
+                    console.log('id eliminado '+ resp.id);
+                    }
+            });
+
+        }
+        function eliminarLaboral(infLabId){
+            var ed = {
+                infoLabId:infLabId
+            };
+            $.ajax({
+                //url: "/guardarGradoAjax",
+                url: "{% url 'borrar_info_laboral' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    $('#ocultarlaboral'+resp.id).hide();
                     console.log('id eliminado '+ resp.id);
                     }
             });
@@ -1416,7 +1483,7 @@
                 dataType: "json",
                 success: function(resp){
                     var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-                     var fechaSplit = id_anioReconocimiento.split("-");
+                    var fechaSplit = id_anioReconocimiento.split("-");
                     var html = `
 
                         <tr id="ocultarReconocimiento${resp.id}">
@@ -1531,6 +1598,158 @@
         }
         });
 
+        $('#enviarInfoLaboral').on('click', function(){
+            var id_nombreEmpresaTrabajoActual = $('#id_nombreEmpresaTrabajoActual').val();
+            var id_sectorDeLaEmpresa = $('#id_sectorDeLaEmpresa').val();
+            var id_areaDeTrabajo = $('#id_areaDeTrabajo').val();
+            var id_cargoQueOcupa = $('#id_cargoQueOcupa').val();
+            var id_nombreJefeInmediato = $('#id_nombreJefeInmediato').val();
+            var id_areaTrabajoAfinConSuProfesion = $('#id_areaTrabajoAfinConSuProfesion').val();
+            var id_tipoDeContrato = $('#id_tipoDeContrato').val();
+            var id_rangoSalarial = $('#id_rangoSalarial').val();
+            var id_checkTrabajoActual = $('#id_checkTrabajoActual').val();
+            var id_fechaFin = $('#id_fechaFin').val();
+            var id_fechaInicio = $('#id_fechaInicio').val();
+
+            if(id_nombreEmpresaTrabajoActual !="" &&
+                id_sectorDeLaEmpresa !="" &&
+                id_areaDeTrabajo !="" &&
+                id_cargoQueOcupa !="" &&
+                id_nombreJefeInmediato !="" &&
+                id_areaTrabajoAfinConSuProfesion !="" &&
+                id_tipoDeContrato !="" &&
+                id_rangoSalarial !="" &&
+                id_checkTrabajoActual !="" ){
+
+            var ed = {
+                id_nombreEmpresaTrabajoActual : id_nombreEmpresaTrabajoActual,
+                id_sectorDeLaEmpresa : id_sectorDeLaEmpresa,
+                id_areaDeTrabajo : id_areaDeTrabajo,
+                id_cargoQueOcupa : id_cargoQueOcupa,
+                id_nombreJefeInmediato : id_nombreJefeInmediato,
+                id_areaTrabajoAfinConSuProfesion : id_areaTrabajoAfinConSuProfesion,
+                id_tipoDeContrato : id_tipoDeContrato,
+                id_rangoSalarial : id_rangoSalarial,
+                id_checkTrabajoActual : id_checkTrabajoActual,
+                id_fechaInicio:id_fechaInicio,
+                id_fechaFin:id_fechaFin
+
+            };
+          
+            // var x = document.getElementsByClassName('quitarCheckTrabajo');
+            // for(var i = 0; i<x.length;i++){
+            //     x[i].innerHTML = "No";
+            // }
+
+            $.ajax({
+                url: "{% url 'guardar_info_laboral' %}",
+                type: "POST",
+                data: ed,
+                cache:false,
+                dataType: "json",
+                success: function(resp){
+                    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                    var fechaInicio = id_fechaInicio.split("-");
+                    var fechaFin = id_fechaFin.split("-");
+                    var html = `
+                        <tr id="ocultarlaboral${resp.id}">
+                            <div>
+                                <td>
+                                    ${resp.id_nombreEmpresaTrabajoActual}
+                                </td>
+                                <td>
+                                    ${fechaInicio[2]} de ${meses[fechaInicio[1]-1]} de ${fechaInicio[0]}
+                                </td>
+                                <td>
+                                    ${fechaFin[2]} de ${meses[fechaFin[1]-1]} de ${fechaFin[0]}
+                                </td>
+                                <td>
+                                    <!-- Modal Trigger -->
+                                    <a class="btn btn-info btn-round btn-sm btn modal-trigger" href="#infoModal${resp.id}"><i class="material-icons">zoom_in</i></a>
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarLaboral(${resp.id})" >
+                                        <i class="material-icons">close</i>
+                                    </button>
+
+                                </td>
+                            </div>
+                        </tr>
+
+                        <div id="infoModal${resp.id}" class="modal bottom-sheet">
+                            <div class="modal-content">
+                                <h5>Más información</h5>
+                                <br>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6  form-group">
+
+                                        <label for="id_situacion_laboral_actual">Fecha de ingreso</label><br>
+                                            ${fechaInicio[2]} de ${meses[fechaInicio[1]-1]} de ${fechaInicio[0]}
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="id_situacion_laboral_actual">Fecha de finalización</label><br>
+                                            ${fechaFin[2]} de ${meses[fechaFin[1]-1]} de ${fechaFin[0]}
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.nombreEmpresaTrabajoActual">Nombre de la empresa</label><br>
+                                            ${resp.id_nombreEmpresaTrabajoActual}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.sectorDeLaEmpresa">Sector de la empresa</label><br>
+                                            ${resp.id_sectorDeLaEmpresa}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.areaDeTrabajo">Área de trabajo</label><br>
+                                            ${resp.id_areaDeTrabajo}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.cargoQueOcupa">Cargo que ocupa</label><br>
+                                            ${resp.id_cargoQueOcupa}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.nombreJefeInmediato">Nombre del jefe inmediato</label><br>
+                                            ${resp.id_nombreJefeInmediato}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.areaTrabajoAfinConSuProfesion">¿El área de trabajo es afín a su profesión?</label><br>
+                                            ${resp.id_areaTrabajoAfinConSuProfesion}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.tipoDeContrato">Tipo De Contrato</label><br>
+                                            ${resp.id_tipoDeContrato}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.rangoSalarial">RangoSalarial</label><br>
+                                            ${resp.id_rangoSalarial}
+                                        </div>
+                                        <div class="col-lg-4 col-md-6  form-group">
+                                        <label for="inf.rangoSalarial">¿Este es su trabajo actual?</label>
+                                        <p class="quitarCheckTrabajo">${resp.id_checkTrabajoActual}</p>
+                                        </div>
+                                    </div>
+                                        <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                        </div>
+                            </div>
+                        </div>   
+                                    
+                    
+                    `;
+                    document.querySelector('.auxlaboral').innerHTML += html;
+                    let aux = document.querySelector('.modalInfoLaboral');
+                    var instance = M.Modal.getInstance(aux);
+                    instance.close();
+                    window.location.reload();
+
+                }
+                  
+            });
+
+        }
+        else{
+            alert("Por favor complete todos los campos");
+        }
+        });
 
         
 
