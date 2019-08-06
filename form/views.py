@@ -54,7 +54,9 @@ def informacionPersonal(request):
                                                                         'publicacionesPersona':publicacionesPersona,
                                                                         'personaOtros': persona,
                                                                         'infoLaboral':infoLaboralPersona,
-                                                                        'opcionesSectorEmpresa':SECTOR_DE_LA_EMPRESA})
+                                                                        'opcionesSectorEmpresa':SECTOR_DE_LA_EMPRESA,
+                                                                        'opcionesCargoOcupado':CARGO_OCUPADO,
+                                                                        'opcionesAreaDeTrabajo':AREA_DE_TRABAJO})
     
     else:
         return render(request, 'login/login.html')
@@ -163,7 +165,8 @@ def guardar_info_laboral(request):
             id_checkTrabajoActual = request.POST.get('id_checkTrabajoActual')
             id_fechaInicio = request.POST.get('id_fechaInicio')
             id_fechaFin = request.POST.get('id_fechaFin')
-
+            if id_fechaFin == "":
+                id_fechaFin = None   
             persona = Egresado.objects.get(identificacion=int(request.session["persona"]))
 
             miInfoLaboral = InfoLaboral(nombreEmpresaTrabajoActual = id_nombreEmpresaTrabajoActual,
@@ -178,7 +181,7 @@ def guardar_info_laboral(request):
                                         persona_identificacion = persona,
                                         fechaInicio = id_fechaInicio,
                                         fechaFin = id_fechaFin)
-            print(id_checkTrabajoActual)
+            
             if id_checkTrabajoActual == "Sí":
                InfoLaboral.objects.filter(persona_identificacion = int(request.session["persona"])).update(checkTrabajoActual='No')
 

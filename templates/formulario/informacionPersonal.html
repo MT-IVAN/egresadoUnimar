@@ -37,7 +37,7 @@
                             
                             <div class="col-lg-4 col-md-6 form-group">
                                 <label>Nombres</label>
-                                <label class="form-control" style="background: #fff"><strong>{{personaOtros.nombres}} {{personaOtros.apellidos}}</strong></label>
+                                <label class="form-control" style="background: #fff"><strong>{{personaOtros.nombres}} {{personaOtros.apellidos|default_if_none:'' }}</strong></label>
                             </div>
                        
                             
@@ -275,7 +275,7 @@
                                             </td>
 
                                             <td>
-                                            {{inf.fechaFin}}
+                                            {{inf.fechaFin|default_if_none:'En curso'}}
                                             </td>
                                             
                                             <td>
@@ -309,7 +309,7 @@
 
                                                 <div class="col-lg-4 col-md-6  form-group">
                                                 <label for="id_situacion_laboral_actual">{{infoLaboralForm.fechaFin.label}}</label><br>
-                                                {{inf.fechaFin}}
+                                                {{inf.fechaFin|default_if_none:'En curso'}}
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6  form-group">
@@ -376,24 +376,27 @@
                                        <label for="id_nombreEmpresaTrabajoActual">{{infoLaboralForm.nombreEmpresaTrabajoActual.label}}</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 ">
-                                    <div class="input-field">
-                                        {{infoLaboralForm.fechaInicio}}
-                                       <label for="id_fechaInicio">{{infoLaboralForm.fechaInicio.label}}</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 ">
-                                    <div class="input-field">
-                                        {{infoLaboralForm.fechaFin}}
-                                       <label for="id_fechaFin">{{infoLaboralForm.fechaFin.label}}</label>
-                                    </div>
-                                </div>
                                 <div class="col-lg-6 col-md-6  ">
                                     <div class="input-field">
                                         {{infoLaboralForm.sectorDeLaEmpresa}}
                                         <label for="id_sectorDeLaEmpresa">{{infoLaboralForm.sectorDeLaEmpresa.label}}</label>
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-md-6 ">
+                                    <div class="form-group">
+                                        <label >{{infoLaboralForm.fechaInicio.label}}</label>
+                                        {{infoLaboralForm.fechaInicio}}
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 ">
+                                    <div class="form-group">
+                                            <label for="id_fechaFin">{{infoLaboralForm.fechaFin.label}}</label>
+                                        {{infoLaboralForm.fechaFin}}
+                                       
+                                    </div>
+                                </div>
+                                
                                 <div class="col-lg-6 col-md-6 ">
                                     <div class="input-field">
                                         {{infoLaboralForm.areaDeTrabajo}}
@@ -421,13 +424,13 @@
                                 <div class="col-lg-6 col-md-6  ">
                                     <div class="input-field">
                                         {{infoLaboralForm.tipoDeContrato}}
-                                        <label for="id_tipoDeContrato">{{infoLaboralForm.tipoDeContrato.label}}</label>
+                                        <label for="id_tipoDeContrato">Tipo de contrato</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6  ">
                                     <div class="input-field">
                                         {{infoLaboralForm.rangoSalarial}}
-                                        <label for="id_rangoSalarial">{{infoLaboralForm.rangoSalarial.label}}</label>
+                                        <label for="id_rangoSalarial">Rango salarial</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6  ">
@@ -1086,14 +1089,42 @@
                                 {{form.procesoDeInformacionUnimar}}
                                 </div>
                         </div>
+                        <button type="submit" form="personaForm" class="waves-effect waves-light btn modal-trigger light-blue darken-4">Guardar información</button>
                     </div>
+                    
                 </div>
+                
             </div>
 
             
             
+    <!--Lista de sector, area de trabajo y cargo ocupado-->
+    <datalist id="opcionesSectorEmpresa">
+        {% if opcionesSectorEmpresa %}
+        {% for e in opcionesSectorEmpresa %}        
+        <option>{{e}}</option>
+        {% endfor %}
+        {% endif %}
+    </datalist>
+    <datalist id="opcionesCargoOcupado">
+        {% if opcionesCargoOcupado %}
+        {% for e in opcionesCargoOcupado %}        
+        <option>{{e}}</option>
+        {% endfor %}
+        {% endif %}
+                    
+    </datalist>
+    <datalist id="opcionesAreaDeTrabajo">
+        {% if opcionesAreaDeTrabajo %}
+        {% for e in opcionesAreaDeTrabajo %}        
+        <option>{{e}}</option>
+        {% endfor %}
+        {% endif %}
+    </datalist>
+    
 
-            
+
+    
 
     </form>
     </div>
@@ -1109,7 +1140,7 @@
 <div class="row">
 <div class="col-md-2"></div>
 <div class="col-md-8">
-        <button type="submit" form="personaForm" class="save btn btn-primary">Guardar información</button>
+        
 </div>
  
 <div class="col-md-2"></div>
@@ -1147,6 +1178,9 @@
         $("#id_ciudad").click(function() {
               $("#id_ciudad").select();
         })
+        $("#universidades").click(function() {
+              $("#universidades").select();
+        })
         
         // #########################################################################
         // estilos de los select 
@@ -1154,6 +1188,11 @@
             var elems = document.querySelectorAll('select');
             //var instances = M.FormSelect.init(elems, options);
         });
+        window.addEventListener("keypress", function(event){
+            if (event.keyCode == 13){
+                event.preventDefault();
+            }
+        }, false);
 
         // Or with jQuery
 
@@ -1383,10 +1422,26 @@
                 }
                 else{
                     // alert("Por favor llena todos los campos");
-                    if(id_titulo_obtenido == "") $('#id_titulo_obtenido').focus();
-                    if(id_institucion == "") $('#id_institucion').focus();
-                    if(id_anioGraduacion == "") $('#id_anioGraduacion').focus();
-                    if(id_nivel_educacion_formal == "") $('#id_nivel_educacion_formal').focus();
+                    if(id_titulo_obtenido == "") {
+                        $('#id_titulo_obtenido').focus();
+                        lanzaToast('"Título obtenido"');
+                    }
+
+                    else if(id_institucion == "") {
+                        $('#id_institucion').focus();
+                        lanzaToast('"Institución"');
+                    }
+
+                    else if(id_anioGraduacion == "") {
+                        $('#id_anioGraduacion').focus();
+                        lanzaToast('"Año de graduación"');
+                    }
+
+                    else if(id_nivel_educacion_formal == "") {
+                        $('#id_nivel_educacion_formal').focus();
+                        lanzaToast('"Nivel de educación formal"');
+                    }
+
 
                
 
@@ -1453,9 +1508,18 @@
 
             }
             else{
-                if( id_tipoDeComunidad =="")  $('#id_tipoDeComunidad').focus();
-                if( id_nombreDeLaComunidad =="")  $('#id_nombreDeLaComunidad').focus();
-                if( id_ambito =="")  $('#id_ambito').focus();
+                if( id_tipoDeComunidad =="")  {
+                    $('#id_tipoDeComunidad').focus();
+                   lanzaToast('"Tipo de comunidad"');
+                }
+                else if( id_nombreDeLaComunidad =="")  {
+                    $('#id_nombreDeLaComunidad').focus();
+                   lanzaToast('"Nombre de la comunidad"');
+                }
+                else if( id_ambito =="")  {
+                    $('#id_ambito').focus();
+                   lanzaToast('"Ámbito"');
+                }
             }
 
                 });
@@ -1526,8 +1590,23 @@
             });
 
                 }else{
-                    console.log(id_titulo_obtenido_reconocimiento, id_institucionReconocimiento, id_anioReconocimiento, id_ambito);
-                    alert("Por favor complete todos los campos");
+                    if(id_titulo_obtenido_reconocimiento =="") {
+                        $('#id_titulo_obtenido_reconocimiento').focus();
+                        lanzaToast('"Nombre del reconocimiento"');
+                    }
+                    else if(id_institucionReconocimiento=="") {
+                        $('#id_institucionReconocimiento').focus();
+                        lanzaToast('"Institución otorgante"');
+                    }
+                    else if(id_anioReconocimiento=="") {
+                        $('#id_anioReconocimiento').focus();
+                        lanzaToast('"Fecha"');
+                    }
+                    else if(id_ambito=="") {
+                        $('#id_ambito').focus();
+                        lanzaToast('"Ámbito"');
+                    }
+                   
                     
                 }
 
@@ -1537,7 +1616,7 @@
             var id_titulo_publicacion =  $('#id_titulo_publicacion').val();
             var id_anio =  $('#id_anio').val();
             var id_tipo_publicacion =  $('#id_tipo_publicacion').val();
-            console.log('se fye');
+          
             if(id_titulo_publicacion != "" && id_anio != "" && id_tipo_publicacion != ""){
 
             var ed = {
@@ -1594,7 +1673,19 @@
 
         }
         else{
-            alert("Por favor complete todos los campos");
+            if( id_tipo_publicacion  =="" ) {
+                $('#id_tipo_publicacion').focus();
+                lanzaToast('"Tipo de publicación"');
+            }  
+            else if( id_titulo_publicacion ==""  ) {
+                $('#id_titulo_publicacion').focus();
+                lanzaToast('"Título de la publicación"');
+            }  
+            else if( id_anio =="" ) {
+                $('#id_anio').focus();
+                lanzaToast('"Fecha de publicación"');   
+            } 
+             
         }
         });
 
@@ -1610,7 +1701,7 @@
             var id_checkTrabajoActual = $('#id_checkTrabajoActual').val();
             var id_fechaFin = $('#id_fechaFin').val();
             var id_fechaInicio = $('#id_fechaInicio').val();
-
+           
             if(id_nombreEmpresaTrabajoActual !="" &&
                 id_sectorDeLaEmpresa !="" &&
                 id_areaDeTrabajo !="" &&
@@ -1619,139 +1710,189 @@
                 id_areaTrabajoAfinConSuProfesion !="" &&
                 id_tipoDeContrato !="" &&
                 id_rangoSalarial !="" &&
-                id_checkTrabajoActual !="" ){
+                id_checkTrabajoActual !=""&&
+                id_fechaInicio != ""  
+                ){
+            
+                var ed = {
+                    id_nombreEmpresaTrabajoActual : id_nombreEmpresaTrabajoActual,
+                    id_sectorDeLaEmpresa : id_sectorDeLaEmpresa,
+                    id_areaDeTrabajo : id_areaDeTrabajo,
+                    id_cargoQueOcupa : id_cargoQueOcupa,
+                    id_nombreJefeInmediato : id_nombreJefeInmediato,
+                    id_areaTrabajoAfinConSuProfesion : id_areaTrabajoAfinConSuProfesion,
+                    id_tipoDeContrato : id_tipoDeContrato,
+                    id_rangoSalarial : id_rangoSalarial,
+                    id_checkTrabajoActual : id_checkTrabajoActual,
+                    id_fechaInicio:id_fechaInicio,
+                    id_fechaFin:id_fechaFin
 
-            var ed = {
-                id_nombreEmpresaTrabajoActual : id_nombreEmpresaTrabajoActual,
-                id_sectorDeLaEmpresa : id_sectorDeLaEmpresa,
-                id_areaDeTrabajo : id_areaDeTrabajo,
-                id_cargoQueOcupa : id_cargoQueOcupa,
-                id_nombreJefeInmediato : id_nombreJefeInmediato,
-                id_areaTrabajoAfinConSuProfesion : id_areaTrabajoAfinConSuProfesion,
-                id_tipoDeContrato : id_tipoDeContrato,
-                id_rangoSalarial : id_rangoSalarial,
-                id_checkTrabajoActual : id_checkTrabajoActual,
-                id_fechaInicio:id_fechaInicio,
-                id_fechaFin:id_fechaFin
+                };
+            
+                // var x = document.getElementsByClassName('quitarCheckTrabajo');
+                // for(var i = 0; i<x.length;i++){
+                //     x[i].innerHTML = "No";
+                // }
 
-            };
-          
-            // var x = document.getElementsByClassName('quitarCheckTrabajo');
-            // for(var i = 0; i<x.length;i++){
-            //     x[i].innerHTML = "No";
-            // }
+                $.ajax({
+                    url: "{% url 'guardar_info_laboral' %}",
+                    type: "POST",
+                    data: ed,
+                    cache:false,
+                    dataType: "json",
+                    success: function(resp){
+                        var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                        var fechaInicio = id_fechaInicio.split("-");
+                        var fechaFin = id_fechaFin.split("-");
+                        var html = `
+                            <tr id="ocultarlaboral${resp.id}">
+                                <div>
+                                    <td>
+                                        ${resp.id_nombreEmpresaTrabajoActual}
+                                    </td>
+                                    <td>
+                                        ${fechaInicio[2]} de ${meses[fechaInicio[1]-1]} de ${fechaInicio[0]}
+                                    </td>
+                                    <td>
+                                        ${fechaFin[2]} de ${meses[fechaFin[1]-1]} de ${fechaFin[0]}
+                                    </td>
+                                    <td>
+                                        <!-- Modal Trigger -->
+                                        <a class="btn btn-info btn-round btn-sm btn modal-trigger" href="#infoModal${resp.id}"><i class="material-icons">zoom_in</i></a>
+                                        <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarLaboral(${resp.id})" >
+                                            <i class="material-icons">close</i>
+                                        </button>
 
-            $.ajax({
-                url: "{% url 'guardar_info_laboral' %}",
-                type: "POST",
-                data: ed,
-                cache:false,
-                dataType: "json",
-                success: function(resp){
-                    var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-                    var fechaInicio = id_fechaInicio.split("-");
-                    var fechaFin = id_fechaFin.split("-");
-                    var html = `
-                        <tr id="ocultarlaboral${resp.id}">
-                            <div>
-                                <td>
-                                    ${resp.id_nombreEmpresaTrabajoActual}
-                                </td>
-                                <td>
-                                    ${fechaInicio[2]} de ${meses[fechaInicio[1]-1]} de ${fechaInicio[0]}
-                                </td>
-                                <td>
-                                    ${fechaFin[2]} de ${meses[fechaFin[1]-1]} de ${fechaFin[0]}
-                                </td>
-                                <td>
-                                    <!-- Modal Trigger -->
-                                    <a class="btn btn-info btn-round btn-sm btn modal-trigger" href="#infoModal${resp.id}"><i class="material-icons">zoom_in</i></a>
-                                    <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-sm" onclick="eliminarLaboral(${resp.id})" >
-                                        <i class="material-icons">close</i>
-                                    </button>
+                                    </td>
+                                </div>
+                            </tr>
 
-                                </td>
-                            </div>
-                        </tr>
+                            <div id="infoModal${resp.id}" class="modal bottom-sheet">
+                                <div class="modal-content">
+                                    <h5>Más información</h5>
+                                    <br>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6  form-group">
 
-                        <div id="infoModal${resp.id}" class="modal bottom-sheet">
-                            <div class="modal-content">
-                                <h5>Más información</h5>
-                                <br>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="id_situacion_laboral_actual">Fecha de ingreso</label><br>
+                                                ${fechaInicio[2]} de ${meses[fechaInicio[1]-1]} de ${fechaInicio[0]}
+                                            </div>
 
-                                        <label for="id_situacion_laboral_actual">Fecha de ingreso</label><br>
-                                            ${fechaInicio[2]} de ${meses[fechaInicio[1]-1]} de ${fechaInicio[0]}
-                                        </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                                <label for="id_situacion_laboral_actual">Fecha de finalización</label><br>
+                                                ${fechaFin[2]} de ${meses[fechaFin[1]-1]} de ${fechaFin[0]}
+                                            </div>
 
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                            <label for="id_situacion_laboral_actual">Fecha de finalización</label><br>
-                                            ${fechaFin[2]} de ${meses[fechaFin[1]-1]} de ${fechaFin[0]}
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.nombreEmpresaTrabajoActual">Nombre de la empresa</label><br>
+                                                ${resp.id_nombreEmpresaTrabajoActual}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.sectorDeLaEmpresa">Sector de la empresa</label><br>
+                                                ${resp.id_sectorDeLaEmpresa}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.areaDeTrabajo">Área de trabajo</label><br>
+                                                ${resp.id_areaDeTrabajo}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.cargoQueOcupa">Cargo que ocupa</label><br>
+                                                ${resp.id_cargoQueOcupa}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.nombreJefeInmediato">Nombre del jefe inmediato</label><br>
+                                                ${resp.id_nombreJefeInmediato}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.areaTrabajoAfinConSuProfesion">¿El área de trabajo es afín a su profesión?</label><br>
+                                                ${resp.id_areaTrabajoAfinConSuProfesion}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.tipoDeContrato">Tipo De Contrato</label><br>
+                                                ${resp.id_tipoDeContrato}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.rangoSalarial">RangoSalarial</label><br>
+                                                ${resp.id_rangoSalarial}
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                            <label for="inf.rangoSalarial">¿Este es su trabajo actual?</label>
+                                            <p class="quitarCheckTrabajo">${resp.id_checkTrabajoActual}</p>
+                                            </div>
                                         </div>
+                                            <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                            </div>
+                                </div>
+                            </div>   
+                                        
+                        
+                        `;
+                        document.querySelector('.auxlaboral').innerHTML += html;
+                        let aux = document.querySelector('.modalInfoLaboral');
+                        var instance = M.Modal.getInstance(aux);
+                        instance.close();
+                        window.location.reload();
 
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.nombreEmpresaTrabajoActual">Nombre de la empresa</label><br>
-                                            ${resp.id_nombreEmpresaTrabajoActual}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.sectorDeLaEmpresa">Sector de la empresa</label><br>
-                                            ${resp.id_sectorDeLaEmpresa}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.areaDeTrabajo">Área de trabajo</label><br>
-                                            ${resp.id_areaDeTrabajo}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.cargoQueOcupa">Cargo que ocupa</label><br>
-                                            ${resp.id_cargoQueOcupa}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.nombreJefeInmediato">Nombre del jefe inmediato</label><br>
-                                            ${resp.id_nombreJefeInmediato}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.areaTrabajoAfinConSuProfesion">¿El área de trabajo es afín a su profesión?</label><br>
-                                            ${resp.id_areaTrabajoAfinConSuProfesion}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.tipoDeContrato">Tipo De Contrato</label><br>
-                                            ${resp.id_tipoDeContrato}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.rangoSalarial">RangoSalarial</label><br>
-                                            ${resp.id_rangoSalarial}
-                                        </div>
-                                        <div class="col-lg-4 col-md-6  form-group">
-                                        <label for="inf.rangoSalarial">¿Este es su trabajo actual?</label>
-                                        <p class="quitarCheckTrabajo">${resp.id_checkTrabajoActual}</p>
-                                        </div>
-                                    </div>
-                                        <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-                                        </div>
-                            </div>
-                        </div>   
-                                    
+                    }
                     
-                    `;
-                    document.querySelector('.auxlaboral').innerHTML += html;
-                    let aux = document.querySelector('.modalInfoLaboral');
-                    var instance = M.Modal.getInstance(aux);
-                    instance.close();
-                    window.location.reload();
-
-                }
-                  
-            });
+                });
+                //aqui termina el if para validar
 
         }
         else{
-            alert("Por favor complete todos los campos");
+            
+            if( id_nombreEmpresaTrabajoActual == ""  ) {
+                $('#id_nombreEmpresaTrabajoActual').focus();
+                   lanzaToast('"Nombre de la empresa"');
+                }
+            else if( id_sectorDeLaEmpresa == "" ) {
+                $('#id_sectorDeLaEmpresa').focus();
+                lanzaToast('"Sector de la empresa"');
+                }
+            else if( id_fechaInicio == "" ) {
+                $('#id_fechaInicio').focus();
+                lanzaToast('"Fecha de vinculación "');
+                }
+            // else if( id_fechaFin == "" ) {
+            //     $('#id_fechaFin').focus();
+            //     lanzaToast('"Fecha de finalización "');
+            //     }
+            else if( id_areaDeTrabajo == "" ) {
+                $('#id_areaDeTrabajo').focus();
+                lanzaToast('"Area de trabajo"');
+                }
+            else if( id_cargoQueOcupa == "" ) {
+                $('#id_cargoQueOcupa').focus();
+                lanzaToast('"Cargo que ocupa"');
+                }
+            else if( id_nombreJefeInmediato == "" ) {
+                $('#id_nombreJefeInmediato').focus();
+                lanzaToast('"Nombre del jefe inmediato"');
+                }
+            else if( id_areaTrabajoAfinConSuProfesion == "" ) {
+                $('#id_areaTrabajoAfinConSuProfesion').focus();
+                lanzaToast('"Area de trabajo de acuerdo su profesión"');
+                }
+            else if( id_tipoDeContrato == "" ) {
+                $('#id_tipoDeContrato').focus().select();
+                lanzaToast('"Tipo de contrato"');
+                }
+            else if( id_rangoSalarial == "" ) {
+                $('#id_rangoSalarial').focus();
+                lanzaToast('"Rango salarial"');
+                }
+            else if( id_checkTrabajoActual == "" ) {
+                $('#id_checkTrabajoActual').focus();
+                lanzaToast('"¿Es su trabajo actual?"');
+                }
+            
         }
         });
 
-        
+        function lanzaToast(texto){
+            M.toast({html:`Complete el campo: ${texto}`})
+        }
 
 	</script>
 	 {%endblock%}

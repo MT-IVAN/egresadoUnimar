@@ -158,11 +158,10 @@ class InfoLaboralForm(forms.ModelForm):
             'checkTrabajoActual': '¿Este es su trabajo actual?',
         }
         widgets= {
-            
             'nombreEmpresaTrabajoActual': forms.TextInput(attrs={'class': 'validate'}),
-            'sectorDeLaEmpresa' : forms.Select(attrs={'class':'validate dropdown'}),
-            'areaDeTrabajo' :forms.Select(attrs={'class':'validate dropdown'}),
-            'cargoQueOcupa': forms.Select(attrs={'class':'validate dropdown'}),
+            'sectorDeLaEmpresa' : forms.TextInput(attrs={'class':'validate','list':'opcionesSectorEmpresa'}),
+            'areaDeTrabajo' :forms.TextInput(attrs={'class':'validate','list':'opcionesAreaDeTrabajo'}),
+            'cargoQueOcupa': forms.TextInput(attrs={'class':'validate','list':'opcionesCargoOcupado'}),
             'nombreJefeInmediato' : forms.TextInput(attrs={'class': 'validate'}),
             'areaTrabajoAfinConSuProfesion':forms.Select(attrs={'class':'validate dropdown'}),
             'tipoDeContrato':forms.Select(attrs={'class':'validate dropdown'}),
