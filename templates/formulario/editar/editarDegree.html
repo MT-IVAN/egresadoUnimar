@@ -1,0 +1,39 @@
+{% extends  'base/navbar.html' %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+            <div class="card-panel white">
+                <div class="row">
+                    <div class="input-field col-sm-12 col-md-6">
+                            {{form.titulo_obtenido}}
+                        <label for="id_titulo_obtenido">{{form.titulo_obtenido.label}}</label>   
+                    </div> 
+                    <div class="input-field col-sm-12 col-md-6">
+                        {{form.institucion}}
+                        <label for="id_institucion">{{form.institucion.label}}</label>   
+                    </div>                            
+                    <div class="input-field col-sm-12 col-md-6">
+                        {{form.anioGraduacion}}
+                        <label for="id_anioGraduacion">{{form.anioGraduacion.label}}</label>   
+                    </div>
+                    <div class="input-field col-sm-12 col-md-6">
+                        {{form.nivel_educacion_formal}}
+                        <label for="id_nivel_educacion_formal">{{form.nivel_educacion_formal.label}}</label>   
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+
+    </div>
+    <center>
+        <button class="waves-effect waves-light btn light-blue darken-4" type="submit">Guardar</button>
+        <a class="waves-effect waves-light btn black" href=" {%url 'info_personal' %} ">Cancelar</a>
+    </center>
+</form>
+
+{% endblock %}

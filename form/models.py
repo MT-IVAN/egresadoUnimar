@@ -60,7 +60,7 @@ class Egresado(models.Model):
     ##### 7 
 
     participacionActividadesUnimar = models.CharField(max_length = 100, choices=PARTICIPACION_ACTIVIDADES, blank=True, null=True)
-    serviciosDeInteres = models.CharField(max_length = 40,  blank=True, null=True)
+    serviciosDeInteres = models.CharField(max_length = 41,  blank=True, null=True)
 
     ###### 8 
     

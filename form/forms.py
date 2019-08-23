@@ -194,7 +194,7 @@ class DegreesForm(forms.ModelForm):
         widgets= {
              'titulo_obtenido': forms.TextInput(attrs={'class': 'validate'}), 
              'institucion': forms.TextInput(attrs={'class': 'validate', 'list':'universidades'}), 
-             'anioGraduacion': DateInput(attrs={'class': 'validate'}),
+             'anioGraduacion': DateInput(format=('%Y-%m-%d'),attrs={'class': 'validate'}),
              'nivel_educacion_formal': forms.Select(attrs={'class':'validate dropdown'}),
         }
         

@@ -54,9 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    # 'userprofile',
+    'sweetify',
     'form',
 ]
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

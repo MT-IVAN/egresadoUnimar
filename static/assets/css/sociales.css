@@ -7,3 +7,25 @@ body {overflow-x:hidden;}
     margin-top: 4.65% !important;
     
 } */
+
+
+a.icon-block {
+    display:inline-block;
+    width:10em;
+    float:left;
+    text-align:center;
+}
+
+
+
+
+th{
+    color: black;
+   
+    font-style: italic;
+ 
+}
+
+*{
+    font-size: small;
+}

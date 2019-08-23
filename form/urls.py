@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path
-from .views import informacionPersonal, login, nav, ajaxGrado,borraAjax,Participacionajax, borrar_publicacion,borrar_comunidad, borrar_reconocimiento,guardar_reconocimiento,guardar_publicacion, guardar_info_laboral,borrar_info_laboral
+from .views import informacionPersonal,InfoAcademicaUpdate ,login, nav, ajaxGrado,borraAjax,Participacionajax, borrar_publicacion,borrar_comunidad, borrar_reconocimiento,guardar_reconocimiento,guardar_publicacion, guardar_info_laboral,borrar_info_laboral
 
 urlpatterns = [
     path('', informacionPersonal, name='info_personal'),
@@ -20,4 +20,6 @@ urlpatterns = [
     path('borrar_info_laboral', borrar_info_laboral, name='borrar_info_laboral'),
     
     path('nav', nav, name='nav'),
+    # urls para editar
+    path('informacion_academica/<int:pk>', InfoAcademicaUpdate.as_view(), name='academica_update'),
 ]

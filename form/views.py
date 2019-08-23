@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect
 from django.forms import modelformset_factory, inlineformset_factory
 from .forms import PersonaFormInformacionPersona, DegreesForm, ReconocimientosForm, ParticipacionesForm, PublicacionesForm, InfoLaboralForm
 from .models import Egresado, Degrees, Reconocimientos, Participaciones, Publicaciones, InfoLaboral
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 from .choices import *
+from django.views.generic import UpdateView
+import sweetify
+from sweetify.views import SweetifySuccessMixin
+
 
 import json
 from django.http import HttpResponse
@@ -35,6 +39,7 @@ def informacionPersonal(request):
                 if persona.serviciosDeInteres != 'otro':
                     persona.otroServicio = ''
                     persona.save()
+                    sweetify.success(request, 'Guardado', text="La información se guardó satisfactoriamente", button='Ok', timer=5000)
                     
             else:
                 return render(request, 'formulario/fail.html',{'form':form})
@@ -42,6 +47,7 @@ def informacionPersonal(request):
             print('llego la peticion por get')
             #necesito saber que informacion ha ingresado la persona
             form = PersonaFormInformacionPersona(instance=persona)    
+        
         return render(request, 'formulario/informacionPersonal.html', {'form':form,
                                                                         'degreeForm':degreeForm,
                                                                         'reconocimietosForm':reconocimietosForm,
@@ -285,6 +291,15 @@ def borrar_info_laboral(request):
                 return HttpResponse(json.dumps({'id': iden}), content_type="application/json")
         else :
                 return render_to_response('ajax_test.html', locals())
+
+
+class InfoAcademicaUpdate(SweetifySuccessMixin, UpdateView):
+    model = Degrees
+    form_class = DegreesForm
+    template_name = 'formulario/editar/editarDegree.html'
+    success_message = 'El registro se ha guardado satisfactoriamente'
+    success_url = reverse_lazy('info_personal')
+
 
 
 
