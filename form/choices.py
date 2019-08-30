@@ -10,11 +10,11 @@ SI_NO = (
     )
 
 ESTADO_CIVIL = (
-        ('Soltero', 'Soltero'),
-        ('Casado', 'Casado'),
+        ('Soltero(a)', 'Soltero(a)'),
+        ('Casado(a)', 'Casado(a)'),
         ('Unión Libre', 'Unión Libre'),
-        ('Divorciado', 'Divorciado'),
-        ('Viudo', 'Viudo'),
+        ('Divorciado(a)', 'Divorciado(a)'),
+        ('Viudo(a)', 'Viudo(a)'),
     )
     
 NIVEL_EDUCACION_FORMAL = (
@@ -160,6 +160,7 @@ CARGO_OCUPADO = (
     )
 
 SITUACION_LABORAR = (
+        ('Estudiante', 'Estudiante'),
         ('Empleado', 'Empleado'),
         ('Desempleado', 'Desempleado'),
         ('Profesional o consultor independiente', 'Profesional o consultor independiente'),
@@ -204,19 +205,23 @@ TIPO_COMUNIDAD_O_ASOCIACION = (
     ('Científica','Científica'),
     ('Artística / cultural','Artística / cultural'),
     ('Deportiva','Deportiva'),
+    ('Otra','Otra'),
 )
 AMBITO = (
     ('Local','Local'),
     ('Regional','Regional'),
     ('Nacional','Nacional'),
     ('Internacional','Internacional'),
+    ('Otra','Otra'),
 )
 
 TIPO_PUBLICACION = (
     ('Artículo','Artículo'),
     ('Libro','Libro'),
+    ('Revista','Revista'),
     ('Capítulo de libro','Capítulo de libro'),
     ('Documento resultado de investigación','Documento resultado de investigación'),
+    ('Otra','Otra'),
 )
 
 PARTICIPACION_ACTIVIDADES = (

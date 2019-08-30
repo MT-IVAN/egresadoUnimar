@@ -192,10 +192,11 @@ class DegreesForm(forms.ModelForm):
             'nivel_educacion_formal':'Nivel alcanzado en educación formal',
         }
         widgets= {
-             'titulo_obtenido': forms.TextInput(attrs={'class': 'validate'}), 
-             'institucion': forms.TextInput(attrs={'class': 'validate', 'list':'universidades'}), 
-             'anioGraduacion': DateInput(format=('%Y-%m-%d'),attrs={'class': 'validate'}),
-             'nivel_educacion_formal': forms.Select(attrs={'class':'validate dropdown'}),
+             'titulo_obtenido': forms.TextInput(attrs={'class': 'validate', 'required':'required'}), 
+             'institucion': forms.TextInput(attrs={'class': 'validate', 'list':'universidades','required':'required'}), 
+             'anioGraduacion': forms.TextInput(attrs={'type':'number','class': 'validate','min':'1939' ,'max':'2019','required':'required'}), 
+             'nivel_educacion_formal': forms.Select(attrs={'class':'validate dropdown', 'required':'required'}),
+            
         }
         
 

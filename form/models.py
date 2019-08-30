@@ -1,6 +1,10 @@
 from django.db import models
 from .choices import *
+from django.core.validators import MaxValueValidator, MinValueValidator
+import datetime
 # Create your models here.
+
+now = datetime.datetime.now()
 
 # from django.contrib.auth.models import ( AbstractBaseUser, BaseUserManager)
 
@@ -40,7 +44,7 @@ class Egresado(models.Model):
     ciudad = models.CharField(max_length=50, blank=True, null=True)
     departamento = models.CharField(max_length=50, blank=True, null=True)
     pais = models.CharField(max_length=50, blank=True, null=True)
-    telefonoFijo = models.CharField(max_length=12, blank=True, null=True)
+    telefonoFijo = models.IntegerField(max_length=12, blank=True, null=True)
     celular = models.CharField(max_length=15, blank=True, null=True)
     email1 = models.EmailField(max_length=150, blank=True, null=True)
     email2 = models.EmailField(max_length=150, blank=True, null=True)
@@ -81,7 +85,7 @@ class Degrees(models.Model):
     nivel_educacion_formal = models.CharField(max_length=100, choices=NIVEL_EDUCACION_FORMAL, blank=True, null=True)
     titulo_obtenido = models.CharField(max_length=100,null=True, blank=True,)
     institucion = models.CharField(max_length=200,null=True, blank=True)
-    anioGraduacion = models.DateField(null=True, blank=True)
+    anioGraduacion = models.PositiveIntegerField(validators=[MinValueValidator(now.year-80),MaxValueValidator(now.year)])
     persona_identificacion = models.ForeignKey(Egresado, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):

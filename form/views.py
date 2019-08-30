@@ -85,7 +85,7 @@ def ajaxGrado(request):
                 print("hubo un error con la peticion")
             return HttpResponse(json.dumps({'id': primary ,   'id_titulo_obtenido': id_titulo_obtenido, 'id_institucion':id_institucion , 'id_anioGraduacion':dateDegree, 'id_nivel_educacion_formal':id_nivel_educacion_formal}), content_type="application/json")
     else :
-        return render(request, 'formulario/fail.html',{'form':form})
+        return render(request, 'formulario/fail.html')
 
 
 def Participacionajax(request):

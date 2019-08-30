@@ -1,6 +1,6 @@
 {% extends  'base/navbar.html' %}
-{% block content %}
-<form method="POST">
+{% block edit %}
+<form method="POST" id="editDegree">
     {% csrf_token %}
     <div class="row">
         <div class="col-md-2"></div>
@@ -31,9 +31,27 @@
 
     </div>
     <center>
-        <button class="waves-effect waves-light btn light-blue darken-4" type="submit">Guardar</button>
+        <button form="editDegree" onclick=validarDrop() id="check" class="waves-effect waves-light btn light-blue darken-4" type="submit">Guardar</button>
         <a class="waves-effect waves-light btn black" href=" {%url 'info_personal' %} ">Cancelar</a>
     </center>
 </form>
+<script>
+function validarDrop(){
+if(document.getElementById('id_nivel_educacion_formal').value == ""){
+    M.toast({html:'Debe completar el campo "Nivel alcanzado en educación formal"'})
+}
+else{
+    algu();
+}
+}
+function algu(){
 
+    $("#inputformglobal").click(function(){  
+        $("#personaForm").submit();
+        });
+
+}
+
+
+</script>
 {% endblock %}

@@ -55,59 +55,12 @@
                                 <label class="form-control" style="background: #fff"><strong>{{personaOtros.fechaGrado}}</strong></label>
                             </div>
                         
+                            
+                            
                             <div class="col-lg-4 col-md-6  form-group">
                                 <div class=" input-field ">
                                     {{form.estado_civil}}
                                     <label for="id_estado_civil">{{form.estado_civil.label}}</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6  form-group">
-                                <div class=" input-field  ">
-                                        {{form.direccionResidencia}}
-                                        <label for="id_direccionResidencia">Dirección de residencia</label>  
-                                </div> 
-                            </div>
-                            
-                            <div class="col-lg-4 col-md-6  form-group">
-                                <div class="input-field">
-                                        <label id="cambiarLabelPais">Pais</label>
-                                        {{form.pais}}
-
-                                        <datalist id="country">
-                    
-                                        </datalist>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6  form-group">
-                                <div class="input-field ">
-                                    <label id="id_label_departamento">Departamento</label>
-                                    {{form.departamento}}
-                                    <datalist id="dpto">
-                    
-                                    </datalist>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6  form-group">
-                                <div class="input-field ">
-                                    <label id="id_label_ciudad">Ciudad</label>
-                                    {{form.ciudad}}
-                                    <datalist id="city">
-                    
-                                    </datalist>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6  form-group">
-                                <div class="input-field">
-                                    <label>Teléfono fijo</label>
-                                    {{form.telefonoFijo}}
-                                </div>
-                            </div>
-                            
-                            <div class="col-lg-4 col-md-6  form-group">
-                                <div class="input-field">
-                                    <label>Teléfono de contacto</label>
-                                    {{form.celular}}
                                 </div>
                             </div>
 
@@ -143,9 +96,69 @@
                                     
                                 </div>
                             </div>
-                        <!--fin del row-->    
+                        <!--fin del row-->  
+                        
+                            <ul class="collection with-header col-md-12">
+                                    <li class="collection-item"><strong></strong><h6>Datos de residencia</h6></li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                                <div class="input-field">
+                                                        <label id="cambiarLabelPais">Pais</label>
+                                                        {{form.pais}}
+
+                                                        <datalist id="country">
+                                    
+                                                        </datalist>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                                <div class="input-field ">
+                                                    <label id="id_label_departamento">Departamento</label>
+                                                    {{form.departamento}}
+                                                    <datalist id="dpto">
+                                    
+                                                    </datalist>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                                <div class="input-field ">
+                                                    <label id="id_label_ciudad">Ciudad</label>
+                                                    {{form.ciudad}}
+                                                    <datalist id="city">
+                                    
+                                                    </datalist>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                                <div class=" input-field  ">
+                                                        {{form.direccionResidencia}}
+                                                        <label for="id_direccionResidencia">Dirección de residencia</label>  
+                                                </div> 
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                                <div class="input-field">
+                                                    <label>Teléfono fijo</label>
+                                                    {{form.telefonoFijo}}
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-4 col-md-6  form-group">
+                                                <div class="input-field">
+                                                    <label>Teléfono de contacto</label>
+                                                    {{form.celular}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                            </ul>
                         </div>
-                        <button type="submit" form="personaForm" class="waves-effect waves-light btn modal-trigger light-blue darken-4">Guardar información</button>
+
+                        
+                        <input id="inputformglobal"type="submit" form="personaForm" class="waves-effect waves-light btn modal-trigger light-blue darken-4">Guardar información</input>
                     <!-- fin del card body-->
                     </div>
                 </div>
@@ -215,7 +228,7 @@
                         <!-- Modal Structure -->
                         <div id="modal1" class="modal modal-fixed-footer modalInstitucion">
                         <div class="modal-content">
-                           
+                           <form id="nuevo">
                             <div class="input-field col s12">
                                 {{degreeForm.titulo_obtenido}}
                                 <label for="id_titulo_obtenido">{{degreeForm.titulo_obtenido.label}}</label>   
@@ -232,6 +245,7 @@
                                 {{degreeForm.nivel_educacion_formal}}
                                 <label for="id_nivel_educacion_formal">{{degreeForm.nivel_educacion_formal.label}}</label>   
                             </div>  
+                        </form>
                                 
                         </div>
                         <div class="modal-footer">
@@ -803,7 +817,7 @@
                                 {{form.procesoDeInformacionUnimar}}
                                 </div>
                         </div>
-                        <button type="submit" form="personaForm" class="waves-effect waves-light btn modal-trigger light-blue darken-4">Guardar información</button>
+                        <input id="inputformglobal"type="submit" form="personaForm" class="waves-effect waves-light btn modal-trigger light-blue darken-4">Guardar información</input>
                     </div>
                     
                 </div>
@@ -872,17 +886,42 @@
      <script src="../../static/assets/js/jsDeInformacionPersonal/country.js"></script>
 
 	 <script>
+
+
+        function hacerAlgo(){
+            $(document).ready(function(){
+                console.log("scrsssoll");
+        
+        });
+            
+        }
+        $("#inputformglobal").click(function(){  
+        $("#personaForm").submit();
+        });
           
          $(document).ready(function(){
             $('.modal').modal();
             // $('.datepicker').datepicker({
             //     min: new Date(2022,1,1)
             // });
-           
-            
-      
-           
+        
         });
+
+        //mantener posicion al refrescar
+        window.onload = function () {
+            console.log("scroll");
+            if ( window.location.href.indexOf('page_y') != -1 ) {
+                console.log("scroll");
+                var match = window.location.href.split('?')[1].split("&")[0].split("=");
+                $('html, body').scrollTop( match[1] );
+                console.log("scroll");
+                hacerAlgo();
+                swal("Good job!", "You clicked the button!", "success");
+
+            }
+            console.log("scroll");
+            
+        }
          //seleccionar texto cuando se haga click
         $("#id_pais").click(function() {
               $("#id_pais").select();
@@ -896,6 +935,7 @@
         $("#universidades").click(function() {
               $("#universidades").select();
         })
+        
         
         // #########################################################################
         // estilos de los select 
@@ -1067,7 +1107,7 @@
 
         }
 
-        
+        var anio = new Date();
 
         $('#enviarAjax').on('click', function(){
             var id_titulo_obtenido =  $('#id_titulo_obtenido').val();
@@ -1075,7 +1115,7 @@
             var id_anioGraduacion =  $('#id_anioGraduacion').val();
             var id_nivel_educacion_formal =  $('#id_nivel_educacion_formal').val();
 
-            if(id_titulo_obtenido != "" & id_institucion != "" & id_anioGraduacion != "" &id_nivel_educacion_formal != "" )
+            if(id_titulo_obtenido != "" & id_institucion != "" & id_anioGraduacion != "" &id_nivel_educacion_formal != "" &&  isNaN(id_anioGraduacion) === false && parseInt(id_anioGraduacion)<=anio.getFullYear() && parseInt(id_anioGraduacion)>=(anio.getFullYear() -80) )
             {
                 
                 var ed = {
@@ -1128,6 +1168,9 @@
                             
                     document.querySelector('.aux').innerHTML += html;
                     //var a = json_loads(resp)
+                    var page_y = $( document ).scrollTop();
+                    window.location.href = window.location.href + '?page_y=' + page_y;
+                    window.location.reload();
 
                     //console.log(a);
                         }
@@ -1137,6 +1180,13 @@
                 }
                 else{
                     // alert("Por favor llena todos los campos");
+                    
+                   
+                    if(isNaN(id_anioGraduacion) === true || parseInt(id_anioGraduacion)>anio.getFullYear() || parseInt(id_anioGraduacion)<(anio.getFullYear() -80) ) {
+                        var texto = `El año de graduaciòn debe ser un numero entre el año actual y ${anio.getFullYear()-80} `;
+                        M.toast({html:texto})
+                      
+                   }
                     if(id_titulo_obtenido == "") {
                         $('#id_titulo_obtenido').focus();
                         lanzaToast('"Título obtenido"');
@@ -1552,7 +1602,7 @@
                     }
                     
                 });
-                //aqui termina el if para validar
+                //aqui termina el if para button
 
         }
         else{
