@@ -2,7 +2,7 @@ Django==2.2.3
 django-cors-headers==3.0.2
 django-floppyforms==1.7.0
 django-form-extensions==0.1.2b4
-lxml==4.3.4
+lxml==4.6.3
 psycopg2==2.8.3
 pytz==2019.1
 sqlparse==0.3.0
