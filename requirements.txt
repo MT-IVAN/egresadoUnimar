@@ -1,4 +1,4 @@
-Django==2.2.3
+Django==2.2.20
 django-cors-headers==3.0.2
 django-floppyforms==1.7.0
 django-form-extensions==0.1.2b4
