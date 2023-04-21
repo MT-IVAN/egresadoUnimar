@@ -5,5 +5,5 @@ django-form-extensions==0.1.2b4
 lxml==4.3.4
 psycopg2==2.8.3
 pytz==2019.1
-sqlparse==0.3.0
+sqlparse==0.4.4
 sweetify==2.0.0
